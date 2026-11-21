@@ -4,6 +4,17 @@
    (Dataene leses fra bonnetider-data.js)
    ========================================================================== */
 
+// Hjelpefunksjon for å unngå XSS / skriptinjeksjon ved HTML-innsetting
+function escapeHtml(str) {
+    if (str === null || str === undefined) return '';
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
 // 1. Hjelpefunksjon: Konverterer "tt:mm" til minutter fra midnatt (f.eks. "12:10" -> 730)
 function timeToMinutes(timeStr) {
     const [hours, minutes] = timeStr.split(':').map(Number);
@@ -360,14 +371,14 @@ function visMoskeIHero(m) {
         <div class="hero-moske-kort">
             <div class="hero-moske-header">
                 <div class="hero-moske-badges">
-                    <span class="kommune-merke">📍 ${m.kommune}, ${m.fylke}</span>
+                    <span class="kommune-merke">📍 ${escapeHtml(m.kommune)}, ${escapeHtml(m.fylke)}</span>
                     <span class="status-merke">🟢 Offisielt godkjent og publisert</span>
                 </div>
                 <button type="button" class="btn-lukk-moske" onclick="tilbakestillHero()">✕ Tilbake til forside</button>
             </div>
 
-            <h1 class="hero-moske-tittel">${m.navn}</h1>
-            <p class="hero-moske-adresse">🏢 ${m.adresse || 'Ingen forretningsadresse oppgitt'}</p>
+            <h1 class="hero-moske-tittel">${escapeHtml(m.navn)}</h1>
+            <p class="hero-moske-adresse">🏢 ${escapeHtml(m.adresse || 'Ingen forretningsadresse oppgitt')}</p>
 
             <div class="hero-moske-detaljer">
                 <!-- Styreleder -->
@@ -376,8 +387,8 @@ function visMoskeIHero(m) {
                     <div>
                         <div class="detalj-tittel">Styreleder</div>
                         <div class="detalj-tekst">
-                            ${lederNavn}
-                            ${lederMobil ? `<div style="margin-top:3px; font-size:12px;"><a href="tel:${lederMobil.replace(/\s+/g, '')}" style="color:var(--accent-burgunder); font-weight:600; text-decoration:none;">📞 Ring ${lederMobil}</a></div>` : ''}
+                            ${escapeHtml(lederNavn)}
+                            ${lederMobil ? `<div style="margin-top:3px; font-size:12px;"><a href="tel:${escapeHtml(lederMobil.replace(/\s+/g, ''))}" style="color:var(--accent-burgunder); font-weight:600; text-decoration:none;">📞 Ring ${escapeHtml(lederMobil)}</a></div>` : ''}
                         </div>
                     </div>
                 </div>
@@ -389,8 +400,8 @@ function visMoskeIHero(m) {
                     <div>
                         <div class="detalj-tittel">Imam</div>
                         <div class="detalj-tekst">
-                            ${imamNavn}
-                            ${imamMobil ? `<div style="margin-top:3px; font-size:12px;"><a href="tel:${imamMobil.replace(/\s+/g, '')}" style="color:var(--accent-burgunder); font-weight:600; text-decoration:none;">📞 Ring ${imamMobil}</a></div>` : ''}
+                            ${escapeHtml(imamNavn)}
+                            ${imamMobil ? `<div style="margin-top:3px; font-size:12px;"><a href="tel:${escapeHtml(imamMobil.replace(/\s+/g, ''))}" style="color:var(--accent-burgunder); font-weight:600; text-decoration:none;">📞 Ring ${escapeHtml(imamMobil)}</a></div>` : ''}
                         </div>
                     </div>
                 </div>
@@ -405,7 +416,7 @@ function visMoskeIHero(m) {
                             <div>${fredagTekst}</div>
                             ${fredagSprakTekst ? `<div style="font-size:12px; color:#475569; margin-top:3px;">${fredagSprakTekst}</div>` : ''}
                             ${fredagPeriodeTekst ? `<div style="font-size:11px; color:#64748B; margin-top:2px;">📅 ${fredagPeriodeTekst}</div>` : ''}
-                            ${fredagMerknadTekst ? `<div style="font-size:11px; color:#64748B; font-style:italic; margin-top:3px; background:#fff; padding:3px 6px; border-radius:4px; border:1px solid #e2e8f0;">ℹ️ ${fredagMerknadTekst}</div>` : ''}
+                            ${fredagMerknadTekst ? `<div style="font-size:11px; color:#64748B; font-style:italic; margin-top:3px; background:#fff; padding:3px 6px; border-radius:4px; border:1px solid #e2e8f0;">ℹ️ ${escapeHtml(fredagMerknadTekst)}</div>` : ''}
                         </div>
                     </div>
                 </div>
@@ -415,7 +426,7 @@ function visMoskeIHero(m) {
                     <span class="detalj-ikon">🏛️</span>
                     <div>
                         <div class="detalj-tittel">Organisasjonsnummer</div>
-                        <div class="detalj-tekst">${m.orgnr}</div>
+                        <div class="detalj-tekst">${escapeHtml(m.orgnr)}</div>
                     </div>
                 </div>
 
@@ -426,7 +437,7 @@ function visMoskeIHero(m) {
                     <div>
                         <div class="detalj-tittel">E-post til moskeen</div>
                         <div class="detalj-tekst">
-                            <a href="mailto:${k.moskeEpost}" style="color:var(--accent-burgunder); font-weight:600; text-decoration:none;">${k.moskeEpost}</a>
+                            <a href="mailto:${escapeHtml(k.moskeEpost)}" style="color:var(--accent-burgunder); font-weight:600; text-decoration:none;">${escapeHtml(k.moskeEpost)}</a>
                         </div>
                     </div>
                 </div>
@@ -439,7 +450,7 @@ function visMoskeIHero(m) {
                     <div>
                         <div class="detalj-tittel">Hjemmeside</div>
                         <div class="detalj-tekst">
-                            <a href="${m.nettside.startsWith('http') ? m.nettside : 'https://' + m.nettside}" target="_blank" rel="noopener noreferrer">${m.nettside}</a>
+                            <a href="${escapeHtml(m.nettside.startsWith('http') ? m.nettside : 'https://' + m.nettside)}" target="_blank" rel="noopener noreferrer">${escapeHtml(m.nettside)}</a>
                         </div>
                     </div>
                 </div>
@@ -455,9 +466,9 @@ function visMoskeIHero(m) {
                 <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:12px;">
                     ${m.aktiviteter.map(akt => `
                         <div style="background:#FAF8F5; border:1px solid var(--accent-sand); border-radius:8px; padding:12px;">
-                            <div style="font-weight:700; color:var(--primary-hoved); font-size:14px; margin-bottom:2px;">${akt.tittel}</div>
-                            <div style="font-size:12px; font-weight:600; color:var(--accent-burgunder); margin-bottom:4px;">⏰ ${akt.tid}</div>
-                            ${akt.beskrivelse ? `<div style="font-size:12px; color:#475569; line-height:1.4;">${akt.beskrivelse}</div>` : ''}
+                            <div style="font-weight:700; color:var(--primary-hoved); font-size:14px; margin-bottom:2px;">${escapeHtml(akt.tittel)}</div>
+                            <div style="font-size:12px; font-weight:600; color:var(--accent-burgunder); margin-bottom:4px;">⏰ ${escapeHtml(akt.tid)}</div>
+                            ${akt.beskrivelse ? `<div style="font-size:12px; color:#475569; line-height:1.4;">${escapeHtml(akt.beskrivelse)}</div>` : ''}
                         </div>
                     `).join('')}
                 </div>
@@ -509,10 +520,18 @@ function visFredagsbonnOversikt(erTvungetFraMeny = false, valgtKommune = 'alle')
 
     const erFredagIdag = (new Date().getDay() === 5);
 
+    // Hjelpesjekk for å validere om en moské har aktiv fredagsbønn (støtter både array og objekt fra Min Moské)
+    const harAktivFredag = (m) => {
+        if (!m || !m.fredagsbonn) return false;
+        if (Array.isArray(m.fredagsbonn)) return m.fredagsbonn.length > 0;
+        if (typeof m.fredagsbonn === 'object') return Boolean(m.fredagsbonn.aktiv || m.fredagsbonn.bonnTid || (m.fredagsbonn.tider && m.fredagsbonn.tider.length > 0));
+        return false;
+    };
+
     // Samle alle unike kommuner for filter
     const kommunerSet = new Set();
     publiserteData.forEach(m => {
-        if (m.fredagsbonn) {
+        if (harAktivFredag(m)) {
             kommunerSet.add(m.kommune || 'Andre');
         }
     });
@@ -521,7 +540,7 @@ function visFredagsbonnOversikt(erTvungetFraMeny = false, valgtKommune = 'alle')
     // Grupper moskeer etter fredagsbønntidspunkt
     const tidsGrupper = {};
     publiserteData.forEach(m => {
-        if (!m.fredagsbonn) return;
+        if (!harAktivFredag(m)) return;
         if (valgtKommune !== 'alle' && (m.kommune || '').toLowerCase() !== valgtKommune.toLowerCase()) return;
 
         let tider = [];
@@ -566,7 +585,7 @@ function visFredagsbonnOversikt(erTvungetFraMeny = false, valgtKommune = 'alle')
             return `
                 <div class="jummah-tidsgruppe">
                     <div class="jummah-tid-header">
-                        <span class="jummah-tid-klokke">⏰ Kl. ${tid} (Bønn / Salah)</span>
+                        <span class="jummah-tid-klokke">⏰ Kl. ${escapeHtml(tid)} (Bønn / Salah)</span>
                         <span class="jummah-tid-antall">${liste.length} ${liste.length === 1 ? 'moské' : 'moskeer'}</span>
                     </div>
                     <div class="jummah-moske-grid">
@@ -577,11 +596,11 @@ function visFredagsbonnOversikt(erTvungetFraMeny = false, valgtKommune = 'alle')
                             return `
                                 <div class="jummah-kort">
                                     <div class="jummah-kort-innhold">
-                                        <div class="jummah-kort-navn" onclick="finnOgVisMoske('${m.orgnr}')">${m.navn}</div>
-                                        <div class="jummah-kort-sted">📍 ${m.kommune}${m.adresse ? ' • ' + m.adresse : ''}</div>
+                                        <div class="jummah-kort-navn" onclick="finnOgVisMoske('${escapeHtml(m.orgnr)}')">${escapeHtml(m.navn)}</div>
+                                        <div class="jummah-kort-sted">📍 ${escapeHtml(m.kommune)}${m.adresse ? ' • ' + escapeHtml(m.adresse) : ''}</div>
                                         <div class="jummah-tid-tags">
-                                            ${item.khutbahTid ? `<span class="jummah-mini-tag tag-khutbah">Khutbah: kl. ${item.khutbahTid}</span>` : ''}
-                                            ${(item.sprak && item.sprak.length > 0) ? `<span class="jummah-mini-tag tag-sprak">🗣️ ${item.sprak.join(', ')}</span>` : ''}
+                                            ${item.khutbahTid ? `<span class="jummah-mini-tag tag-khutbah">Khutbah: kl. ${escapeHtml(item.khutbahTid)}</span>` : ''}
+                                            ${(item.sprak && item.sprak.length > 0) ? `<span class="jummah-mini-tag tag-sprak">🗣️ ${escapeHtml(item.sprak.join(', '))}</span>` : ''}
                                             ${skiftMerk}
                                         </div>
                                     </div>
@@ -607,10 +626,10 @@ function visFredagsbonnOversikt(erTvungetFraMeny = false, valgtKommune = 'alle')
         <div class="jummah-filter-bar">
             <span class="jummah-filter-label">Kommune:</span>
             <button type="button" class="jummah-filter-btn ${valgtKommune === 'alle' ? 'aktiv' : ''}" onclick="visFredagsbonnOversikt(false, 'alle')">
-                Alle (${publiserteData.filter(m => m.fredagsbonn && m.fredagsbonn.length > 0).length})
+                Alle (${publiserteData.filter(harAktivFredag).length})
             </button>
             ${sorterteKommuner.map(k => {
-                const count = publiserteData.filter(m => (m.kommune || '').toLowerCase() === k.toLowerCase() && m.fredagsbonn && m.fredagsbonn.length > 0).length;
+                const count = publiserteData.filter(m => (m.kommune || '').toLowerCase() === k.toLowerCase() && harAktivFredag(m)).length;
                 return `
                     <button type="button" class="jummah-filter-btn ${valgtKommune.toLowerCase() === k.toLowerCase() ? 'aktiv' : ''}" onclick="visFredagsbonnOversikt(false, '${k}')">
                         ${k} (${count})

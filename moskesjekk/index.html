@@ -171,6 +171,17 @@
     </div>
 
     <script>
+        // Hjelpefunksjon for å unngå XSS / skriptinjeksjon ved HTML-innsetting
+        function escapeHtml(str) {
+            if (str === null || str === undefined) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
         let dataCache = null;
 
         async function init() {
@@ -277,19 +288,20 @@
                     <div class="moske-liste">
                         ${filtrerte.map(m => {
                             const lederHtml = m.styreleder
-                                ? `<span class="kontakt-item">👤 Styreleder: <strong>${m.styreleder}</strong></span>`
+                                ? `<span class="kontakt-item">👤 Styreleder: <strong>${escapeHtml(m.styreleder)}</strong></span>`
                                 : `<span class="kontakt-item kontakt-mangler">👤 Styreleder: Ikke innhentet</span>`;
 
+                            const safeNett = m.nettside ? (m.nettside.startsWith('http') ? m.nettside : 'https://' + m.nettside) : '';
                             const nettHtml = m.nettside
-                                ? `<span class="kontakt-item">🌐 <a href="${m.nettside.startsWith('http') ? m.nettside : 'https://' + m.nettside}" target="_blank" rel="noopener noreferrer">${m.nettside}</a></span>`
+                                ? `<span class="kontakt-item">🌐 <a href="${escapeHtml(safeNett)}" target="_blank" rel="noopener noreferrer">${escapeHtml(m.nettside)}</a></span>`
                                 : `<span class="kontakt-item kontakt-mangler">🌐 Ikke registrert</span>`;
 
                             return `
                             <div class="moske-kort">
                                 <div>
-                                    <div class="moske-navn">${m.navn}</div>
-                                    <div class="moske-detaljer">📍 ${m.kommune} &bull; Org.nr: <strong>${m.orgnr}</strong></div>
-                                    <div class="moske-detaljer" style="font-size:12px; color:#64748b; margin-top:2px;">${m.adresse || 'Ingen adresse registrert'}</div>
+                                    <div class="moske-navn">${escapeHtml(m.navn)}</div>
+                                    <div class="moske-detaljer">📍 ${escapeHtml(m.kommune)} &bull; Org.nr: <strong>${escapeHtml(m.orgnr)}</strong></div>
+                                    <div class="moske-detaljer" style="font-size:12px; color:#64748b; margin-top:2px;">${escapeHtml(m.adresse || 'Ingen adresse registrert')}</div>
                                     <div class="moske-kontakt">
                                         ${lederHtml}
                                         ${nettHtml}
@@ -453,23 +465,23 @@
 
                                     return `
                                     <tr style="border-bottom:1px solid #e2e8f0;">
-                                        <td style="padding:10px 12px; font-weight:700; color:var(--primary);">${m.navn}</td>
-                                        <td style="padding:10px 12px; color:#64748b;">${m.kommune}</td>
+                                        <td style="padding:10px 12px; font-weight:700; color:var(--primary);">${escapeHtml(m.navn)}</td>
+                                        <td style="padding:10px 12px; color:#64748b;">${escapeHtml(m.kommune)}</td>
                                         <td style="padding:10px 12px;">
-                                            <div>${lederNavn}</div>
-                                            <div style="font-size:11px; color:#64748b;">${lederMobil ? '📱 ' + lederMobil : '<span style="color:#f59e0b;">Mangler mobil</span>'}</div>
+                                            <div>${escapeHtml(lederNavn)}</div>
+                                            <div style="font-size:11px; color:#64748b;">${lederMobil ? '📱 ' + escapeHtml(lederMobil) : '<span style="color:#f59e0b;">Mangler mobil</span>'}</div>
                                         </td>
                                         <td style="padding:10px 12px;">
-                                            <div>${imamNavn}</div>
-                                            <div style="font-size:11px; color:#64748b;">${imamMobil ? '📱 ' + imamMobil : ''}</div>
+                                            <div>${escapeHtml(imamNavn)}</div>
+                                            <div style="font-size:11px; color:#64748b;">${imamMobil ? '📱 ' + escapeHtml(imamMobil) : ''}</div>
                                         </td>
                                         <td style="padding:10px 12px; text-align:center;">
                                             <span style="display:inline-block; background:#fef3c7; color:#92400e; font-family:monospace; font-size:14px; font-weight:700; padding:3px 8px; border-radius:4px; border:1px solid #fde68a;">
-                                                ${pin}
+                                                ${escapeHtml(pin)}
                                             </span>
                                         </td>
                                         <td style="padding:10px 12px; text-align:right;">
-                                            <button type="button" onclick="kopierInvitasjon('${m.navn.replace(/'/g, "\\'")}', '${pin}')" style="background:var(--primary); color:white; border:none; padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; cursor:pointer;">
+                                            <button type="button" onclick="kopierInvitasjon('${escapeHtml(m.orgnr)}')" style="background:var(--primary); color:white; border:none; padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; cursor:pointer;">
                                                 📋 Kopier SMS
                                             </button>
                                         </td>
@@ -485,7 +497,18 @@
             }
         }
 
-        function kopierInvitasjon(moskeNavn, pin) {
+        function kopierInvitasjon(orgnr) {
+            let funnetMoske = null;
+            if (pubDataForPin && pubDataForPin.fylker) {
+                for (const liste of Object.values(pubDataForPin.fylker)) {
+                    const match = liste.find(m => m.orgnr === orgnr);
+                    if (match) { funnetMoske = match; break; }
+                }
+            }
+            if (!funnetMoske) return;
+
+            const moskeNavn = funnetMoske.navn;
+            const pin = (funnetMoske.kontakt && funnetMoske.kontakt.pin) || 'Mangler';
             const smsTekst = `Hei! Velkommen til Moskeene.no. Din moské (${moskeNavn}) kan nå oppdatere fredagsbønn og khutbah-tider helt gratis på: https://moskeene.no/min-moske/\n\nBruk din personlige PIN-kode: ${pin} og ditt mobilnummer for å logge inn.`;
             navigator.clipboard.writeText(smsTekst).then(() => {
                 alert(`✅ SMS-invitasjon for ${moskeNavn} er kopiert til utklippstavlen!\n\nTekst:\n"${smsTekst}"`);
@@ -556,15 +579,15 @@
                         <div style="background:#FAF8F5; border:1px solid var(--sand); border-left:4px solid var(--secondary); border-radius:8px; padding:16px;">
                             <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px; flex-wrap:wrap; gap:8px;">
                                 <div>
-                                    <div style="font-weight:700; font-size:15px; color:var(--primary); font-family:var(--font-tittel);">${m.moskeNavn}</div>
-                                    <div style="font-size:12px; color:#64748B;">Fra: <strong>${m.avsender}</strong> ${m.mobil ? '&bull; 📱 ' + m.mobil : ''} &bull; Org.nr: ${m.orgnr}</div>
+                                    <div style="font-weight:700; font-size:15px; color:var(--primary); font-family:var(--font-tittel);">${escapeHtml(m.moskeNavn)}</div>
+                                    <div style="font-size:12px; color:#64748B;">Fra: <strong>${escapeHtml(m.avsender)}</strong> ${m.mobil ? '&bull; 📱 ' + escapeHtml(m.mobil) : ''} &bull; Org.nr: ${escapeHtml(m.orgnr)}</div>
                                 </div>
                                 <span style="font-size:11px; background:#e2e8f0; color:#475569; padding:2px 8px; border-radius:4px; font-weight:600;">
-                                    🕒 ${m.tidspunkt}
+                                    🕒 ${escapeHtml(m.tidspunkt)}
                                 </span>
                             </div>
-                            <div style="font-size:13px; color:#1e293b; background:white; padding:12px; border-radius:6px; border:1px solid #e2e8f0; line-height:1.5;">
-                                ${m.melding}
+                            <div style="font-size:13px; color:#1e293b; background:white; padding:12px; border-radius:6px; border:1px solid #e2e8f0; line-height:1.5; white-space:pre-wrap;">
+                                ${escapeHtml(m.melding)}
                             </div>
                         </div>
                     `).join('')}

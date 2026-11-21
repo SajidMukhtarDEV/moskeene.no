@@ -382,6 +382,17 @@
     <div class="toast" id="toast"></div>
 
     <script>
+        // Hjelpefunksjon for å unngå XSS / skriptinjeksjon ved HTML-innsetting
+        function escapeHtml(str) {
+            if (str === null || str === undefined) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
         let moskeData = null;
 
         function showToast(msg) {
@@ -611,7 +622,13 @@
             });
         }
 
-        function kopierSmsTilRolle(moskeNavn, rolleNavn, kode) {
+        function kopierSmsTilRolle(orgnr, rolleNavn) {
+            const moskeer = hentAllePubliserteMoskeer();
+            const m = moskeer.find(item => item.orgnr === orgnr);
+            if (!m) return;
+            const moskeNavn = m.navn;
+            const k = m.kontakt || {};
+            const kode = rolleNavn === 'imam' ? (k.imam && k.imam.kode) : (k.styreleder && k.styreleder.kode || k.pin);
             const rolleTekst = rolleNavn === 'imam' ? 'imam' : 'styreleder';
             const smsTekst = `Hei! Velkommen til Moskeene.no.\n\nDin moské (${moskeNavn}) har nå fått opprettet sin egen gratis side på: https://moskeene.no/min-moske/\n\nLogg inn med ditt mobilnummer og din personlige 8-sifrede kode:\n🔑 Kode: ${kode}\n\nHer kan du enkelt oppdatere fredagsbønn, khutbah-tid og aktiviteter helt gratis.`;
 
@@ -657,34 +674,34 @@
                 return `
                     <tr>
                         <td>
-                            <div style="font-weight:700; color:var(--primary); font-family:var(--font-tittel);">${m.navn}</div>
-                            <div style="font-size:11px; color:#64748B;">📍 ${m.kommune} &bull; Org.nr: <strong>${m.orgnr}</strong></div>
+                            <div style="font-weight:700; color:var(--primary); font-family:var(--font-tittel);">${escapeHtml(m.navn)}</div>
+                            <div style="font-size:11px; color:#64748B;">📍 ${escapeHtml(m.kommune)} &bull; Org.nr: <strong>${escapeHtml(m.orgnr)}</strong></div>
                         </td>
                         <td>
-                            <div style="font-weight:600;">${lNavn}</div>
+                            <div style="font-weight:600;">${escapeHtml(lNavn)}</div>
                             <div style="font-size:12px; margin-top:2px;">
                                 ${lMobil ? `
-                                    <span style="color:#1e293b; font-weight:600;">📱 ${lMobil}</span>
+                                    <span style="color:#1e293b; font-weight:600;">📱 ${escapeHtml(lMobil)}</span>
                                     <span style="font-size:10px; background:#f1f5f9; color:#475569; padding:1px 4px; border-radius:3px; margin-left:4px; font-weight:600;" title="Låst for redigering i Min Moské">🔒 Låst for moské</span>
                                 ` : `
                                     <span style="color:#dc2626; font-weight:700; font-size:11px;">⚠️ Mangler mobil (Registrer over)</span>
                                 `}
                             </div>
-                            <div style="margin-top:4px;"><span class="pin-pill">${lKode}</span></div>
+                            <div style="margin-top:4px;"><span class="pin-pill">${escapeHtml(lKode)}</span></div>
                         </td>
                         <td>
                             ${iNavn ? `
-                                <div style="font-weight:600;">${iNavn}</div>
-                                <div style="font-size:12px; color:#475569;">${iMobil ? '📱 ' + iMobil : '<span style="color:#94a3b8;">Uten mobil</span>'}</div>
-                                <div style="margin-top:4px;"><span class="pin-pill" style="background:#dcfce7; color:#15803d; border-color:#86efac;">${iKode || 'Ingen kode'}</span></div>
+                                <div style="font-weight:600;">${escapeHtml(iNavn)}</div>
+                                <div style="font-size:12px; color:#475569;">${iMobil ? '📱 ' + escapeHtml(iMobil) : '<span style="color:#94a3b8;">Uten mobil</span>'}</div>
+                                <div style="margin-top:4px;"><span class="pin-pill" style="background:#dcfce7; color:#15803d; border-color:#86efac;">${escapeHtml(iKode || 'Ingen kode')}</span></div>
                             ` : `<span style="color:#94a3b8; font-size:12px; font-style:italic;">Kan registreres av styreleder</span>`}
                         </td>
                         <td style="text-align:right;">
                             <div class="action-btns">
-                                <button type="button" class="btn-sm btn-sm-primary" onclick="settMoskeIgen('${m.orgnr}')" title="Rediger mobil og kode">
+                                <button type="button" class="btn-sm btn-sm-primary" onclick="settMoskeIgen('${escapeHtml(m.orgnr)}')" title="Rediger mobil og kode">
                                     ✏️ Rediger
                                 </button>
-                                <button type="button" class="btn-sm" onclick="kopierSmsTilRolle('${m.navn.replace(/'/g, "\\'")}', 'styreleder', '${lKode}')" title="Kopier SMS">
+                                <button type="button" class="btn-sm" onclick="kopierSmsTilRolle('${escapeHtml(m.orgnr)}', 'styreleder')" title="Kopier SMS">
                                     📋 SMS
                                 </button>
                             </div>

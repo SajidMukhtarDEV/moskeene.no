@@ -36,6 +36,7 @@ body {
     color: var(--primary-hoved);
     font-family: var(--font-tekst);
     line-height: 1.5;
+    padding-bottom: calc(44px + env(safe-area-inset-bottom, 0px));
 }
 
 a {
@@ -43,9 +44,14 @@ a {
     text-decoration: none;
 }
 
-/* 3. HEADER (site-header) */
+/* 3. HEADER (site-header) - Fastlåst (sticky) på toppen */
 .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: var(--background-bakgrunn);
     border-bottom: 2px solid var(--secondary-brun);
+    box-shadow: 0 2px 10px rgba(20, 83, 45, 0.08);
 }
 
 /* BRANSJENAVN: top-bar (Smal stripe helt øverst med byvelger og 5 bønnetider) */
@@ -56,6 +62,7 @@ a {
     gap: 16px;
     flex-wrap: wrap;
     padding: 6px 12px;
+    padding-top: calc(6px + env(safe-area-inset-top, 0px));
     background-color: var(--primary-hoved);
     color: var(--background-bakgrunn);
 }
@@ -228,10 +235,15 @@ a {
     width: 280px;
     max-width: 85vw;
     height: 100vh;
+    height: 100dvh;
     background-color: #FFFFFF;
     box-shadow: -8px 0 24px rgba(0, 0, 0, 0.25);
     z-index: 10002;
     padding: 20px;
+    padding-top: calc(16px + env(safe-area-inset-top, 0px));
+    padding-bottom: calc(52px + env(safe-area-inset-bottom, 0px));
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     flex-direction: column;
     gap: 16px;
     animation: slideInRight 0.2s ease;
@@ -1335,6 +1347,7 @@ a {
     /* 1. Topplinje for bønnetider: holder seg på 1 ren linje uten å brekke */
     .top-bar {
         padding: 4px 8px;
+        padding-top: calc(4px + env(safe-area-inset-top, 0px));
         gap: 6px;
         flex-wrap: nowrap;
         overflow-x: auto;
@@ -1463,5 +1476,50 @@ a {
 
     .hero-section h1 {
         font-size: 52px; /* Flott og stor overskrift på PC */
+    }
+}
+
+/* ==========================================================================
+   7. FAST STICKY BUNNSTRIPE - Falah For Alle Samfunnsinitiativ
+   ========================================================================== */
+.sticky-bottom-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background-color: var(--primary-hoved);
+    color: var(--background-bakgrunn);
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 9px 14px;
+    padding-bottom: calc(9px + env(safe-area-inset-bottom, 0px));
+    border-top: 1px solid var(--primary-lys-salvie);
+    box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.12);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    letter-spacing: 0.2px;
+}
+
+.sticky-bottom-bar a {
+    color: var(--primary-lys-salvie);
+    font-weight: 700;
+    text-decoration: underline;
+    margin-left: 3px;
+    transition: color 0.15s ease;
+}
+
+.sticky-bottom-bar a:hover {
+    color: #ffffff;
+}
+
+@media (max-width: 480px) {
+    .sticky-bottom-bar {
+        font-size: 11px;
+        padding: 7px 10px;
+        padding-bottom: calc(7px + env(safe-area-inset-bottom, 0px));
     }
 }
