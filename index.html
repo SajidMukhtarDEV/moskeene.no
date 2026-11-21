@@ -71,17 +71,25 @@
                 </svg>
                 <span class="logo-text">Moskeene<span class="logo-dot">.no</span></span>
             </div>
+
+            <!-- Kun på mobil: Én ren linje med Moskeer-knapp og Hamburger -->
+            <div class="mobile-nav-tools">
+                <button class="btn-mobil-moskeer" id="btnMobilMoskeer" onclick="toggleDropdownMeny()" type="button">
+                    🕌 Moskeer ▾
+                </button>
+                <button class="hamburger-btn" id="hamburgerBtn" type="button" aria-label="Åpne meny" onclick="toggleMobilMeny()">
+                    ☰
+                </button>
+            </div>
+
+            <!-- Standard desktop-lenker (skjules på mobil slik at de ikke brekker linjen) -->
             <div class="nav-links">
                 <a href="#" id="navHjem" onclick="tilbakestillHero(); return false;">Hjem</a>
                 <div class="nav-dropdown" id="moskeerDropdownWrap">
-                    <button class="nav-dropdown-btn" id="moskeerDropdownBtn" type="button" aria-expanded="false">
+                    <button class="nav-dropdown-btn" id="moskeerDropdownBtn" type="button" aria-expanded="false" onclick="toggleDropdownMeny()">
                         <span>Moskeer</span>
                         <span class="dropdown-pil">▾</span>
                     </button>
-                    <div class="dropdown-backdrop" id="dropdownBackdrop" onclick="lukkDropdown()"></div>
-                    <div class="dropdown-meny-boks" id="moskeerDropdownMenu">
-                        <div class="dropdown-laster">Laster inn publiserte moskeer...</div>
-                    </div>
                 </div>
                 <a href="#fredagsbonn" id="navFredagsbonn" onclick="visFredagsbonnOversikt(true); return false;">Fredagsbønn</a>
                 <a href="#ressurser">Ressurser</a>
@@ -90,7 +98,42 @@
                     <span>🔐</span> Min Moské
                 </a>
             </div>
+
+            <!-- Felles dropdown boks & backdrop (kan åpnes av både mobil- og desktop-knapp) -->
+            <div class="dropdown-backdrop" id="dropdownBackdrop" onclick="lukkDropdown()"></div>
+            <div class="dropdown-meny-boks" id="moskeerDropdownMenu">
+                <div class="dropdown-laster">Laster inn publiserte moskeer...</div>
+            </div>
         </nav>
+
+        <!-- Mobil-skuff (Drawer) som glir inn fra høyre når man trykker ☰ på mobil -->
+        <div class="mobile-drawer-backdrop" id="mobileDrawerBackdrop" onclick="lukkMobilMeny()"></div>
+        <div class="mobile-drawer" id="mobileDrawer">
+            <div class="mobile-drawer-header">
+                <span class="mobile-drawer-tittel">Moskeene.no</span>
+                <button type="button" class="mobile-drawer-lukk" onclick="lukkMobilMeny()">✕</button>
+            </div>
+            <div class="mobile-drawer-lenker">
+                <a href="#" onclick="tilbakestillHero(); lukkMobilMeny(); return false;" class="drawer-lenke">
+                    <span>🏠</span> Hjem
+                </a>
+                <a href="#" onclick="lukkMobilMeny(); toggleDropdownMeny(); return false;" class="drawer-lenke">
+                    <span>🕌</span> Alle Moskeer (Søk)
+                </a>
+                <a href="#fredagsbonn" onclick="visFredagsbonnOversikt(true); lukkMobilMeny(); return false;" class="drawer-lenke">
+                    <span>⏰</span> Fredagsbønn (Jummah)
+                </a>
+                <a href="#ressurser" onclick="lukkMobilMeny();" class="drawer-lenke">
+                    <span>📚</span> Ressurser & Maler
+                </a>
+                <a href="#om-oss" onclick="lukkMobilMeny();" class="drawer-lenke">
+                    <span>🤝</span> Om oss & Falah For Alle
+                </a>
+                <a href="min-moske/index.html" class="drawer-lenke drawer-lenke-portal">
+                    <span>🔐</span> Min Moské Portal
+                </a>
+            </div>
+        </div>
 
     </header>
 

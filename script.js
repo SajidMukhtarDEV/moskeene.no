@@ -150,32 +150,9 @@ async function initPubliserteMoskeer() {
 
         const backdrop = document.getElementById('dropdownBackdrop');
 
-        // Toggle dropdown ved klikk på knappen
-        dropdownBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const isOpen = dropdownMenu.classList.contains('vis');
-            if (isOpen) {
-                lukkDropdown();
-            } else {
-                dropdownMenu.classList.add('vis');
-                if (backdrop) backdrop.classList.add('vis');
-                dropdownBtn.classList.add('aktiv');
-                dropdownBtn.setAttribute('aria-expanded', 'true');
-                if (sokInput) {
-                    setTimeout(() => sokInput.focus(), 80);
-                }
-            }
-        });
-
-        // Lukk nedtrekksmenyen hvis man klikker på backdrop eller utenfor
-        if (backdrop) {
-            backdrop.addEventListener('click', () => {
-                lukkDropdown();
-            });
-        }
-
+        // Lukk nedtrekksmenyen hvis man klikker utenfor
         document.addEventListener('click', (e) => {
-            if (!e.target.closest('#moskeerDropdownWrap')) {
+            if (!e.target.closest('#moskeerDropdownWrap') && !e.target.closest('#moskeerDropdownMenu') && !e.target.closest('#btnMobilMoskeer')) {
                 lukkDropdown();
             }
         });
@@ -262,9 +239,38 @@ function filtrerDropdownMoskeer(query) {
 }
 window.filtrerDropdownMoskeer = filtrerDropdownMoskeer;
 
+function toggleDropdownMeny(e) {
+    if (e && e.stopPropagation) e.stopPropagation();
+    const dropdownMenu = document.getElementById('moskeerDropdownMenu');
+    const dropdownBtn = document.getElementById('moskeerDropdownBtn');
+    const btnMobil = document.getElementById('btnMobilMoskeer');
+    const backdrop = document.getElementById('dropdownBackdrop');
+    if (!dropdownMenu) return;
+
+    const isOpen = dropdownMenu.classList.contains('vis');
+    if (isOpen) {
+        lukkDropdown();
+    } else {
+        lukkMobilMeny();
+        dropdownMenu.classList.add('vis');
+        if (backdrop) backdrop.classList.add('vis');
+        if (dropdownBtn) {
+            dropdownBtn.classList.add('aktiv');
+            dropdownBtn.setAttribute('aria-expanded', 'true');
+        }
+        if (btnMobil) btnMobil.classList.add('aktiv');
+        const sokInput = document.getElementById('dropdownSokInput');
+        if (sokInput) {
+            setTimeout(() => sokInput.focus(), 80);
+        }
+    }
+}
+window.toggleDropdownMeny = toggleDropdownMeny;
+
 function lukkDropdown() {
     const dropdownMenu = document.getElementById('moskeerDropdownMenu');
     const dropdownBtn = document.getElementById('moskeerDropdownBtn');
+    const btnMobil = document.getElementById('btnMobilMoskeer');
     const backdrop = document.getElementById('dropdownBackdrop');
     if (dropdownMenu) dropdownMenu.classList.remove('vis');
     if (backdrop) backdrop.classList.remove('vis');
@@ -272,11 +278,38 @@ function lukkDropdown() {
         dropdownBtn.classList.remove('aktiv');
         dropdownBtn.setAttribute('aria-expanded', 'false');
     }
+    if (btnMobil) btnMobil.classList.remove('aktiv');
 }
 window.lukkDropdown = lukkDropdown;
 
+function toggleMobilMeny(e) {
+    if (e && e.stopPropagation) e.stopPropagation();
+    const drawer = document.getElementById('mobileDrawer');
+    const backdrop = document.getElementById('mobileDrawerBackdrop');
+    if (!drawer) return;
+    const erApen = drawer.classList.contains('vis');
+    if (erApen) {
+        lukkMobilMeny();
+    } else {
+        lukkDropdown();
+        drawer.classList.add('vis');
+        if (backdrop) backdrop.classList.add('vis');
+    }
+}
+window.toggleMobilMeny = toggleMobilMeny;
+
+function lukkMobilMeny() {
+    const drawer = document.getElementById('mobileDrawer');
+    const backdrop = document.getElementById('mobileDrawerBackdrop');
+    if (drawer) drawer.classList.remove('vis');
+    if (backdrop) backdrop.classList.remove('vis');
+}
+window.lukkMobilMeny = lukkMobilMeny;
+
 // Viser den valgte moskeen direkte i Hero-seksjonen
 function visMoskeIHero(m) {
+    lukkDropdown();
+    lukkMobilMeny();
     const defaultView = document.getElementById('heroDefaultView');
     const moskeView = document.getElementById('heroMoskeView');
     const fredagView = document.getElementById('heroFredagsbonnView');
@@ -459,6 +492,8 @@ function visMoskeIHero(m) {
 
 // Viser felles oversikt over fredagsbønn (Jummah)
 function visFredagsbonnOversikt(erTvungetFraMeny = false, valgtKommune = 'alle') {
+    lukkDropdown();
+    lukkMobilMeny();
     const defaultView = document.getElementById('heroDefaultView');
     const moskeView = document.getElementById('heroMoskeView');
     const fredagView = document.getElementById('heroFredagsbonnView');
@@ -616,6 +651,8 @@ function finnOgVisMoske(orgnr) {
 
 // Tilbakestiller hero-seksjonen til standard velkomstvisning
 function tilbakestillHero() {
+    lukkDropdown();
+    lukkMobilMeny();
     const defaultView = document.getElementById('heroDefaultView');
     const moskeView = document.getElementById('heroMoskeView');
     const fredagView = document.getElementById('heroFredagsbonnView');

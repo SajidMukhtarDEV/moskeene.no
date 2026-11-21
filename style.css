@@ -128,6 +128,7 @@ a {
 
 /* BRANSJENAVN: nav-bar (Hovedmenyen med logo og lenker) */
 .nav-bar {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -146,11 +147,163 @@ a {
     font-weight: 600;
     font-family: var(--font-tittel);
     color: var(--primary-hoved);
+    text-decoration: none;
 }
 
 .logo-dot {
     color: var(--secondary-brun);
     font-size: 18px;
+}
+
+/* Mobil-verktøy i topplinjen (Vises kun på mobil) */
+.mobile-nav-tools {
+    display: none;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-mobil-moskeer {
+    background-color: rgba(20, 83, 45, 0.08);
+    border: 1px solid var(--primary-lys-salvie);
+    color: var(--primary-hoved);
+    font-family: var(--font-tekst);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 11px;
+    border-radius: var(--radius-btn-knapp);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: background 0.15s ease;
+}
+
+.btn-mobil-moskeer:active,
+.btn-mobil-moskeer.aktiv {
+    background-color: rgba(157, 212, 179, 0.4);
+    color: var(--secondary-brun);
+}
+
+.hamburger-btn {
+    background: transparent;
+    border: 1.5px solid var(--secondary-brun);
+    color: var(--secondary-brun);
+    border-radius: var(--radius-btn-knapp);
+    padding: 5px 9px;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s ease;
+}
+
+.hamburger-btn:active {
+    background-color: var(--surface-sand);
+}
+
+/* Mobil-skuff (Drawer meny som glir inn fra høyre) */
+.mobile-drawer-backdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(2px);
+    z-index: 10001;
+}
+
+.mobile-drawer-backdrop.vis {
+    display: block;
+}
+
+.mobile-drawer {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 280px;
+    max-width: 85vw;
+    height: 100vh;
+    background-color: #FFFFFF;
+    box-shadow: -8px 0 24px rgba(0, 0, 0, 0.25);
+    z-index: 10002;
+    padding: 20px;
+    flex-direction: column;
+    gap: 16px;
+    animation: slideInRight 0.2s ease;
+}
+
+@keyframes slideInRight {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+.mobile-drawer.vis {
+    display: flex;
+}
+
+.mobile-drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--primary-lys-salvie);
+    padding-bottom: 12px;
+}
+
+.mobile-drawer-tittel {
+    font-family: var(--font-tittel);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--primary-hoved);
+}
+
+.mobile-drawer-lukk {
+    background: #F1F5F9;
+    border: 1px solid #CBD5E1;
+    color: var(--secondary-brun);
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 6px;
+    padding: 4px 10px;
+    cursor: pointer;
+}
+
+.mobile-drawer-lenker {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.drawer-lenke {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--secondary-brun);
+    font-family: var(--font-tekst);
+    font-size: 14px;
+    font-weight: 600;
+    background-color: #FAF8F5;
+    border: 1px solid #E2E8F0;
+    transition: all 0.15s ease;
+}
+
+.drawer-lenke:active {
+    background-color: rgba(157, 212, 179, 0.25);
+    color: var(--primary-hoved);
+}
+
+.drawer-lenke-portal {
+    background-color: var(--primary-hoved);
+    color: #FFFFFF !important;
+    border-color: var(--primary-hoved);
+    margin-top: 8px;
 }
 
 .nav-links {
@@ -410,14 +563,15 @@ a {
     border-radius: var(--radius-card-kort);
     border: 2px solid var(--secondary-brun);
     box-shadow: 0 8px 24px rgba(20, 83, 45, 0.12);
+    background-color: #0b2c18;
 }
 
 .hero-image {
     width: 100%;
     height: auto;
     display: block;
-    aspect-ratio: 16 / 8;
-    object-fit: cover;
+    aspect-ratio: 2 / 1;
+    object-fit: contain;
 }
 
 /* BRANSJENAVN: cards-section (Kompakt 2x2 på mobil, 4 kolonner på PC) */
@@ -1171,6 +1325,116 @@ a {
     font-size: 12px;
     color: rgba(250, 248, 245, 0.7);
     text-align: center;
+}
+
+/* ==========================================================================
+   MOBIL-OPTIMALISERING (iPhone og smarttelefoner under 768px)
+   Alt tilpasset for at innhold, menyer og bilde skal passe perfekt på én skjerm
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* 1. Topplinje for bønnetider: holder seg på 1 ren linje uten å brekke */
+    .top-bar {
+        padding: 4px 8px;
+        gap: 6px;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        justify-content: flex-start;
+    }
+    .top-bar::-webkit-scrollbar {
+        display: none;
+    }
+    .city-selector-wrap {
+        padding: 2px 6px;
+        flex-shrink: 0;
+    }
+    #city-select {
+        font-size: 11px;
+    }
+    .prayer-times {
+        gap: 4px;
+        flex-shrink: 0;
+    }
+    .prayer-item {
+        padding: 2px 6px;
+    }
+    .prayer-name {
+        font-size: 9px;
+    }
+    .prayer-time {
+        font-size: 11px;
+    }
+
+    /* 2. Menylinje: nøyaktig ÉN linje (Logo venstre, Moskeer + Hamburger høyre) */
+    .nav-bar {
+        padding: 8px 12px;
+        flex-wrap: nowrap;
+        gap: 8px;
+    }
+    .logo {
+        font-size: 19px;
+        gap: 6px;
+        white-space: nowrap;
+    }
+    .logo-icon {
+        width: 22px;
+        height: 22px;
+    }
+    .nav-links {
+        display: none !important; /* Skjuler desktop-lenkene slik at de ikke brekker linjen */
+    }
+    .mobile-nav-tools {
+        display: flex !important;
+        flex-shrink: 0;
+    }
+
+    /* 3. Hero-seksjonen: kompakt og tilpasset iPhone-skjerm */
+    .main-content {
+        padding: 14px 10px 24px 10px;
+    }
+    .hero-section {
+        margin-bottom: 20px;
+    }
+    .hero-initiativ-tag {
+        font-size: 11px;
+        padding: 3px 10px;
+        margin-bottom: 8px;
+    }
+    .hero-section h1 {
+        font-size: 22px;
+        margin-bottom: 4px;
+        line-height: 1.25;
+    }
+    .hero-section p {
+        font-size: 13px;
+        line-height: 1.35;
+        margin-bottom: 12px;
+        max-width: 320px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .hero-image-box {
+        border-radius: 10px;
+        border: 1.5px solid var(--secondary-brun);
+        box-shadow: 0 4px 16px rgba(20, 83, 45, 0.12);
+        background-color: #0b2c18;
+    }
+    .hero-image {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 2 / 1;
+        object-fit: contain;
+        display: block;
+    }
+}
+
+@media (min-width: 769px) {
+    .mobile-nav-tools {
+        display: none !important;
+    }
+    .mobile-drawer, .mobile-drawer-backdrop {
+        display: none !important;
+    }
 }
 
 /* ==========================================================================
