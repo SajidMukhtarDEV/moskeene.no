@@ -129,36 +129,26 @@ async function initPubliserteMoskeer() {
             publiserteData.push(...moskeer);
         }
 
-        // Gruppér etter kommune for en ryddig og oversiktlig nedtrekk
-        const grupper = {};
-        publiserteData.forEach(m => {
-            const k = (m.kommune || 'Andre').trim();
-            if (!grupper[k]) grupper[k] = [];
-            grupper[k].push(m);
-        });
+        // Bygg nedtrekksmeny med søkefelt og grupperte moskeer
+        dropdownMenu.innerHTML = `
+            <div class="dropdown-header-wrap">
+                <input type="text" id="dropdownSokInput" class="dropdown-sok-input" placeholder="🔍 Søk moské eller by..." autocomplete="off">
+                <button type="button" class="dropdown-lukk-knapp" onclick="lukkDropdown()">✕ Lukk</button>
+            </div>
+            <div id="dropdownMoskeListe"></div>
+        `;
 
-        // Fyll menyboksen med grupperte knapper
-        dropdownMenu.innerHTML = '';
-        const sorterteKommuner = Object.keys(grupper).sort((a, b) => a.localeCompare(b, 'no'));
-
-        sorterteKommuner.forEach(kommune => {
-            const gruppeTittel = document.createElement('div');
-            gruppeTittel.className = 'dropdown-gruppe-tittel';
-            gruppeTittel.textContent = `📍 ${kommune} (${grupper[kommune].length})`;
-            dropdownMenu.appendChild(gruppeTittel);
-
-            grupper[kommune].sort((a, b) => a.navn.localeCompare(b.navn, 'no')).forEach(m => {
-                const valgKnapp = document.createElement('button');
-                valgKnapp.type = 'button';
-                valgKnapp.className = 'dropdown-moske-valg';
-                valgKnapp.textContent = m.navn;
-                valgKnapp.onclick = () => {
-                    visMoskeIHero(m);
-                    lukkDropdown();
-                };
-                dropdownMenu.appendChild(valgKnapp);
+        const sokInput = document.getElementById('dropdownSokInput');
+        if (sokInput) {
+            sokInput.addEventListener('input', (e) => {
+                filtrerDropdownMoskeer(e.target.value);
             });
-        });
+            sokInput.addEventListener('click', (e) => e.stopPropagation());
+        }
+
+        renderDropdownListe(publiserteData);
+
+        const backdrop = document.getElementById('dropdownBackdrop');
 
         // Toggle dropdown ved klikk på knappen
         dropdownBtn.addEventListener('click', (e) => {
@@ -168,12 +158,22 @@ async function initPubliserteMoskeer() {
                 lukkDropdown();
             } else {
                 dropdownMenu.classList.add('vis');
+                if (backdrop) backdrop.classList.add('vis');
                 dropdownBtn.classList.add('aktiv');
                 dropdownBtn.setAttribute('aria-expanded', 'true');
+                if (sokInput) {
+                    setTimeout(() => sokInput.focus(), 80);
+                }
             }
         });
 
-        // Lukk nedtrekksmenyen hvis man klikker hvor som helst ellers
+        // Lukk nedtrekksmenyen hvis man klikker på backdrop eller utenfor
+        if (backdrop) {
+            backdrop.addEventListener('click', () => {
+                lukkDropdown();
+            });
+        }
+
         document.addEventListener('click', (e) => {
             if (!e.target.closest('#moskeerDropdownWrap')) {
                 lukkDropdown();
@@ -196,6 +196,7 @@ async function initPubliserteMoskeer() {
                         for (const [fylke, moskeer] of Object.entries(nyCache.fylker)) {
                             publiserteData.push(...moskeer);
                         }
+                        renderDropdownListe(publiserteData);
                     }
                 } catch(err){}
             }
@@ -206,15 +207,73 @@ async function initPubliserteMoskeer() {
     }
 }
 
+function renderDropdownListe(listeData) {
+    const listeEl = document.getElementById('dropdownMoskeListe');
+    if (!listeEl) return;
+    listeEl.innerHTML = '';
+
+    if (!listeData || listeData.length === 0) {
+        listeEl.innerHTML = '<div style="padding:16px; color:#64748B; font-size:13px; text-align:center;">Ingen moskeer funnet.</div>';
+        return;
+    }
+
+    const grupper = {};
+    listeData.forEach(m => {
+        const k = (m.kommune || 'Andre').trim();
+        if (!grupper[k]) grupper[k] = [];
+        grupper[k].push(m);
+    });
+
+    const sorterteKommuner = Object.keys(grupper).sort((a, b) => a.localeCompare(b, 'no'));
+
+    sorterteKommuner.forEach(kommune => {
+        const gruppeTittel = document.createElement('div');
+        gruppeTittel.className = 'dropdown-gruppe-tittel';
+        gruppeTittel.textContent = `📍 ${kommune} (${grupper[kommune].length})`;
+        listeEl.appendChild(gruppeTittel);
+
+        grupper[kommune].sort((a, b) => a.navn.localeCompare(b.navn, 'no')).forEach(m => {
+            const valgKnapp = document.createElement('button');
+            valgKnapp.type = 'button';
+            valgKnapp.className = 'dropdown-moske-valg';
+            valgKnapp.textContent = m.navn;
+            valgKnapp.onclick = () => {
+                visMoskeIHero(m);
+                lukkDropdown();
+            };
+            listeEl.appendChild(valgKnapp);
+        });
+    });
+}
+
+function filtrerDropdownMoskeer(query) {
+    const q = (query || '').toLowerCase().trim();
+    if (!q) {
+        renderDropdownListe(publiserteData);
+        return;
+    }
+    const filtrert = publiserteData.filter(m => {
+        const navn = (m.navn || '').toLowerCase();
+        const kommune = (m.kommune || '').toLowerCase();
+        const adresse = (m.adresse || '').toLowerCase();
+        return navn.includes(q) || kommune.includes(q) || adresse.includes(q);
+    });
+    renderDropdownListe(filtrert);
+}
+window.filtrerDropdownMoskeer = filtrerDropdownMoskeer;
+
 function lukkDropdown() {
     const dropdownMenu = document.getElementById('moskeerDropdownMenu');
     const dropdownBtn = document.getElementById('moskeerDropdownBtn');
+    const backdrop = document.getElementById('dropdownBackdrop');
     if (dropdownMenu) dropdownMenu.classList.remove('vis');
+    if (backdrop) backdrop.classList.remove('vis');
     if (dropdownBtn) {
         dropdownBtn.classList.remove('aktiv');
         dropdownBtn.setAttribute('aria-expanded', 'false');
     }
 }
+window.lukkDropdown = lukkDropdown;
 
 // Viser den valgte moskeen direkte i Hero-seksjonen
 function visMoskeIHero(m) {
@@ -478,25 +537,23 @@ function visFredagsbonnOversikt(erTvungetFraMeny = false, valgtKommune = 'alle')
                     <div class="jummah-moske-grid">
                         ${liste.map(item => {
                             const m = item.moske;
-                            const skiftMerk = item.erSkift2 ? '<span class="jummah-skift-tag">2. runde / skift</span>' : '';
+                            const skiftMerk = item.erSkift2 ? '<span class="jummah-mini-tag tag-skift">2. runde</span>' : '';
                             const kartUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(m.navn + ' ' + (m.adresse || '') + ' ' + m.kommune)}`;
                             return `
                                 <div class="jummah-kort">
                                     <div class="jummah-kort-innhold">
                                         <div class="jummah-kort-navn" onclick="finnOgVisMoske('${m.orgnr}')">${m.navn}</div>
-                                        <div class="jummah-kort-sted">📍 ${m.kommune} &bull; ${m.adresse || 'Adresse i ' + m.kommune}</div>
-                                        ${item.khutbahTid ? `<div style="font-size:12px; color:var(--primary-hoved); font-weight:700; margin-top:3px;">🎤 Khutbah starter kl. ${item.khutbahTid}</div>` : ''}
-                                        ${(item.sprak && item.sprak.length > 0) ? `<div style="font-size:11px; color:#475569; margin-top:2px;">🗣️ Språk: <strong>${item.sprak.join(', ')}</strong></div>` : ''}
-                                        ${item.merknad ? `<div style="font-size:11px; color:#64748B; font-style:italic; margin-top:2px; background:#fff; padding:3px 6px; border-radius:4px; border:1px solid #e2e8f0;">ℹ️ ${item.merknad}</div>` : ''}
-                                        ${skiftMerk}
+                                        <div class="jummah-kort-sted">📍 ${m.kommune}${m.adresse ? ' • ' + m.adresse : ''}</div>
+                                        <div class="jummah-tid-tags">
+                                            ${item.khutbahTid ? `<span class="jummah-mini-tag tag-khutbah">Khutbah: kl. ${item.khutbahTid}</span>` : ''}
+                                            ${(item.sprak && item.sprak.length > 0) ? `<span class="jummah-mini-tag tag-sprak">🗣️ ${item.sprak.join(', ')}</span>` : ''}
+                                            ${skiftMerk}
+                                        </div>
                                     </div>
                                     <div class="jummah-kort-handlinger">
-                                        <a href="${kartUrl}" target="_blank" rel="noopener noreferrer" class="btn-jummah-kart" title="Naviger direkte med Google Maps">
-                                            🗺️ Kjør hit
+                                        <a href="${kartUrl}" target="_blank" rel="noopener noreferrer" class="btn-jummah-kart" title="Veibeskrivelse i Google Maps">
+                                            🗺️ Kart
                                         </a>
-                                        <button type="button" class="btn-jummah-info" onclick="finnOgVisMoske('${m.orgnr}')" title="Se hele moskékortet">
-                                            ℹ️ Detaljer
-                                        </button>
                                     </div>
                                 </div>
                             `;
@@ -508,8 +565,8 @@ function visFredagsbonnOversikt(erTvungetFraMeny = false, valgtKommune = 'alle')
     }
 
     const badgeHtml = erFredagIdag
-        ? `<span class="jummah-status-badge status-idag">🟢 I dag er det fredag - Bønnetider</span>`
-        : `<span class="jummah-status-badge status-planlegging">📅 Faste fredagsbønntider (Jummah)</span>`;
+        ? `<span class="jummah-status-badge status-idag">🟢 Fredag i dag</span>`
+        : `<span class="jummah-status-badge status-planlegging">📅 Faste tider (Jummah)</span>`;
 
     const filterBarHtml = sorterteKommuner.length > 1 ? `
         <div class="jummah-filter-bar">
@@ -531,14 +588,11 @@ function visFredagsbonnOversikt(erTvungetFraMeny = false, valgtKommune = 'alle')
     fredagView.innerHTML = `
         <div class="hero-fredag-kort">
             <div class="hero-fredag-topp">
-                <div>
-                    <div class="hero-fredag-tittel-rad">
-                        <h2 class="hero-fredag-tittel">🕌 Fredagsbønn (Jummah)</h2>
-                        ${badgeHtml}
-                    </div>
-                    <p class="hero-fredag-undertittel">Finn nærmeste moské og klokkeslett for fredagsbønn. Laget spesielt for drosjesjåfører, pendlere og reisende.</p>
+                <div class="hero-fredag-tittel-rad">
+                    <h2 class="hero-fredag-tittel">🕌 Fredagsbønn</h2>
+                    ${badgeHtml}
                 </div>
-                <button type="button" class="btn-lukk-moske" onclick="tilbakestillHero()">✕ Tilbake til forside</button>
+                <button type="button" class="btn-lukk-moske" onclick="tilbakestillHero()">✕ Lukk</button>
             </div>
 
             ${filterBarHtml}
@@ -546,10 +600,6 @@ function visFredagsbonnOversikt(erTvungetFraMeny = false, valgtKommune = 'alle')
             <!-- Tidsinndelte grupper -->
             <div class="jummah-grupper-beholder">
                 ${grupperHtml}
-            </div>
-
-            <div style="margin-top:16px; padding:12px 16px; background:rgba(157, 212, 179, 0.2); border:1px solid var(--primary-lys-salvie); border-radius:8px; font-size:12px; color:var(--secondary-brun); line-height:1.4;">
-                <strong>🔒 Offisielt verifiserte tider:</strong> Vi viser kun moskeer hvor fredagsbønntiden er offisielt bekreftet (f.eks. <strong>Drammen Moské kl. 13:00</strong>). Dette sikrer at drosjesjåfører og besøkende aldri reiser til feil tidspunkt. Nye moskeer legges til så snart tidene bekreftes.
             </div>
         </div>
     `;

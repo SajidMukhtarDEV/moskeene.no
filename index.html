@@ -78,6 +78,7 @@
                         <span>Moskeer</span>
                         <span class="dropdown-pil">▾</span>
                     </button>
+                    <div class="dropdown-backdrop" id="dropdownBackdrop" onclick="lukkDropdown()"></div>
                     <div class="dropdown-meny-boks" id="moskeerDropdownMenu">
                         <div class="dropdown-laster">Laster inn publiserte moskeer...</div>
                     </div>
@@ -121,35 +122,35 @@
             <div id="heroFredagsbonnView" style="display: none;"></div>
         </section>
 
-        <!-- VISES PÅ SKJERMEN: cards-section & bildekort -->
+        <!-- VISES PÅ SKJERMEN: cards-section & bildekort (Kompakt 2x2 på mobil) -->
         <section class="cards-section">
             <div class="card">
                 <div class="card-image-box">
                     <img src="images/kort-best-praksis.svg" alt="Brobygging og fellesskap" class="card-image">
                 </div>
-                <h3>Brobygging & Dialog</h3>
-                <p style="font-family:var(--font-tekst); font-size:12px; color:#334155; margin-top:6px; line-height:1.4;">Styrker samarbeidet og dialogen mellom moskeer på tvers av kommuner og fylker.</p>
+                <h3>Brobygging</h3>
+                <p>Samarbeid og dialog på tvers av kommuner.</p>
             </div>
             <div class="card">
                 <div class="card-image-box">
                     <img src="images/kort-trosdialog.svg" alt="Veldedighet og omsorg" class="card-image">
                 </div>
-                <h3>Veldedighet & Hjelp</h3>
-                <p style="font-family:var(--font-tekst); font-size:12px; color:#334155; margin-top:6px; line-height:1.4;">Fremmer medmenneskelighet, nødhjelp og bistand til sårbare familier og trengende.</p>
+                <h3>Veldedighet</h3>
+                <p>Omsorg og bistand til trengende familier.</p>
             </div>
-            <div class="card">
+            <div class="card" onclick="visFredagsbonnOversikt(true)" style="cursor:pointer;" title="Klikk for å se fredagsbønner">
                 <div class="card-image-box">
                     <img src="images/kort-kalender.svg" alt="Fredagsbønn og bønnetider" class="card-image">
                 </div>
-                <h3>Fredagsbønn & Tider</h3>
-                <p style="font-family:var(--font-tekst); font-size:12px; color:#334155; margin-top:6px; line-height:1.4;">Oppdaterte tidspunkter for khutbah, bønn og språk for tilreisende og lokale.</p>
+                <h3>Fredagsbønn</h3>
+                <p>Klokkeslett for khutbah og bønn i sanntid.</p>
             </div>
             <div class="card">
                 <div class="card-image-box">
                     <img src="images/kort-erfaringsbank.svg" alt="Aktiviteter og lokaltilbud" class="card-image">
                 </div>
-                <h3>Faste Aktiviteter</h3>
-                <p style="font-family:var(--font-tekst); font-size:12px; color:#334155; margin-top:6px; line-height:1.4;">Oversikt over leksehjelp, koranskole og sosiale samlinger for barn og familier.</p>
+                <h3>Aktiviteter</h3>
+                <p>Leksehjelp, koranskole og familiesamlinger.</p>
             </div>
         </section>
 

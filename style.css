@@ -203,26 +203,102 @@ a {
     transform: rotate(180deg);
 }
 
+/* Backdrop overlay for mobil */
+.dropdown-backdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(2px);
+    z-index: 9998;
+}
+
+.dropdown-backdrop.vis {
+    display: block;
+}
+
 .dropdown-meny-boks {
     display: none;
     position: absolute;
     top: calc(100% + 6px);
-    right: 0;
+    left: 0;
     width: 320px;
-    max-height: 420px;
+    max-height: 440px;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     background-color: #FFFFFF;
     border: 2px solid var(--secondary-brun);
     border-radius: var(--radius-card-kort);
     box-shadow: 0 12px 30px rgba(20, 83, 45, 0.16);
-    z-index: 1000;
+    z-index: 10000;
     text-align: left;
-    padding: 8px 0;
+    padding: 0 0 8px 0;
 }
 
 .dropdown-meny-boks.vis {
     display: block;
     animation: fadeIn 0.2s ease;
+}
+
+/* Søkefelt og topplinje i nedtrekk for mobil */
+.dropdown-header-wrap {
+    position: sticky;
+    top: 0;
+    background: white;
+    padding: 10px 12px;
+    border-bottom: 1px solid #E2E8F0;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    z-index: 2;
+}
+
+.dropdown-sok-input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid var(--primary-lys-salvie);
+    border-radius: 6px;
+    font-size: 13px;
+    font-family: var(--font-tekst);
+    outline: none;
+    background: #FAF8F5;
+}
+
+.dropdown-sok-input:focus {
+    border-color: var(--primary-hoved);
+    background: white;
+}
+
+.dropdown-lukk-knapp {
+    background: #F1F5F9;
+    border: 1px solid #CBD5E1;
+    color: var(--secondary-brun);
+    font-weight: 700;
+    border-radius: 6px;
+    padding: 7px 10px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+/* Sikrer at dropdown aldri havner på siden på mobil- og nettbrettskjermer */
+@media (max-width: 768px) {
+    .dropdown-meny-boks {
+        position: fixed !important;
+        top: 60px !important;
+        left: 12px !important;
+        right: 12px !important;
+        width: auto !important;
+        max-width: calc(100vw - 24px) !important;
+        max-height: 75vh !important;
+        border: 2px solid var(--primary-hoved) !important;
+        border-radius: 14px !important;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35) !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
 }
 
 .dropdown-gruppe-tittel {
@@ -344,36 +420,56 @@ a {
     object-fit: cover;
 }
 
-/* BRANSJENAVN: cards-section (Området for kortene) */
+/* BRANSJENAVN: cards-section (Kompakt 2x2 på mobil, 4 kolonner på PC) */
 .cards-section {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    max-width: 100%;
+    margin: 0 auto;
 }
 
-/* BRANSJENAVN: card (Enkeltkort i varm sandfarge med bilde øverst) */
+@media (min-width: 768px) {
+    .cards-section {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        max-width: 1050px;
+    }
+}
+
+/* BRANSJENAVN: card (Kompakt og stilren brikke) */
 .card {
-    border: 2px solid var(--secondary-brun);
+    border: 1.5px solid var(--secondary-brun);
     background-color: var(--surface-sand);
     color: var(--primary-hoved);
-    padding: 14px;
-    width: 100%;
-    max-width: 250px;
+    padding: 10px;
     border-radius: var(--radius-card-kort);
     font-family: var(--font-tittel);
     text-align: center;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
 }
 
 .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 16px rgba(84, 35, 20, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(84, 35, 20, 0.12);
 }
 
 .card h3 {
-    font-size: 17px;
-    margin-top: 10px;
+    font-size: 13px;
+    margin-top: 8px;
+    margin-bottom: 2px;
+    line-height: 1.25;
+}
+
+.card p {
+    font-family: var(--font-tekst);
+    font-size: 11px;
+    color: #475569;
+    margin-top: 2px;
+    line-height: 1.35;
+    margin-bottom: 0;
 }
 
 /* Bildeboks inne i hvert kort */
@@ -381,15 +477,32 @@ a {
     width: 100%;
     overflow: hidden;
     border: 1px solid var(--secondary-brun);
-    border-radius: var(--radius-btn-knapp);
+    border-radius: 6px;
+    background: #FFFFFF;
 }
 
 .card-image {
     width: 100%;
-    height: auto;
+    height: 72px;
     display: block;
-    aspect-ratio: 4 / 3;
     object-fit: cover;
+}
+
+@media (min-width: 768px) {
+    .card {
+        padding: 14px;
+    }
+    .card h3 {
+        font-size: 16px;
+        margin-top: 10px;
+    }
+    .card p {
+        font-size: 12px;
+        margin-top: 4px;
+    }
+    .card-image {
+        height: 100px;
+    }
 }
 
 /* 4. HERO SECTION - DYNAMISK MOSKÉVISNING */
@@ -584,25 +697,24 @@ a {
 .hero-fredag-topp {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    gap: 16px;
+    align-items: center;
+    gap: 12px;
     flex-wrap: wrap;
     border-bottom: 2px solid rgba(84, 35, 20, 0.15);
-    padding-bottom: 16px;
-    margin-bottom: 16px;
+    padding-bottom: 12px;
+    margin-bottom: 14px;
 }
 
 .hero-fredag-tittel-rad {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     flex-wrap: wrap;
-    margin-bottom: 6px;
 }
 
 .hero-fredag-tittel {
     font-family: var(--font-tittel);
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 700;
     color: var(--primary-hoved);
     margin: 0;
@@ -610,16 +722,12 @@ a {
 
 @media (min-width: 768px) {
     .hero-fredag-tittel {
-        font-size: 30px;
+        font-size: 26px;
     }
 }
 
 .hero-fredag-undertittel {
-    font-size: 13px;
-    color: var(--secondary-brun);
-    line-height: 1.4;
-    max-width: 650px;
-    margin: 0;
+    display: none;
 }
 
 .jummah-status-badge {
@@ -788,20 +896,43 @@ a {
     text-overflow: ellipsis;
 }
 
-.jummah-skift-tag {
-    display: inline-block;
-    background-color: #FEF3C7;
-    color: #92400E;
+.jummah-tid-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 6px;
+    align-items: center;
+}
+
+.jummah-mini-tag {
     font-size: 10px;
     font-weight: 700;
-    padding: 2px 6px;
+    padding: 2px 7px;
     border-radius: 4px;
-    margin-top: 4px;
+    line-height: 1.2;
+}
+
+.tag-khutbah {
+    background-color: rgba(20, 83, 45, 0.08);
+    color: var(--primary-hoved);
+    border: 1px solid rgba(20, 83, 45, 0.2);
+}
+
+.tag-sprak {
+    background-color: #F8FAFC;
+    color: #475569;
+    border: 1px solid #E2E8F0;
+}
+
+.tag-skift {
+    background-color: #FEF3C7;
+    color: #92400E;
+    border: 1px solid #FDE68A;
 }
 
 .jummah-kort-handlinger {
     display: flex;
-    flex-direction: column;
+    align-items: center;
     gap: 6px;
     flex-shrink: 0;
 }
@@ -816,11 +947,11 @@ a {
     font-family: var(--font-tekst);
     font-size: 11px;
     font-weight: 600;
-    padding: 7px 11px;
+    padding: 6px 12px;
     border-radius: 6px;
     text-decoration: none;
     transition: background-color 0.2s;
-    min-width: 82px;
+    white-space: nowrap;
 }
 
 .btn-jummah-kart:hover {
