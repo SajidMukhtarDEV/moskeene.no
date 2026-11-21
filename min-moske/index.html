@@ -1,0 +1,911 @@
+﻿<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Min Moské - Portalen for moskeer i Norge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #14532D;
+            --primary-hover: #0E3A1F;
+            --secondary: #542314;
+            --accent: #54142D;
+            --salvie: #9DD4B3;
+            --sand: #D4AA9D;
+            --bg: #FAF8F5;
+            --font-tekst: 'Inter', system-ui, sans-serif;
+            --font-tittel: 'Playfair Display', Georgia, serif;
+            --card-radius: 12px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg); color: var(--primary); font-family: var(--font-tekst); line-height: 1.5; padding: 16px; }
+        .container { max-width: 760px; margin: 0 auto; }
+
+        /* Topplinje */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 18px;
+            background: white;
+            border: 1px solid var(--sand);
+            border-radius: var(--card-radius);
+            margin-bottom: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        }
+        .top-logo {
+            font-family: var(--font-tittel);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .top-logo span { color: var(--secondary); font-size: 15px; }
+        .btn-tilbake {
+            color: var(--secondary);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .btn-tilbake:hover { color: var(--accent); }
+
+        /* Hovedkort */
+        .card {
+            background: white;
+            border: 2px solid var(--sand);
+            border-radius: var(--card-radius);
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 14px rgba(84, 35, 20, 0.05);
+        }
+        @media (min-width: 600px) {
+            .card { padding: 32px; }
+        }
+
+        /* 1. INNLOGGINGSSKJERM */
+        #loginView {
+            text-align: center;
+        }
+        .login-ikon { font-size: 48px; margin-bottom: 12px; }
+        .login-tittel { font-family: var(--font-tittel); font-size: 26px; color: var(--primary); margin-bottom: 8px; }
+        .login-undertittel { color: var(--secondary); font-size: 14px; margin-bottom: 24px; max-width: 480px; margin-left: auto; margin-right: auto; }
+
+        .form-group {
+            text-align: left;
+            margin-bottom: 16px;
+        }
+        .form-label {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+        .form-input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid var(--sand);
+            border-radius: 8px;
+            font-family: var(--font-tekst);
+            font-size: 15px;
+            outline: none;
+            background: #FAF8F5;
+            transition: border-color 0.2s;
+        }
+        .form-input:focus {
+            border-color: var(--primary);
+            background: white;
+        }
+
+        .btn-login {
+            width: 100%;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 8px;
+            font-family: var(--font-tekst);
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .btn-login:hover { background-color: var(--primary-hover); transform: translateY(-1px); }
+
+        .hjelpe-boks {
+            background: rgba(157, 212, 179, 0.25);
+            border: 1px solid var(--salvie);
+            border-radius: 8px;
+            padding: 14px;
+            margin-top: 24px;
+            font-size: 12px;
+            color: var(--secondary);
+            text-align: left;
+            line-height: 1.5;
+        }
+        .demo-tag {
+            display: inline-block;
+            background: var(--salvie);
+            color: var(--primary);
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 11px;
+            margin-bottom: 4px;
+        }
+
+        /* 2. DASHBORD FOR INNLOGGET MOSKÉ */
+        #portalView { display: none; }
+
+        .portal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 2px solid var(--sand);
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .moske-navn { font-family: var(--font-tittel); font-size: 24px; color: var(--primary); font-weight: 700; }
+        .moske-adresse { font-size: 13px; color: #64748B; margin-top: 3px; }
+        .btn-logout {
+            background: white;
+            border: 1px solid #CBD5E1;
+            color: #64748B;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .btn-logout:hover { background: #F1F5F9; color: var(--secondary); }
+
+        /* Seksjonsoverskrifter */
+        .seksjon-tittel {
+            font-family: var(--font-tittel);
+            font-size: 18px;
+            color: var(--primary);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid #E2E8F0;
+            padding-bottom: 8px;
+        }
+
+        .row-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+        @media (min-width: 500px) {
+            .row-2 { grid-template-columns: 1fr 1fr; }
+        }
+
+        /* Språkvalg chips */
+        .sprak-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 6px;
+            margin-bottom: 16px;
+        }
+        .sprak-chip {
+            padding: 6px 14px;
+            border-radius: 999px;
+            border: 1px solid var(--sand);
+            background: #FAF8F5;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--primary);
+            cursor: pointer;
+            transition: all 0.15s;
+            user-select: none;
+        }
+        .sprak-chip.valgt {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* Sesong hurtigvalg */
+        .sesong-rad {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+        .btn-sesong {
+            background: white;
+            border: 1px solid var(--salvie);
+            color: var(--primary);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .btn-sesong:hover { background: var(--salvie); }
+
+        /* Live forhåndsvisning */
+        .preview-box {
+            background: #FAF8F5;
+            border: 2px dashed var(--salvie);
+            border-radius: 10px;
+            padding: 16px;
+            margin-top: 24px;
+            margin-bottom: 24px;
+        }
+        .preview-tittel { font-size: 12px; text-transform: uppercase; font-weight: 700; color: var(--secondary); margin-bottom: 8px; }
+        .preview-innhold { font-size: 14px; color: var(--primary); }
+
+        .btn-lagre {
+            width: 100%;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 8px;
+            font-family: var(--font-tekst);
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: background 0.2s, transform 0.1s;
+        }
+        .btn-lagre:hover { background-color: var(--primary-hover); transform: translateY(-1px); }
+
+        /* Toast varsel */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 14px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+            z-index: 1000;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <!-- Toppmeny -->
+        <div class="top-bar">
+            <a href="../index.html" class="top-logo">
+                🕌 Moskeene<span>.no</span>
+            </a>
+            <a href="../index.html" class="btn-tilbake">
+                ← Tilbake til forsiden
+            </a>
+        </div>
+
+        <!-- 1. INNLOGGINGSSKJEMA -->
+        <div class="card" id="loginView">
+            <div class="login-ikon">🔐</div>
+            <h1 class="login-tittel">Min Moské</h1>
+            <p class="login-undertittel">
+                Egen portal for styreledere og imamer. Logg inn for å oppdatere fredagsbønn, khutbah-tidspunkt og kontaktinformasjon.
+            </p>
+
+            <form onsubmit="handterInnlogging(event)" style="max-width: 400px; margin: 0 auto;">
+                <div class="form-group">
+                    <label class="form-label" for="innloggMobil">📱 Mobilnummer til styreleder eller imam</label>
+                    <input type="tel" id="innloggMobil" class="form-input" placeholder="f.eks. 90000000" required autofocus>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="innloggPin">🔢 8-sifret personlig tilgangskode</label>
+                    <input type="password" id="innloggPin" class="form-input" placeholder="••••••••" maxlength="8" required>
+                </div>
+
+                <div id="loginFeil" style="color: #b91c1c; font-size: 13px; font-weight: 600; margin-bottom: 12px; display: none;"></div>
+
+                <button type="submit" class="btn-login">
+                    <span>Logg inn</span> ➜
+                </button>
+            </form>
+
+            <div class="hjelpe-boks">
+                <span class="demo-tag">💡 Demo / Testtilgang</span><br>
+                For testing kan du logge inn på <strong>Drammen Moske</strong> med:<br>
+                Mobil: <strong>90000000</strong> &bull; 8-sifret kode: <strong>12345678</strong><br><br>
+                <em>Tjenesten er gratis for alle moskeer i Norge. Representerer du en moské og mangler kode? Ta kontakt med administrator for å få tilsendt din faste 8-sifrede kode.</em>
+            </div>
+        </div>
+
+        <!-- 2. MOSKÉ DASHBORD (Når logget inn) -->
+        <div class="card" id="portalView">
+            <div class="portal-header">
+                <div>
+                    <h1 class="moske-navn" id="dashNavn">Drammen Moske</h1>
+                    <div class="moske-adresse" id="dashAdresse">📍 Solsvingen 116, 3034 Drammen</div>
+                </div>
+                <button type="button" class="btn-logout" onclick="loggUt()">✕ Logg ut</button>
+            </div>
+
+            <form onsubmit="lagreEndringer(event)">
+                
+                <!-- SEKSJON A: FREDAGSBØNN (JUMMAH) -->
+                <div class="seksjon-tittel">
+                    <span>🕌</span> Fredagsbønn (Jummah) & Khutbah
+                </div>
+
+                <div class="row-2">
+                    <div class="form-group">
+                        <label class="form-label" for="khutbahTid">🎤 Khutbah (fredagstale) starter</label>
+                        <input type="time" id="khutbahTid" class="form-input" value="12:45" required onchange="oppdaterPreview()">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="bonnTid">🕌 Bønn (Salah / Iqamah)</label>
+                        <input type="time" id="bonnTid" class="form-input" value="13:00" required onchange="oppdaterPreview()">
+                    </div>
+                </div>
+
+                <!-- Språk på Khutbah -->
+                <div class="form-group">
+                    <label class="form-label">🗣️ Hvilke språk holdes Khutbah (talen) på?</label>
+                    <div class="sprak-container" id="sprakVelger">
+                        <span class="sprak-chip valgt" data-sprak="Norsk" onclick="toggleSprak(this)">🇳🇴 Norsk</span>
+                        <span class="sprak-chip valgt" data-sprak="Urdu" onclick="toggleSprak(this)">🇵🇰 Urdu</span>
+                        <span class="sprak-chip" data-sprak="Arabisk" onclick="toggleSprak(this)">🇸🇦 Arabisk</span>
+                        <span class="sprak-chip" data-sprak="Somali" onclick="toggleSprak(this)">🇸🇴 Somali</span>
+                        <span class="sprak-chip" data-sprak="Tyrkisk" onclick="toggleSprak(this)">🇹🇷 Tyrkisk</span>
+                        <span class="sprak-chip" data-sprak="Bosnisk" onclick="toggleSprak(this)">🇧🇦 Bosnisk</span>
+                        <span class="sprak-chip" data-sprak="Engelsk" onclick="toggleSprak(this)">🇬🇧 Engelsk</span>
+                    </div>
+                </div>
+
+                <!-- Gyldighetsperiode -->
+                <div class="form-group">
+                    <label class="form-label">📅 Gyldighetsperiode for disse bønnetidene</label>
+                    <div class="sesong-rad">
+                        <button type="button" class="btn-sesong" onclick="settSesong('vinter')">❄️ Vintertid (Nov - Mars)</button>
+                        <button type="button" class="btn-sesong" onclick="settSesong('sommer')">☀️ Sommertid (April - Okt)</button>
+                    </div>
+                    <div class="row-2">
+                        <div>
+                            <label class="form-label" style="font-size:11px; color:#64748B;">Gjelder fra dato:</label>
+                            <input type="date" id="gyldigFra" class="form-input" value="2026-11-01" onchange="oppdaterPreview()">
+                        </div>
+                        <div>
+                            <label class="form-label" style="font-size:11px; color:#64748B;">Gjelder til dato:</label>
+                            <input type="date" id="gyldigTil" class="form-input" value="2027-03-28" onchange="oppdaterPreview()">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tilleggsinformasjon -->
+                <div class="form-group">
+                    <label class="form-label" for="merknad">ℹ️ Tilleggsinformasjon for besøkende / sjåfører (valgfritt)</label>
+                    <input type="text" id="merknad" class="form-input" placeholder="f.eks. Dørene åpner 12:15. Egen kvinneavdeling. Parkering på baksiden." oninput="oppdaterPreview()">
+                </div>
+
+                <!-- SEKSJON B: KONTAKTPERSONER -->
+                <div class="seksjon-tittel" style="margin-top:24px;">
+                    <span>👥</span> Kontaktpersoner og offisiell e-post
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="kontaktMoskeEpost">✉️ Moskeens offisielle kontakt e-post</label>
+                    <input type="email" id="kontaktMoskeEpost" class="form-input" placeholder="f.eks. post@drammenmoske.no">
+                </div>
+
+                <div class="row-2">
+                    <div class="form-group">
+                        <label class="form-label" for="kontaktLederNavn">👤 Styreleder Navn</label>
+                        <input type="text" id="kontaktLederNavn" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="kontaktLederMobil" style="display:flex; justify-content:space-between; align-items:center;">
+                            <span>📱 Styreleder Mobil</span>
+                            <span style="font-size:10px; background:#fee2e2; color:#991b1b; padding:2px 6px; border-radius:4px; font-weight:700; border:1px solid #fecaca;">🔒 Låst av admin</span>
+                        </label>
+                        <div style="position:relative;">
+                            <input type="tel" id="kontaktLederMobil" class="form-input" readonly placeholder="Ikke registrert ennå (kontakt admin)" style="background:#f1f5f9; color:#334155; cursor:not-allowed; border-color:#cbd5e1; font-weight:700; padding-right:32px;">
+                            <span style="position:absolute; right:10px; top:50%; transform:translateY(-50%); font-size:14px; opacity:0.6;" title="Låst sikkerhetsfelt">🔒</span>
+                        </div>
+                        <div style="font-size:11px; color:#64748B; margin-top:3px;">
+                            ⚠️ Styreleders mobilnummer er forankret til moskeen og <strong>kan kun endres av Moskeene.no administrator</strong>. Send beskjed til admin nederst ved endring.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row-2">
+                    <div class="form-group">
+                        <label class="form-label" for="kontaktImamNavn">👳 Imam Navn</label>
+                        <input type="text" id="kontaktImamNavn" class="form-input" placeholder="f.eks. Imam Navn" oninput="sjekkOgGenererImamKode()">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="kontaktImamMobil">📱 Imam Mobil</label>
+                        <input type="tel" id="kontaktImamMobil" class="form-input" placeholder="f.eks. 91111111" oninput="sjekkOgGenererImamKode()">
+                    </div>
+                </div>
+
+                <!-- Automatisk 8-sifret kode for Imam -->
+                <div id="imamKodeBoks" style="display:none; margin-top:8px; margin-bottom:16px; padding:12px 16px; background:#dcfce7; border:1px solid #86efac; border-radius:8px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+                    <div>
+                        <div style="font-size:12px; font-weight:700; color:#15803d;">🔑 Egen 8-sifret kode for Imam:</div>
+                        <div style="font-family:monospace; font-size:18px; font-weight:700; color:#14532D; letter-spacing:2px;" id="visImamKode">••••••••</div>
+                        <div style="font-size:11px; color:#166534;">Gi denne koden til imamen slik at han også kan logge inn på sin telefon.</div>
+                    </div>
+                    <button type="button" class="btn-sesong" style="background:white; border:1px solid #86efac; color:#15803d; font-weight:700; cursor:pointer;" onclick="kopierImamInvitasjon()">
+                        📋 Kopier SMS til Imam
+                    </button>
+                </div>
+
+                <!-- SEKSJON C: AKTIVITETER OG TILBUD -->
+                <div class="seksjon-tittel" style="margin-top:28px;">
+                    <span>📅</span> Faste aktiviteter & tilbud i moskeen
+                </div>
+                <p style="font-size:12px; color:#64748B; margin-bottom:12px;">Legg ut aktiviteter som leksehjelp, koranskole, kvinnegruppe eller ungdomssamlinger slik at nabolaget og tilreisende vet om tilbudene.</p>
+                
+                <div id="aktiviteterContainer" style="display:flex; flex-direction:column; gap:10px; margin-bottom:14px;"></div>
+
+                <button type="button" class="btn-sesong" style="background:#FAF8F5; border:1px dashed var(--primary); padding:8px 14px; font-size:13px; font-weight:700;" onclick="leggTilAktivitetFelt()">
+                    + Legg til ny aktivitet
+                </button>
+
+                <!-- Forhåndsvisning -->
+                <div class="preview-box">
+                    <div class="preview-tittel">👁️ Forhåndsvisning: Slik vises fredagsbønnen og opplysningene på Moskeene.no:</div>
+                    <div class="preview-innhold" id="previewTekst">
+                        Laster forhåndsvisning...
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-lagre">
+                    <span>💾 Lagre og oppdater på Moskeene.no</span>
+                </button>
+
+                <!-- SEKSJON D: MELDING DIREKTE TIL ADMIN -->
+                <div style="margin-top:36px; padding:20px; background:#FAF8F5; border:1px solid var(--sand); border-radius:10px;">
+                    <div class="seksjon-tittel" style="margin-bottom:8px; border-bottom:none; padding-bottom:0;">
+                        <span>💬</span> Melding direkte til administrator (Moskeene.no)
+                    </div>
+                    <p style="font-size:12px; color:#64748B; margin-bottom:12px;">Har du spørsmål, tilbakemeldinger eller ønsker hjelp fra teamet bak Moskeene.no? Skriv en beskjed her, så mottar administrator den i sitt kontrollpanel.</p>
+                    
+                    <div class="form-group">
+                        <textarea id="adminMeldingTekst" class="form-input" rows="3" placeholder="Skriv din melding eller forespørsel til administrator her..."></textarea>
+                    </div>
+
+                    <button type="button" class="btn-sesong" style="background:var(--secondary); color:white; border:none; padding:10px 18px; font-weight:700; cursor:pointer;" onclick="sendMeldingTilAdmin()">
+                        ✉️ Send beskjed til admin
+                    </button>
+                    <div id="adminMeldingKvittering" style="display:none; margin-top:10px; padding:10px 14px; background:#dcfce7; color:#15803d; border-radius:6px; font-size:13px; font-weight:600;">
+                        ✅ Meldingen er sendt til administrator! Takk for henvendelsen.
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Enkel og ren bunntekst -->
+        <footer style="text-align:center; padding:24px 16px; font-size:12px; color:#64748B; margin-top:24px; border-top:1px solid var(--sand);">
+            <p>&copy; 2026 Moskeene.no &bull; Selvbetjeningsportal for moskeer i Norge &bull; <a href="../index.html" style="color:var(--primary); font-weight:600; text-decoration:none;">Tilbake til forsiden</a></p>
+        </footer>
+
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script>
+        let moskeData = null;
+        let aktivMoske = null;
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.style.display = 'block';
+            setTimeout(() => { toast.style.display = 'none'; }, 3500);
+        }
+
+        async function init() {
+            try {
+                // Prøv først localStorage for eventuelle lagrede endringer
+                const lokalCache = localStorage.getItem('moskeene_publisert_cache');
+                if (lokalCache && !lokalCache.includes('Ã')) {
+                    moskeData = JSON.parse(lokalCache);
+                } else {
+                    if (lokalCache && lokalCache.includes('Ã')) localStorage.removeItem('moskeene_publisert_cache');
+                    const res = await fetch('../moskesjekk/publisert-moskeer.json');
+                    moskeData = await res.json();
+                }
+
+                // Sjekk om bruker allerede var logget inn i denne økten
+                const lagretOrgnr = sessionStorage.getItem('min_moske_orgnr');
+                if (lagretOrgnr) {
+                    finnOgApneMoske(lagretOrgnr);
+                }
+            } catch (err) {
+                console.error("Kunne ikke laste moskedata:", err);
+            }
+        }
+
+        // Håndterer innlogging med Mobil og PIN
+        function handterInnlogging(e) {
+            e.preventDefault();
+            const feilBoks = document.getElementById('loginFeil');
+            feilBoks.style.display = 'none';
+
+            const mobil = document.getElementById('innloggMobil').value.replace(/\s+/g, '').trim();
+            const pin = document.getElementById('innloggPin').value.trim();
+
+            if (!moskeData || !moskeData.fylker) {
+                feilBoks.textContent = "Kunne ikke laste moskéregisteret. Prøv igjen.";
+                feilBoks.style.display = 'block';
+                return;
+            }
+
+            // Finn moské som matcher mobil og 8-sifret kode (støtter kode for både styreleder og imam)
+            let funnet = null;
+            for (const moskeer of Object.values(moskeData.fylker)) {
+                for (const m of moskeer) {
+                    const k = m.kontakt || {};
+                    const pinMatches = (k.pin === pin || (k.styreleder && k.styreleder.kode === pin) || (k.imam && k.imam.kode === pin));
+                    if (pinMatches) {
+                        const m1 = (k.styreleder && k.styreleder.mobil || '').replace(/\s+/g, '');
+                        const m2 = (k.imam && k.imam.mobil || '').replace(/\s+/g, '');
+                        if (m1 === mobil || m2 === mobil || m.orgnr === mobil) {
+                            funnet = m;
+                            break;
+                        }
+                    }
+                }
+                if (funnet) break;
+            }
+
+            if (funnet) {
+                aktivMoske = funnet;
+                sessionStorage.setItem('min_moske_orgnr', funnet.orgnr);
+                visPortal();
+            } else {
+                feilBoks.textContent = "Feil mobilnummer eller PIN-kode. Sjekk opplysningene og prøv igjen.";
+                feilBoks.style.display = 'block';
+            }
+        }
+
+        function finnOgApneMoske(orgnr) {
+            for (const moskeer of Object.values(moskeData.fylker)) {
+                const match = moskeer.find(m => m.orgnr === orgnr);
+                if (match) {
+                    aktivMoske = match;
+                    visPortal();
+                    break;
+                }
+            }
+        }
+
+        function visPortal() {
+            if (!aktivMoske) return;
+
+            document.getElementById('loginView').style.display = 'none';
+            document.getElementById('portalView').style.display = 'block';
+
+            document.getElementById('dashNavn').textContent = aktivMoske.navn;
+            document.getElementById('dashAdresse').textContent = `📍 ${aktivMoske.adresse || aktivMoske.kommune} • Org.nr: ${aktivMoske.orgnr}`;
+
+            // Fyll feltene med eksisterende data
+            const fb = aktivMoske.fredagsbonn || {};
+            document.getElementById('khutbahTid').value = fb.khutbahTid || '12:45';
+            document.getElementById('bonnTid').value = fb.bonnTid || '13:00';
+            document.getElementById('gyldigFra').value = fb.gyldigFra || '2026-11-01';
+            document.getElementById('gyldigTil').value = fb.gyldigTil || '2027-03-28';
+            document.getElementById('merknad').value = fb.merknad || '';
+
+            // Språk
+            const valgteSprak = fb.sprak || ['Norsk', 'Urdu'];
+            document.querySelectorAll('#sprakVelger .sprak-chip').forEach(chip => {
+                const sprak = chip.getAttribute('data-sprak');
+                if (valgteSprak.includes(sprak)) {
+                    chip.classList.add('valgt');
+                } else {
+                    chip.classList.remove('valgt');
+                }
+            });
+
+            // Kontaktpersoner
+            const k = aktivMoske.kontakt || {};
+            document.getElementById('kontaktMoskeEpost').value = k.moskeEpost || '';
+            document.getElementById('kontaktLederNavn').value = (k.styreleder && k.styreleder.navn) || aktivMoske.styreleder || '';
+            document.getElementById('kontaktLederMobil').value = (k.styreleder && k.styreleder.mobil) || '';
+            document.getElementById('kontaktImamNavn').value = (k.imam && k.imam.navn) || '';
+            document.getElementById('kontaktImamMobil').value = (k.imam && k.imam.mobil) || '';
+
+            // Sjekk og vis imam-kode hvis imam er registrert
+            oppdaterImamKodeVisning();
+
+            // Aktiviteter
+            renderAktiviteter();
+            oppdaterPreview();
+        }
+
+        // ======================================================================
+        // AUTOMATISK 8-SIFRET KODE FOR IMAM
+        // ======================================================================
+        function sjekkOgGenererImamKode() {
+            const navn = document.getElementById('kontaktImamNavn').value.trim();
+            const mobil = document.getElementById('kontaktImamMobil').value.trim();
+
+            if (!aktivMoske.kontakt) aktivMoske.kontakt = {};
+            if (!aktivMoske.kontakt.imam) aktivMoske.kontakt.imam = {};
+
+            if (navn || mobil) {
+                if (!aktivMoske.kontakt.imam.kode) {
+                    // Genererer tilfeldig 8-sifret kode første gang!
+                    aktivMoske.kontakt.imam.kode = Math.floor(10000000 + Math.random() * 90000000).toString();
+                }
+                oppdaterImamKodeVisning();
+            } else {
+                document.getElementById('imamKodeBoks').style.display = 'none';
+            }
+        }
+
+        function oppdaterImamKodeVisning() {
+            const boks = document.getElementById('imamKodeBoks');
+            if (!boks) return;
+
+            const k = aktivMoske.kontakt || {};
+            if (k.imam && (k.imam.navn || k.imam.mobil || k.imam.kode)) {
+                if (!k.imam.kode) {
+                    k.imam.kode = Math.floor(10000000 + Math.random() * 90000000).toString();
+                }
+                document.getElementById('visImamKode').textContent = k.imam.kode;
+                boks.style.display = 'flex';
+            } else {
+                boks.style.display = 'none';
+            }
+        }
+
+        function kopierImamInvitasjon() {
+            const k = aktivMoske.kontakt || {};
+            const kode = (k.imam && k.imam.kode) || '';
+            const imamNavn = (k.imam && k.imam.navn) || 'Imam';
+            const sms = `Salam ${imamNavn}!\n\nDu er registrert som imam for ${aktivMoske.navn} på Moskeene.no.\n\nDu kan nå logge inn og oppdatere fredagsbønn, khutbah og aktiviteter på: https://moskeene.no/min-moske/\n\n🔑 Din personlige 8-sifrede kode: ${kode}\n(Bruk ditt mobilnummer og denne koden for å logge inn).`;
+
+            navigator.clipboard.writeText(sms).then(() => {
+                alert(`✅ SMS-invitasjon til imam er kopiert til utklippstavlen!\n\n8-sifret kode: ${kode}`);
+            }).catch(() => {
+                prompt("Kopier SMS til imam:", sms);
+            });
+        }
+
+        // ======================================================================
+        // HÅNDTERING AV AKTIVITETER
+        // ======================================================================
+        function renderAktiviteter() {
+            const container = document.getElementById('aktiviteterContainer');
+            if (!container) return;
+
+            const aktiviteter = aktivMoske.aktiviteter || [];
+            if (aktiviteter.length === 0) {
+                container.innerHTML = '<div style="font-size:12px; color:#64748B; font-style:italic; padding:8px 0;">Ingen aktiviteter lagt inn ennå. Trykk «+ Legg til ny aktivitet» for å registrere leksehjelp, koranskole el.l.</div>';
+                return;
+            }
+
+            container.innerHTML = aktiviteter.map((akt, idx) => `
+                <div style="background:#FAF8F5; border:1px solid var(--sand); border-radius:8px; padding:12px; display:flex; flex-direction:column; gap:8px;">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px;">
+                        <input type="text" value="${akt.tittel || ''}" placeholder="Aktivitetstittel (f.eks. Leksehjelp)" class="form-input" style="font-weight:700; font-size:14px; padding:8px 10px;" onchange="oppdaterAktivitet(${idx}, 'tittel', this.value)">
+                        <button type="button" onclick="slettAktivitet(${idx})" style="background:#fee2e2; border:1px solid #fca5a5; color:#b91c1c; border-radius:6px; padding:6px 10px; font-size:12px; cursor:pointer;" title="Slett aktivitet">🗑️ Slett</button>
+                    </div>
+                    <div class="row-2" style="margin-bottom:0;">
+                        <input type="text" value="${akt.tid || ''}" placeholder="Tidspunkt (f.eks. Lørdager kl. 14:00 - 16:00)" class="form-input" style="font-size:13px; padding:8px 10px;" onchange="oppdaterAktivitet(${idx}, 'tid', this.value)">
+                        <input type="text" value="${akt.beskrivelse || ''}" placeholder="Kort beskrivelse / målgruppe" class="form-input" style="font-size:13px; padding:8px 10px;" onchange="oppdaterAktivitet(${idx}, 'beskrivelse', this.value)">
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function leggTilAktivitetFelt() {
+            if (!aktivMoske.aktiviteter) aktivMoske.aktiviteter = [];
+            aktivMoske.aktiviteter.push({
+                tittel: '',
+                tid: '',
+                beskrivelse: ''
+            });
+            renderAktiviteter();
+        }
+
+        function oppdaterAktivitet(idx, felt, verdi) {
+            if (aktivMoske.aktiviteter && aktivMoske.aktiviteter[idx]) {
+                aktivMoske.aktiviteter[idx][felt] = verdi.trim();
+            }
+        }
+
+        function slettAktivitet(idx) {
+            if (aktivMoske.aktiviteter) {
+                aktivMoske.aktiviteter.splice(idx, 1);
+                renderAktiviteter();
+            }
+        }
+
+        // ======================================================================
+        // SEND BESKJED TIL ADMIN
+        // ======================================================================
+        function sendMeldingTilAdmin() {
+            const tekstFelt = document.getElementById('adminMeldingTekst');
+            const melding = tekstFelt.value.trim();
+            if (!melding) {
+                alert('Vennligst skriv en beskjed før du sender.');
+                return;
+            }
+
+            const k = aktivMoske.kontakt || {};
+            const avsenderNavn = (k.styreleder && k.styreleder.navn) || (k.imam && k.imam.navn) || 'Moskérepresentant';
+            const avsenderMobil = (k.styreleder && k.styreleder.mobil) || (k.imam && k.imam.mobil) || '';
+
+            const nyMelding = {
+                id: 'm-' + Date.now(),
+                tidspunkt: new Date().toLocaleString('no-NO', { dateStyle: 'short', timeStyle: 'short' }),
+                moskeNavn: aktivMoske.navn,
+                orgnr: aktivMoske.orgnr,
+                avsender: `${avsenderNavn} (${aktivMoske.navn})`,
+                mobil: avsenderMobil,
+                melding: melding,
+                lest: false
+            };
+
+            // Hent eksisterende meldinger fra cache eller opprett ny liste
+            let alleMeldinger = [];
+            try {
+                const eksisterende = localStorage.getItem('moskeene_admin_meldinger');
+                if (eksisterende) alleMeldinger = JSON.parse(eksisterende);
+            } catch(e) {}
+
+            alleMeldinger.unshift(nyMelding);
+            localStorage.setItem('moskeene_admin_meldinger', JSON.stringify(alleMeldinger));
+
+            // Nullstill felt og vis bekreftelse
+            tekstFelt.value = '';
+            const kvittering = document.getElementById('adminMeldingKvittering');
+            kvittering.style.display = 'block';
+            setTimeout(() => { kvittering.style.display = 'none'; }, 6000);
+
+            showToast("✉️ Beskjeden er sendt til administrator!");
+        }
+
+        function toggleSprak(el) {
+            el.classList.toggle('valgt');
+            oppdaterPreview();
+        }
+
+        function settSesong(sesong) {
+            if (sesong === 'vinter') {
+                document.getElementById('gyldigFra').value = '2026-11-01';
+                document.getElementById('gyldigTil').value = '2027-03-28';
+            } else if (sesong === 'sommer') {
+                document.getElementById('gyldigFra').value = '2027-03-29';
+                document.getElementById('gyldigTil').value = '2027-10-31';
+            }
+            oppdaterPreview();
+        }
+
+        function hentValgteSprak() {
+            const sprak = [];
+            document.querySelectorAll('#sprakVelger .sprak-chip.valgt').forEach(chip => {
+                sprak.push(chip.getAttribute('data-sprak'));
+            });
+            return sprak;
+        }
+
+        function oppdaterPreview() {
+            const khutbah = document.getElementById('khutbahTid').value;
+            const bonn = document.getElementById('bonnTid').value;
+            const sprak = hentValgteSprak().join(', ') || 'Ikke oppgitt';
+            const fra = document.getElementById('gyldigFra').value;
+            const til = document.getElementById('gyldigTil').value;
+            const merknad = document.getElementById('merknad').value;
+
+            document.getElementById('previewTekst').innerHTML = `
+                <div style="font-size:16px; font-weight:700; color:var(--primary); margin-bottom:4px;">
+                    🕌 Fredagsbønn kl. <strong>${bonn}</strong> <span style="font-size:13px; font-weight:normal; color:#64748B;">(Khutbah starter kl. ${khutbah})</span>
+                </div>
+                <div style="font-size:13px; color:#334155; margin-bottom:2px;">
+                    🗣️ <strong>Språk:</strong> ${sprak}
+                </div>
+                <div style="font-size:12px; color:#64748B; margin-bottom:4px;">
+                    📅 <strong>Gyldighetsperiode:</strong> ${fra} til ${til}
+                </div>
+                ${merknad ? `<div style="font-size:12px; color:var(--secondary); background:#fff; padding:6px 10px; border-radius:6px; border:1px solid var(--sand); margin-top:6px;">ℹ️ ${merknad}</div>` : ''}
+            `;
+        }
+
+        function lagreEndringer(e) {
+            e.preventDefault();
+            if (!aktivMoske) return;
+
+            const khutbah = document.getElementById('khutbahTid').value;
+            const bonn = document.getElementById('bonnTid').value;
+            const sprak = hentValgteSprak();
+            const fra = document.getElementById('gyldigFra').value;
+            const til = document.getElementById('gyldigTil').value;
+            const merknad = document.getElementById('merknad').value.trim();
+
+            aktivMoske.fredagsbonn = {
+                aktiv: true,
+                khutbahTid: khutbah,
+                bonnTid: bonn,
+                sprak: sprak,
+                gyldigFra: fra,
+                gyldigTil: til,
+                merknad: merknad,
+                tider: [bonn]
+            };
+
+            // Oppdater kontaktpersoner
+            if (!aktivMoske.kontakt) aktivMoske.kontakt = {};
+            aktivMoske.kontakt.moskeEpost = document.getElementById('kontaktMoskeEpost').value.trim();
+
+            // SIKKERHETSREGEL: Styreleders mobil er forankret og KAN KUN endres av admin (aldri fra Min Moské)
+            const bevartLederMobil = (aktivMoske.kontakt.styreleder && aktivMoske.kontakt.styreleder.mobil) || '';
+            const bevartLederKode = (aktivMoske.kontakt.styreleder && aktivMoske.kontakt.styreleder.kode) || aktivMoske.kontakt.pin || '';
+
+            aktivMoske.kontakt.styreleder = {
+                navn: document.getElementById('kontaktLederNavn').value.trim() || aktivMoske.styreleder || '',
+                mobil: bevartLederMobil, // Sikret: Endres ALDRI av innsendinger fra Min Moské
+                epost: (aktivMoske.kontakt.styreleder && aktivMoske.kontakt.styreleder.epost) || '',
+                kode: bevartLederKode
+            };
+            aktivMoske.kontakt.pin = bevartLederKode;
+
+            // Imam kan derimot fritt endres og tildeles av styreleder
+            const imamNavn = document.getElementById('kontaktImamNavn').value.trim();
+            const imamMobil = document.getElementById('kontaktImamMobil').value.trim();
+            let imamKode = (aktivMoske.kontakt.imam && aktivMoske.kontakt.imam.kode) || '';
+            if ((imamNavn || imamMobil) && !imamKode) {
+                imamKode = Math.floor(10000000 + Math.random() * 90000000).toString();
+            }
+
+            aktivMoske.kontakt.imam = {
+                navn: imamNavn,
+                mobil: imamMobil,
+                epost: (aktivMoske.kontakt.imam && aktivMoske.kontakt.imam.epost) || '',
+                kode: imamKode
+            };
+
+            // Filtrer bort tomme aktiviteter
+            if (aktivMoske.aktiviteter) {
+                aktivMoske.aktiviteter = aktivMoske.aktiviteter.filter(a => a.tittel && a.tittel.trim());
+            }
+
+            // Lagre til localStorage slik at endringen vises med en gang på nettstedet
+            localStorage.setItem('moskeene_publisert_cache', JSON.stringify(moskeData));
+
+            showToast("✅ Bønnetider, aktiviteter og opplysninger er lagret og oppdatert på Moskeene.no!");
+        }
+
+        function loggUt() {
+            aktivMoske = null;
+            sessionStorage.removeItem('min_moske_orgnr');
+            document.getElementById('portalView').style.display = 'none';
+            document.getElementById('loginView').style.display = 'block';
+            document.getElementById('innloggPin').value = '';
+        }
+
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

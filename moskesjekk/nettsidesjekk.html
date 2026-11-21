@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moskesjekk - Nettsidekontroll & Lenkevalidator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #14532D;
+            --secondary: #542314;
+            --accent: #54142D;
+            --salvie: #9DD4B3;
+            --sand: #D4AA9D;
+            --bg: #FAF8F5;
+            --font-tekst: 'Inter', system-ui, sans-serif;
+            --font-tittel: 'Playfair Display', Georgia, serif;
+            --ok: #15803d;
+            --error: #b91c1c;
+            --pending: #64748b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg); color: var(--primary); font-family: var(--font-tekst); line-height: 1.5; padding: 16px; }
+        .container { max-width: 1100px; margin: 0 auto; }
+
+        /* Toppnavigasjon */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            border: 1px solid var(--sand);
+            border-radius: 10px;
+            padding: 10px 18px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        }
+        .nav-links { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; font-size: 13px; }
+        .nav-links a { color: var(--primary); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; }
+        .nav-links a:hover { color: var(--accent); }
+        .nav-links .sep { color: #cbd5e1; }
+        .nav-links .active { color: var(--accent); font-weight: 700; }
+
+        /* Header */
+        header { border-bottom: 2px solid var(--secondary); padding-bottom: 16px; margin-bottom: 20px; }
+        h1 { font-family: var(--font-tittel); font-size: 26px; color: var(--primary); }
+        .sub-header { color: var(--secondary); font-size: 14px; margin-top: 4px; }
+
+        /* Kontroll-knapper og verktøylinje */
+        .action-bar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            background-color: var(--primary);
+            color: var(--bg);
+            border: 1px solid var(--salvie);
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-family: var(--font-tekst);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn:hover { background-color: #0e3a1f; transform: translateY(-1px); }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+        .btn-accent { background-color: var(--accent); border-color: #7a1d42; }
+        .btn-accent:hover { background-color: #3b0e1f; }
+        .btn-secondary { background-color: var(--secondary); border-color: #783522; }
+        .btn-secondary:hover { background-color: #38160c; }
+        .btn-outline { background: white; color: var(--primary); border: 1px solid var(--primary); }
+        .btn-outline:hover { background: #f0fdf4; }
+
+        /* Stats bar */
+        .stats-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 20px; }
+        .stat-card {
+            background: white;
+            border: 1px solid var(--sand);
+            border-radius: 8px;
+            padding: 12px 16px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+            text-align: center;
+        }
+        .stat-card .num { font-size: 24px; font-weight: 700; }
+        .stat-card .label { font-size: 11px; text-transform: uppercase; font-weight: 600; color: #64748b; margin-top: 2px; }
+        .stat-total .num { color: var(--primary); }
+        .stat-ok .num { color: var(--ok); }
+        .stat-dead .num { color: var(--error); }
+        .stat-pending .num { color: var(--pending); }
+
+        /* Fremdriftsindikator */
+        #progressContainer {
+            display: none;
+            background: white;
+            border: 1px solid var(--sand);
+            border-radius: 8px;
+            padding: 14px;
+            margin-bottom: 20px;
+        }
+        .progress-header { display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; margin-bottom: 8px; color: var(--primary); }
+        .progress-track { height: 10px; background: #e2e8f0; border-radius: 999px; overflow: hidden; }
+        .progress-bar { height: 100%; width: 0%; background: var(--primary); transition: width 0.2s ease; }
+
+        /* Filter og søk */
+        .filter-bar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            background: white;
+            padding: 14px;
+            border-radius: 8px;
+            border: 1px solid var(--sand);
+        }
+        .filter-bar input, .filter-bar select {
+            padding: 9px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-family: var(--font-tekst);
+            font-size: 13px;
+            outline: none;
+            background: white;
+        }
+        .filter-bar input { flex: 2; min-width: 220px; }
+        .filter-bar select { flex: 1; min-width: 140px; }
+        .filter-bar input:focus, .filter-bar select:focus { border-color: var(--primary); }
+
+        /* Info varsel */
+        .info-panel {
+            background: rgba(157, 212, 179, 0.2);
+            border: 1px solid var(--salvie);
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Moskekort-grid */
+        .sites-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+        @media (min-width: 768px) {
+            .sites-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        .site-card {
+            background: white;
+            border: 1px solid var(--sand);
+            border-radius: 10px;
+            padding: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 12px;
+            border-left: 5px solid var(--pending);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .site-card.status-ok { border-left-color: var(--ok); }
+        .site-card.status-dead { border-left-color: var(--error); background: #fffbfb; }
+        .site-card.status-testing { border-left-color: #eab308; }
+
+        .site-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+        .site-name { font-family: var(--font-tittel); font-size: 16px; font-weight: 700; color: var(--primary); line-height: 1.3; }
+        .badge-source {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            border-radius: 999px;
+            white-space: nowrap;
+        }
+        .badge-pub { background: #dcfce7; color: #15803d; border: 1px solid #86efac; }
+        .badge-upub { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+
+        .site-meta { font-size: 12px; color: #64748b; margin-top: 2px; }
+        
+        .site-url-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 8px 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+            overflow: hidden;
+        }
+        .site-url-text {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--primary);
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .site-url-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 8px;
+            background: white;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            flex-shrink: 0;
+            transition: all 0.2s;
+        }
+        .site-url-link:hover { background: var(--accent); color: white; border-color: var(--accent); }
+
+        .site-status-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 8px;
+            border-top: 1px dashed #e2e8f0;
+            font-size: 12px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 3px 10px;
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 11px;
+        }
+        .pill-pending { background: #f1f5f9; color: var(--pending); }
+        .pill-testing { background: #fef9c3; color: #a16207; }
+        .pill-ok { background: #dcfce7; color: var(--ok); }
+        .pill-dead { background: #fee2e2; color: var(--error); }
+
+        .card-actions { display: flex; gap: 6px; align-items: center; }
+        .btn-card {
+            background: white;
+            border: 1px solid #cbd5e1;
+            color: #334155;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+        .btn-card:hover { background: #f1f5f9; }
+        .btn-card-del { color: var(--error); border-color: #fca5a5; }
+        .btn-card-del:hover { background: #fef2f2; }
+
+        /* Modal for varsel eller redigering */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            font-size: 13px;
+            font-weight: 600;
+            z-index: 1000;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Toppnavigasjon -->
+        <nav class="top-nav">
+            <div class="nav-links">
+                <a href="../index.html"><span>🏠</span> Hovedportal (Moskeene.no)</a>
+                <span class="sep">|</span>
+                <a href="index.html"><span>🏛️</span> Moskesjekk (Brreg-oversikt)</a>
+                <span class="sep">|</span>
+                <span class="active"><span>🌐</span> Nettsidekontroll & Lenkesjekker</span>
+            </div>
+            <div>
+                <a href="index.html" style="color:var(--secondary); text-decoration:none; font-size:12px; font-weight:600;">
+                    ← Tilbake til registeroversikt
+                </a>
+            </div>
+        </nav>
+
+        <!-- Header -->
+        <header>
+            <h1>🌐 Moskesjekk - Nettsidekontroll & Linkvalidator</h1>
+            <p class="sub-header">Automatisk verifisering av moskeenes offisielle nettsider for å fjerne døde, utløpte og utilgjengelige adresser.</p>
+        </header>
+
+        <!-- Informasjonspanel -->
+        <div class="info-panel">
+            <span style="font-size: 20px;">💡</span>
+            <div>
+                <strong>Slik fungerer det:</strong> Verktøyet sjekker automatisk om moskeenes nettadresser svarer og er online. Du kan åpne hver side direkte i ny fane for å bekrefte den, eller fjerne ugyldige lenker med ett klikk.
+            </div>
+        </div>
+
+        <!-- Statistikk-dashboard -->
+        <div class="stats-bar">
+            <div class="stat-card stat-total">
+                <div class="num" id="statTotal">0</div>
+                <div class="label">Totalt med nettside</div>
+            </div>
+            <div class="stat-card stat-ok">
+                <div class="num" id="statOk">0</div>
+                <div class="label">🟢 Svarer / Live</div>
+            </div>
+            <div class="stat-card stat-dead">
+                <div class="num" id="statDead">0</div>
+                <div class="label">🔴 Utilgjengelig / Død</div>
+            </div>
+            <div class="stat-card stat-pending">
+                <div class="num" id="statPending">0</div>
+                <div class="label">⚪ Venter på sjekk</div>
+            </div>
+        </div>
+
+        <!-- Handlingsknapper -->
+        <div class="action-bar">
+            <button class="btn" id="btnStartCheck" onclick="startCheckAll()">
+                <span>🚀</span> Start automatisk sjekk av alle nettsider
+            </button>
+            <button class="btn btn-outline" id="btnStopCheck" style="display:none;" onclick="stopCheck()">
+                <span>⏹️</span> Stopp sjekk
+            </button>
+            <button class="btn btn-secondary" onclick="cleanDeadLinks()">
+                <span>🗑️</span> Fjern døde nettsider automatisk
+            </button>
+            <button class="btn btn-accent" onclick="downloadCleanedJson()">
+                <span>💾</span> Last ned oppdatert JSON
+            </button>
+        </div>
+
+        <!-- Fremdriftsindikator -->
+        <div id="progressContainer">
+            <div class="progress-header">
+                <span id="progressText">Tester nettsider...</span>
+                <span id="progressPercent">0%</span>
+            </div>
+            <div class="progress-track">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+        </div>
+
+        <!-- Filter- og søkebar -->
+        <div class="filter-bar">
+            <input type="text" id="searchInput" placeholder="Søk på moskénavn, nettside-URL, kommune eller org.nr...">
+            <select id="sourceFilter">
+                <option value="alle">Alle kilder (Publisert & Upublisert)</option>
+                <option value="publisert">Kun publiserte (Buskerud)</option>
+                <option value="upublisert">Kun upubliserte (Resten av Norge)</option>
+            </select>
+            <select id="statusFilter">
+                <option value="alle">Alle statuser</option>
+                <option value="ok">🟢 Kun fungerende (Svarer)</option>
+                <option value="dead">🔴 Kun døde / utilgjengelige</option>
+                <option value="pending">⚪ Kun ikke sjekket ennå</option>
+            </select>
+            <select id="fylkeFilter">
+                <option value="alle">Alle fylker</option>
+            </select>
+        </div>
+
+        <!-- Nettside-kort liste -->
+        <div id="sitesContainer" class="sites-grid">
+            <p style="padding:20px; color:#64748b;">Laster nettsidedata...</p>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // Hovedtilstand
+        let siteItems = [];
+        let isChecking = false;
+        let shouldStop = false;
+        let pubDataCache = null;
+        let upubDataCache = null;
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.style.display = 'block';
+            setTimeout(() => { toast.style.display = 'none'; }, 3000);
+        }
+
+        // Normaliserer nettadresse til gyldig HTTPS/HTTP-URL
+        function formatUrl(url) {
+            if (!url) return '';
+            let u = url.trim();
+            if (!/^https?:\/\//i.test(u)) {
+                u = 'https://' + u;
+            }
+            return u;
+        }
+
+        // Last data fra JSON-filer
+        async function loadData() {
+            try {
+                const [resPub, resUpub] = await Promise.all([
+                    fetch('publisert-moskeer.json'),
+                    fetch('upublisert-moskeer.json')
+                ]);
+
+                pubDataCache = await resPub.json();
+                upubDataCache = await resUpub.json();
+
+                siteItems = [];
+                const orgnrSeen = new Set();
+
+                // 1. Publiserte moskeer (Buskerud)
+                if (pubDataCache && pubDataCache.fylker) {
+                    for (const [fylke, moskeer] of Object.entries(pubDataCache.fylker)) {
+                        moskeer.forEach(m => {
+                            if (m.nettside && m.nettside.trim()) {
+                                siteItems.push({
+                                    orgnr: m.orgnr,
+                                    navn: m.navn,
+                                    fylke: m.fylke || fylke,
+                                    kommune: m.kommune || 'Uoppgitt',
+                                    nettside: m.nettside.trim(),
+                                    kilde: 'publisert',
+                                    status: 'pending', // pending, testing, ok, dead
+                                    statusDetalj: 'Venter på sjekk',
+                                    responseTime: null
+                                });
+                                orgnrSeen.add(m.orgnr);
+                            }
+                        });
+                    }
+                }
+
+                // 2. Upubliserte moskeer (hele Norge)
+                if (upubDataCache && upubDataCache.fylker) {
+                    for (const [fylke, moskeer] of Object.entries(upubDataCache.fylker)) {
+                        moskeer.forEach(m => {
+                            if (m.nettside && m.nettside.trim() && !orgnrSeen.has(m.orgnr)) {
+                                siteItems.push({
+                                    orgnr: m.orgnr,
+                                    navn: m.navn,
+                                    fylke: m.fylke || fylke,
+                                    kommune: m.kommune || 'Uoppgitt',
+                                    nettside: m.nettside.trim(),
+                                    kilde: 'upublisert',
+                                    status: 'pending',
+                                    statusDetalj: 'Venter på sjekk',
+                                    responseTime: null
+                                });
+                                orgnrSeen.add(m.orgnr);
+                            }
+                        });
+                    }
+                }
+
+                // Sorter alfabetisk på navn
+                siteItems.sort((a, b) => a.navn.localeCompare(b.navn, 'no'));
+
+                populateFylkeFilter();
+                updateStats();
+                renderList();
+                setupEventListeners();
+
+            } catch (err) {
+                console.error(err);
+                document.getElementById('sitesContainer').innerHTML = 
+                    `<p style="color:red; padding:20px;">Kunne ikke laste datafiler (publisert-moskeer.json og upublisert-moskeer.json). Sjekk at filene ligger i samme mappe.</p>`;
+            }
+        }
+
+        function populateFylkeFilter() {
+            const fylker = [...new Set(siteItems.map(item => item.fylke))].sort((a,b) => a.localeCompare(b, 'no'));
+            const sel = document.getElementById('fylkeFilter');
+            sel.innerHTML = '<option value="alle">Alle fylker</option>';
+            fylker.forEach(f => {
+                const count = siteItems.filter(i => i.fylke === f).length;
+                const opt = document.createElement('option');
+                opt.value = f;
+                opt.textContent = `${f} (${count})`;
+                sel.appendChild(opt);
+            });
+        }
+
+        function updateStats() {
+            const total = siteItems.length;
+            const ok = siteItems.filter(i => i.status === 'ok').length;
+            const dead = siteItems.filter(i => i.status === 'dead').length;
+            const pending = siteItems.filter(i => i.status === 'pending').length;
+
+            document.getElementById('statTotal').textContent = total;
+            document.getElementById('statOk').textContent = ok;
+            document.getElementById('statDead').textContent = dead;
+            document.getElementById('statPending').textContent = pending;
+        }
+
+        function setupEventListeners() {
+            document.getElementById('searchInput').addEventListener('input', renderList);
+            document.getElementById('sourceFilter').addEventListener('change', renderList);
+            document.getElementById('statusFilter').addEventListener('change', renderList);
+            document.getElementById('fylkeFilter').addEventListener('change', renderList);
+        }
+
+        function renderList() {
+            const container = document.getElementById('sitesContainer');
+            const searchVal = document.getElementById('searchInput').value.toLowerCase().trim();
+            const sourceVal = document.getElementById('sourceFilter').value;
+            const statusVal = document.getElementById('statusFilter').value;
+            const fylkeVal = document.getElementById('fylkeFilter').value;
+
+            const filtered = siteItems.filter(item => {
+                if (sourceVal !== 'alle' && item.kilde !== sourceVal) return false;
+                if (statusVal !== 'alle' && item.status !== statusVal) return false;
+                if (fylkeVal !== 'alle' && item.fylke !== fylkeVal) return false;
+                if (searchVal) {
+                    const matchNavn = (item.navn || '').toLowerCase().includes(searchVal);
+                    const matchUrl = (item.nettside || '').toLowerCase().includes(searchVal);
+                    const matchKommune = (item.kommune || '').toLowerCase().includes(searchVal);
+                    const matchOrg = (item.orgnr || '').includes(searchVal);
+                    return matchNavn || matchUrl || matchKommune || matchOrg;
+                }
+                return true;
+            });
+
+            if (filtered.length === 0) {
+                container.innerHTML = '<p style="padding:30px; text-align:center; color:#64748b; grid-column:1/-1;">Ingen moskeer med nettside matchet filteret.</p>';
+                return;
+            }
+
+            container.innerHTML = filtered.map(item => {
+                const targetUrl = formatUrl(item.nettside);
+                let statusClass = 'pill-pending';
+                let statusLabel = '⚪ Venter';
+                let cardClass = '';
+
+                if (item.status === 'testing') {
+                    statusClass = 'pill-testing';
+                    statusLabel = '⏳ Sjekker...';
+                    cardClass = 'status-testing';
+                } else if (item.status === 'ok') {
+                    statusClass = 'pill-ok';
+                    statusLabel = `🟢 Svarer ${item.responseTime ? `(${item.responseTime} ms)` : ''}`;
+                    cardClass = 'status-ok';
+                } else if (item.status === 'dead') {
+                    statusClass = 'pill-dead';
+                    statusLabel = '🔴 Utilgjengelig / Død';
+                    cardClass = 'status-dead';
+                }
+
+                const sourceBadge = item.kilde === 'publisert'
+                    ? '<span class="badge-source badge-pub">🟢 Publisert (Buskerud)</span>'
+                    : '<span class="badge-source badge-upub">🟡 Upublisert (Brreg)</span>';
+
+                return `
+                    <div class="site-card ${cardClass}" id="card-${item.orgnr}">
+                        <div>
+                            <div class="site-header">
+                                <div class="site-name">${item.navn}</div>
+                                ${sourceBadge}
+                            </div>
+                            <div class="site-meta">
+                                📍 ${item.kommune}, ${item.fylke} &bull; Org.nr: <strong>${item.orgnr}</strong>
+                            </div>
+                        </div>
+
+                        <div class="site-url-box">
+                            <span class="site-url-text" title="${item.nettside}">🌐 ${item.nettside}</span>
+                            <a href="${targetUrl}" target="_blank" rel="noopener noreferrer" class="site-url-link" title="Åpne og test nettsiden i ny fane">
+                                Åpne ↗
+                            </a>
+                        </div>
+
+                        <div class="site-status-row">
+                            <div>
+                                <span class="status-pill ${statusClass}">${statusLabel}</span>
+                                <span style="font-size:11px; color:#64748b; margin-left:6px;">${item.statusDetalj || ''}</span>
+                            </div>
+                            <div class="card-actions">
+                                <button class="btn-card" onclick="testSingleSite('${item.orgnr}')" title="Test denne nettsiden nå">
+                                    🔍 Test
+                                </button>
+                                <button class="btn-card" onclick="editSiteUrl('${item.orgnr}')" title="Rediger URL">
+                                    ✏️ Rediger
+                                </button>
+                                <button class="btn-card btn-card-del" onclick="removeSite('${item.orgnr}')" title="Fjern nettside fordi den er død">
+                                    🗑️ Fjern
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Test en enkelt nettside via klient-forespørsel
+        async function probeUrl(rawUrl) {
+            const url = formatUrl(rawUrl);
+            const startTime = performance.now();
+
+            const checkAttempt = async (target) => {
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 6500);
+                try {
+                    // mode: 'no-cors' tillater å oppdage om serveren eksisterer og svarer uten å bli blokkert av nettleser-CORS
+                    await fetch(target, {
+                        mode: 'no-cors',
+                        cache: 'no-cache',
+                        signal: controller.signal
+                    });
+                    clearTimeout(timeoutId);
+                    const duration = Math.round(performance.now() - startTime);
+                    return { ok: true, duration };
+                } catch (err) {
+                    clearTimeout(timeoutId);
+                    return { ok: false, error: err.name === 'AbortError' ? 'Tidsavbrudd (Timeout)' : 'DNS-feil / Ingen kontakt' };
+                }
+            };
+
+            // 1. Forsøk HTTPS først
+            let res = await checkAttempt(url);
+            if (res.ok) return res;
+
+            // 2. Hvis HTTPS feiler, prøv HTTP som fallback
+            if (url.startsWith('https://')) {
+                const httpUrl = url.replace('https://', 'http://');
+                const resHttp = await checkAttempt(httpUrl);
+                if (resHttp.ok) return resHttp;
+            }
+
+            return res;
+        }
+
+        // Test enkeltmoské
+        async function testSingleSite(orgnr) {
+            const item = siteItems.find(i => i.orgnr === orgnr);
+            if (!item) return;
+
+            item.status = 'testing';
+            item.statusDetalj = 'Sender forespørsel...';
+            updateCardDisplay(item);
+
+            const result = await probeUrl(item.nettside);
+            if (result.ok) {
+                item.status = 'ok';
+                item.responseTime = result.duration;
+                item.statusDetalj = 'Server svarte OK';
+            } else {
+                item.status = 'dead';
+                item.responseTime = null;
+                item.statusDetalj = result.error;
+            }
+
+            updateCardDisplay(item);
+            updateStats();
+        }
+
+        function updateCardDisplay(item) {
+            const card = document.getElementById(`card-${item.orgnr}`);
+            if (card) {
+                renderList();
+            }
+        }
+
+        // Kjør sjekk for alle nettsider sekvensielt/i små grupper
+        async function startCheckAll() {
+            if (isChecking) return;
+            isChecking = true;
+            shouldStop = false;
+
+            document.getElementById('btnStartCheck').style.display = 'none';
+            document.getElementById('btnStopCheck').style.display = 'inline-flex';
+            const progressContainer = document.getElementById('progressContainer');
+            const progressBar = document.getElementById('progressBar');
+            const progressText = document.getElementById('progressText');
+            const progressPercent = document.getElementById('progressPercent');
+            progressContainer.style.display = 'block';
+
+            const itemsToCheck = [...siteItems];
+            const total = itemsToCheck.length;
+            let completed = 0;
+
+            const concurrency = 3;
+            let index = 0;
+
+            async function worker() {
+                while (index < itemsToCheck.length && !shouldStop) {
+                    const currentIdx = index++;
+                    const item = itemsToCheck[currentIdx];
+
+                    item.status = 'testing';
+                    item.statusDetalj = 'Kobler til...';
+                    updateStats();
+                    renderList();
+
+                    const result = await probeUrl(item.nettside);
+
+                    if (result.ok) {
+                        item.status = 'ok';
+                        item.responseTime = result.duration;
+                        item.statusDetalj = 'Server svarte OK';
+                    } else {
+                        item.status = 'dead';
+                        item.responseTime = null;
+                        item.statusDetalj = result.error;
+                    }
+
+                    completed++;
+                    const pct = Math.round((completed / total) * 100);
+                    progressBar.style.width = pct + '%';
+                    progressPercent.textContent = pct + '%';
+                    progressText.textContent = `Sjekket ${completed} av ${total} nettsider...`;
+
+                    updateStats();
+                    renderList();
+                }
+            }
+
+            const workers = [];
+            for (let i = 0; i < concurrency; i++) {
+                workers.push(worker());
+            }
+
+            await Promise.all(workers);
+
+            isChecking = false;
+            document.getElementById('btnStartCheck').style.display = 'inline-flex';
+            document.getElementById('btnStopCheck').style.display = 'none';
+            progressText.textContent = shouldStop ? '⏹️ Sjekk avbrutt' : '✅ Sjekk fullført for alle nettsider!';
+            showToast('Sjekk av nettsider er fullført!');
+        }
+
+        function stopCheck() {
+            shouldStop = true;
+            showToast('Avbryter sjekk...');
+        }
+
+        // Rediger URL
+        function editSiteUrl(orgnr) {
+            const item = siteItems.find(i => i.orgnr === orgnr);
+            if (!item) return;
+
+            const nyUrl = prompt(`Oppgi ny eller rettet nettsideadresse for "${item.navn}":`, item.nettside);
+            if (nyUrl !== null) {
+                item.nettside = nyUrl.trim();
+                item.status = 'pending';
+                item.statusDetalj = 'Manuelt endret - venter på ny sjekk';
+                item.responseTime = null;
+                updateDataCache(item.orgnr, item.nettside);
+                renderList();
+                showToast(`URL oppdatert for ${item.navn}`);
+            }
+        }
+
+        // Fjern død nettside
+        function removeSite(orgnr) {
+            const item = siteItems.find(i => i.orgnr === orgnr);
+            if (!item) return;
+
+            if (confirm(`Er du sikker på at du vil fjerne nettsiden "${item.nettside}" for "${item.navn}"?`)) {
+                updateDataCache(item.orgnr, null);
+                siteItems = siteItems.filter(i => i.orgnr !== orgnr);
+                populateFylkeFilter();
+                updateStats();
+                renderList();
+                showToast(`Nettside fjernet for ${item.navn}`);
+            }
+        }
+
+        // Batch-fjerning av alle døde nettsider
+        function cleanDeadLinks() {
+            const deadItems = siteItems.filter(i => i.status === 'dead');
+            if (deadItems.length === 0) {
+                alert('Ingen nettsider er markert som døde (🔴) ennå. Kjør en sjekk først for å finne eventuelle døde nettsider.');
+                return;
+            }
+
+            if (confirm(`Fant ${deadItems.length} døde nettsider. Vil du fjerne disse adressene fra databasen nå?`)) {
+                deadItems.forEach(item => {
+                    updateDataCache(item.orgnr, null);
+                });
+                siteItems = siteItems.filter(i => i.status !== 'dead');
+                populateFylkeFilter();
+                updateStats();
+                renderList();
+                showToast(`${deadItems.length} døde nettsider ble fjernet!`);
+            }
+        }
+
+        // Oppdater cache i minnet for eventuell nedlasting
+        function updateDataCache(orgnr, newNettside) {
+            // Publiserte
+            if (pubDataCache && pubDataCache.fylker) {
+                for (const moskeer of Object.values(pubDataCache.fylker)) {
+                    const match = moskeer.find(m => m.orgnr === orgnr);
+                    if (match) match.nettside = newNettside;
+                }
+            }
+            // Upubliserte
+            if (upubDataCache && upubDataCache.fylker) {
+                for (const moskeer of Object.values(upubDataCache.fylker)) {
+                    const match = moskeer.find(m => m.orgnr === orgnr);
+                    if (match) match.nettside = newNettside;
+                }
+            }
+        }
+
+        // Last ned oppdatert JSON
+        function downloadCleanedJson() {
+            const valg = prompt("Hvilken fil vil du laste ned?\n1: publisert-moskeer.json (Buskerud)\n2: upublisert-moskeer.json (Alle Brreg)", "1");
+            if (valg === "1") {
+                downloadFile(pubDataCache, "publisert-moskeer.json");
+            } else if (valg === "2") {
+                downloadFile(upubDataCache, "upublisert-moskeer.json");
+            }
+        }
+
+        function downloadFile(data, filename) {
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data, null, 2));
+            const dlAnchor = document.createElement('a');
+            dlAnchor.setAttribute("href", dataStr);
+            dlAnchor.setAttribute("download", filename);
+            document.body.appendChild(dlAnchor);
+            dlAnchor.click();
+            dlAnchor.remove();
+            showToast(`Lastet ned ${filename}`);
+        }
+
+        document.addEventListener('DOMContentLoaded', loadData);
+    </script>
+</body>
+</html>

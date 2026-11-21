@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moskesjekk - Kodegenerator & Tilgangsstyring</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #14532D;
+            --primary-hover: #0E3A1F;
+            --secondary: #542314;
+            --accent: #54142D;
+            --salvie: #9DD4B3;
+            --sand: #D4AA9D;
+            --bg: #FAF8F5;
+            --font-tekst: 'Inter', system-ui, sans-serif;
+            --font-tittel: 'Playfair Display', Georgia, serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg); color: var(--primary); font-family: var(--font-tekst); line-height: 1.5; padding: 16px; }
+        .container { max-width: 1100px; margin: 0 auto; }
+
+        /* Toppnavigasjon */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            border: 1px solid var(--sand);
+            border-radius: 10px;
+            padding: 10px 18px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        }
+        .nav-links { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; font-size: 13px; }
+        .nav-links a { color: var(--primary); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; }
+        .nav-links a:hover { color: var(--accent); }
+        .nav-links .sep { color: #cbd5e1; }
+        .nav-links .active { color: var(--accent); font-weight: 700; }
+
+        /* Header */
+        header { border-bottom: 2px solid var(--secondary); padding-bottom: 16px; margin-bottom: 20px; }
+        h1 { font-family: var(--font-tittel); font-size: 26px; color: var(--primary); }
+        .sub-header { color: var(--secondary); font-size: 14px; margin-top: 4px; }
+
+        /* Stats bar */
+        .stats-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 20px; }
+        .stat-card {
+            background: white;
+            border: 1px solid var(--sand);
+            border-radius: 8px;
+            padding: 14px 18px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+            text-align: center;
+        }
+        .stat-card .num { font-size: 26px; font-weight: 700; color: var(--accent); }
+        .stat-card .label { font-size: 11px; text-transform: uppercase; font-weight: 600; color: #64748b; margin-top: 2px; }
+
+        /* Kodegenerator Boks */
+        .generator-box {
+            background: white;
+            border: 2px solid var(--primary);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 14px rgba(20, 83, 45, 0.08);
+        }
+        .box-title {
+            font-family: var(--font-tittel);
+            font-size: 18px;
+            color: var(--primary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .gen-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+        @media (min-width: 768px) {
+            .gen-grid { grid-template-columns: 2fr 1.5fr 1fr; }
+        }
+
+        .form-label { display: block; font-size: 12px; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
+        .form-control {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-family: var(--font-tekst);
+            font-size: 13px;
+            background: #faf8f5;
+            outline: none;
+        }
+        .form-control:focus { border-color: var(--primary); background: white; }
+
+        .pin-display {
+            font-family: monospace;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 2px;
+            text-align: center;
+            background: #fef3c7;
+            border: 1px solid #fde68a;
+        }
+
+        .btn {
+            background-color: var(--primary);
+            color: white;
+            border: 1px solid var(--salvie);
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-family: var(--font-tekst);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        .btn:hover { background-color: var(--primary-hover); transform: translateY(-1px); }
+        .btn-secondary { background-color: var(--secondary); border-color: #783522; }
+        .btn-secondary:hover { background-color: #38160c; }
+        .btn-accent { background-color: var(--accent); border-color: #7a1d42; }
+        .btn-accent:hover { background-color: #3b0e1f; }
+
+        /* Tabell */
+        .table-wrap {
+            background: white;
+            border: 1px solid var(--sand);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+        .filter-row {
+            padding: 14px 18px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .filter-input {
+            flex: 1;
+            min-width: 240px;
+            padding: 9px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 13px;
+            outline: none;
+        }
+
+        table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        th { background: #f8fafc; color: #475569; padding: 12px 14px; text-align: left; border-bottom: 2px solid #e2e8f0; font-weight: 700; }
+        td { padding: 12px 14px; border-bottom: 1px solid #f1f5f9; vertical-align: middle; }
+        tr:hover { background: #fafafa; }
+
+        .pin-pill {
+            display: inline-block;
+            background: #fef3c7;
+            color: #92400e;
+            font-family: monospace;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 4px;
+            border: 1px solid #fde68a;
+            letter-spacing: 1px;
+        }
+
+        .action-btns { display: flex; gap: 6px; justify-content: flex-end; }
+        .btn-sm {
+            padding: 5px 9px;
+            font-size: 11px;
+            border-radius: 4px;
+            cursor: pointer;
+            border: 1px solid #cbd5e1;
+            background: white;
+            color: #334155;
+            font-weight: 600;
+            transition: all 0.15s;
+        }
+        .btn-sm:hover { background: #f1f5f9; }
+        .btn-sm-primary { background: var(--primary); color: white; border-color: var(--primary); }
+        .btn-sm-primary:hover { background: var(--primary-hover); }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            font-size: 13px;
+            font-weight: 600;
+            z-index: 1000;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Toppnavigasjon -->
+        <nav class="top-nav">
+            <div class="nav-links">
+                <a href="../index.html"><span>🏠</span> Hovedportal</a>
+                <span class="sep">|</span>
+                <a href="index.html"><span>🏛️</span> Moskesjekk (Brreg)</a>
+                <span class="sep">|</span>
+                <a href="nettsidesjekk.html"><span>🌐</span> Nettsidesjekk</a>
+                <span class="sep">|</span>
+                <span class="active"><span>🔑</span> Kodegenerator & Tilganger</span>
+                <span class="sep">|</span>
+                <a href="../min-moske/index.html" target="_blank"><span>🔐</span> Min Moské Portal</a>
+            </div>
+            <div>
+                <a href="index.html" style="color:var(--secondary); text-decoration:none; font-size:12px; font-weight:600;">
+                    ← Tilbake til oversikt
+                </a>
+            </div>
+        </nav>
+
+        <!-- Header -->
+        <header>
+            <h1>🔑 Kodegenerator & Tilgangsstyring for Moskeer</h1>
+            <p class="sub-header">Generer tilfeldige 8-sifrede koder første gang for styreledere og imamer, administrer tilganger og kopier ferdige SMS-invitasjoner.</p>
+        </header>
+
+        <!-- Stats -->
+        <div class="stats-bar">
+            <div class="stat-card">
+                <div class="num" id="statPublisert">24</div>
+                <div class="label">Publiserte Moskeer</div>
+            </div>
+            <div class="stat-card">
+                <div class="num" style="color:var(--primary);" id="statKoder">24</div>
+                <div class="label">8-sifrede Koder Aktive</div>
+            </div>
+            <div class="stat-card">
+                <div class="num" style="color:#15803D;" id="statImamer">1</div>
+                <div class="label">Registrerte Imamer</div>
+            </div>
+        </div>
+
+        <!-- 1. KODEGENERATOR & MOBILREGISTRERING (ADMIN KONTROLL) -->
+        <div class="generator-box">
+            <div class="box-title">
+                <span>👑</span> Administrator-panel: Registrering av Styreleders Mobil & 8-sifrede Koder
+            </div>
+            
+            <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:8px; padding:12px 16px; margin-bottom:16px; font-size:13px; color:#166534; line-height:1.5;">
+                <strong>🔒 Sikkerhets- og ansvarsregel:</strong> Styrelederens mobilnummer kan <strong>kun registreres og endres her av deg (administrator)</strong>. I moskeens egen selvbetjeningsportal (<em>Min Moské</em>) er styrelederens mobil låst og skrivebeskyttet slik at ingen uvedkommende kan endre eierforholdet. Imamens opplysninger kan derimot fritt legges inn og endres av styrelederen i portalen.
+            </div>
+
+            <!-- Velg moské -->
+            <div style="margin-bottom:16px;">
+                <label class="form-label" for="genMoskeSelect">Velg moské for å registrere mobil eller oppdatere koder</label>
+                <select id="genMoskeSelect" class="form-control" onchange="lastMoskeTilGenerator()" style="font-weight:600; font-size:14px; padding:10px 14px;">
+                    <option value="">-- Velg en moské --</option>
+                </select>
+            </div>
+
+            <div id="skjemaInnhold" style="display:none;">
+                <div style="display:grid; grid-template-columns:1fr; gap:16px; margin-bottom:16px;">
+                    <!-- STYRELEDER (ADMIN KONTROLL) -->
+                    <div style="background:#FAF8F5; border:1.5px solid var(--sand); border-radius:10px; padding:16px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; flex-wrap:wrap; gap:6px;">
+                            <span style="font-weight:700; color:var(--primary); font-size:14px;">👤 Styreleder (Kun administrator kan endre mobil)</span>
+                            <span style="background:#fee2e2; color:#991b1b; font-size:11px; font-weight:700; padding:3px 8px; border-radius:4px; border:1px solid #fecaca;">🔒 Låst i Min Moské</span>
+                        </div>
+                        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:12px;">
+                            <div>
+                                <label class="form-label">Styreleder Navn</label>
+                                <input type="text" id="genLederNavnInput" class="form-control" placeholder="f.eks. Navn Navnesen">
+                            </div>
+                            <div>
+                                <label class="form-label">📱 Styreleder Mobilnummer (ADMIN-STYRT)</label>
+                                <input type="tel" id="genLederMobilInput" class="form-control" placeholder="f.eks. 90000000" style="font-weight:700; border-color:#f59e0b; background:#fffbeb;">
+                            </div>
+                            <div>
+                                <label class="form-label">🔑 8-sifret Tilgangskode</label>
+                                <div style="display:flex; gap:6px;">
+                                    <input type="text" id="genLederKodeInput" class="form-control pin-display" maxlength="8" placeholder="••••••••">
+                                    <button type="button" class="btn btn-sm" onclick="genererNyKodeFor('leder')" title="Generer ny tilfeldig kode">🎲</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin-top:10px; display:flex; justify-content:flex-end;">
+                            <button type="button" class="btn-sm btn-sm-primary" onclick="kopierSmsForLeder()" style="padding:6px 12px; font-size:12px;">
+                                📋 Kopier SMS-invitasjon til styreleder
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- IMAM (STYRELEDER KAN OGSÅ ENDRE) -->
+                    <div style="background:#FAF8F5; border:1px solid #cbd5e1; border-radius:10px; padding:16px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; flex-wrap:wrap; gap:6px;">
+                            <span style="font-weight:700; color:var(--primary); font-size:14px;">👳 Imam (Kan også fylles ut og endres av styreleder)</span>
+                            <span style="background:#dcfce7; color:#15803d; font-size:11px; font-weight:700; padding:3px 8px; border-radius:4px; border:1px solid #86efac;">✏️ Styreleder har full tilgang</span>
+                        </div>
+                        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:12px;">
+                            <div>
+                                <label class="form-label">Imam Navn (Valgfritt)</label>
+                                <input type="text" id="genImamNavnInput" class="form-control" placeholder="f.eks. Imam Navn">
+                            </div>
+                            <div>
+                                <label class="form-label">📱 Imam Mobil (Valgfritt)</label>
+                                <input type="tel" id="genImamMobilInput" class="form-control" placeholder="f.eks. 91111111">
+                            </div>
+                            <div>
+                                <label class="form-label">🔑 8-sifret Imam-kode</label>
+                                <div style="display:flex; gap:6px;">
+                                    <input type="text" id="genImamKodeInput" class="form-control pin-display" maxlength="8" placeholder="••••••••" style="background:#ecfdf5; border-color:#a7f3d0; color:#065f46;">
+                                    <button type="button" class="btn btn-sm" onclick="genererNyKodeFor('imam')" title="Generer ny tilfeldig kode">🎲</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin-top:10px; display:flex; justify-content:flex-end;">
+                            <button type="button" class="btn-sm" onclick="kopierSmsForImam()" style="padding:6px 12px; font-size:12px;">
+                                📋 Kopier SMS-invitasjon til imam
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Handlingsknapper -->
+                <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:space-between; align-items:center; border-top:1px solid #e2e8f0; padding-top:14px;">
+                    <button type="button" class="btn btn-secondary" onclick="genererTilfeldigeKoderForBegge()">
+                        <span>🎲</span> Generer nye 8-sifrede koder for begge
+                    </button>
+                    <button type="button" class="btn" onclick="lagreOpplysninger()" style="font-size:14px; padding:12px 22px;">
+                        <span>💾</span> Lagre opplysninger & koder for moskeen
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. KOMPLETT NØKKELREGISTER (TABELL) -->
+        <div class="table-wrap">
+            <div class="filter-row">
+                <input type="text" id="sokeFelt" class="filter-input" placeholder="🔍 Søk på moské, styreleder, imam, kommune eller kode..." oninput="filtrerTabell()">
+                <button type="button" class="btn btn-sm-primary" onclick="eksporterJsonMedKoder()" style="padding:8px 14px;">
+                    <span>💾</span> Last ned oppdatert JSON med koder
+                </button>
+            </div>
+
+            <div style="overflow-x:auto;">
+                <table id="nokkelTabell">
+                    <thead>
+                        <tr>
+                            <th>Moské & Kommune</th>
+                            <th>👤 Styreleder (Mobil & Kode)</th>
+                            <th>👳 Imam (Mobil & Kode)</th>
+                            <th style="text-align:right;">Handlinger</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabellKropp">
+                        <tr><td colspan="4" style="text-align:center; padding:20px;">Laster nøkkelregister...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script>
+        let moskeData = null;
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.style.display = 'block';
+            setTimeout(() => { toast.style.display = 'none'; }, 3500);
+        }
+
+        // Genererer et tilfeldig 8-sifret tall som streng
+        function lag8SifretTall() {
+            return Math.floor(10000000 + Math.random() * 90000000).toString();
+        }
+
+        async function init() {
+            try {
+                // Prøv localStorage først
+                const lokalCache = localStorage.getItem('moskeene_publisert_cache');
+                if (lokalCache && !lokalCache.includes('Ã')) {
+                    moskeData = JSON.parse(lokalCache);
+                } else {
+                    const res = await fetch('publisert-moskeer.json');
+                    moskeData = await res.json();
+                }
+
+                populerMoskeVelger();
+                renderTabell();
+                oppdaterStatistikk();
+
+            } catch (err) {
+                console.error("Kunne ikke laste data:", err);
+                document.getElementById('tabellKropp').innerHTML = '<tr><td colspan="4" style="color:red; padding:20px;">Kunne ikke laste publisert-moskeer.json.</td></tr>';
+            }
+        }
+
+        function hentAllePubliserteMoskeer() {
+            const moskeer = [];
+            if (moskeData && moskeData.fylker) {
+                for (const liste of Object.values(moskeData.fylker)) {
+                    moskeer.push(...liste);
+                }
+            }
+            return moskeer.sort((a,b) => a.navn.localeCompare(b.navn, 'no'));
+        }
+
+        function populerMoskeVelger() {
+            const select = document.getElementById('genMoskeSelect');
+            select.innerHTML = '<option value="">-- Velg en moské --</option>';
+            hentAllePubliserteMoskeer().forEach(m => {
+                const opt = document.createElement('option');
+                opt.value = m.orgnr;
+                opt.textContent = `${m.navn} (${m.kommune})`;
+                select.appendChild(opt);
+            });
+        }
+
+        function oppdaterStatistikk() {
+            const moskeer = hentAllePubliserteMoskeer();
+            document.getElementById('statPublisert').textContent = moskeer.length;
+            
+            let medKode = 0;
+            let medImam = 0;
+            moskeer.forEach(m => {
+                if (m.kontakt && m.kontakt.pin) medKode++;
+                if (m.kontakt && m.kontakt.imam && m.kontakt.imam.navn) medImam++;
+            });
+
+            document.getElementById('statKoder').textContent = medKode;
+            document.getElementById('statImamer').textContent = medImam;
+        }
+
+        function lastMoskeTilGenerator() {
+            const orgnr = document.getElementById('genMoskeSelect').value;
+            const skjema = document.getElementById('skjemaInnhold');
+            if (!orgnr) {
+                skjema.style.display = 'none';
+                return;
+            }
+
+            const moskeer = hentAllePubliserteMoskeer();
+            const m = moskeer.find(item => item.orgnr === orgnr);
+            if (!m) return;
+
+            if (!m.kontakt) m.kontakt = {};
+            const k = m.kontakt;
+
+            // Fyll styreleder
+            const lNavn = (k.styreleder && k.styreleder.navn) || m.styreleder || '';
+            const lMobil = (k.styreleder && k.styreleder.mobil) || '';
+            let lKode = (k.styreleder && k.styreleder.kode) || k.pin;
+            if (!lKode) lKode = lag8SifretTall();
+
+            document.getElementById('genLederNavnInput').value = lNavn;
+            document.getElementById('genLederMobilInput').value = lMobil;
+            document.getElementById('genLederKodeInput').value = lKode;
+
+            // Fyll imam
+            const iNavn = (k.imam && k.imam.navn) || '';
+            const iMobil = (k.imam && k.imam.mobil) || '';
+            let iKode = (k.imam && k.imam.kode);
+            if (!iKode && (iNavn || iMobil)) iKode = lag8SifretTall();
+
+            document.getElementById('genImamNavnInput').value = iNavn;
+            document.getElementById('genImamMobilInput').value = iMobil;
+            document.getElementById('genImamKodeInput').value = iKode || '';
+
+            skjema.style.display = 'block';
+        }
+
+        function genererNyKodeFor(rolle) {
+            const nyKode = lag8SifretTall();
+            if (rolle === 'leder') {
+                document.getElementById('genLederKodeInput').value = nyKode;
+                showToast(`🎲 Ny 8-sifret kode for styreleder: ${nyKode}`);
+            } else if (rolle === 'imam') {
+                document.getElementById('genImamKodeInput').value = nyKode;
+                showToast(`🎲 Ny 8-sifret kode for imam: ${nyKode}`);
+            }
+        }
+
+        function genererTilfeldigeKoderForBegge() {
+            document.getElementById('genLederKodeInput').value = lag8SifretTall();
+            document.getElementById('genImamKodeInput').value = lag8SifretTall();
+            showToast("🎲 Nye 8-sifrede koder generert for både styreleder og imam!");
+        }
+
+        function lagreOpplysninger() {
+            const orgnr = document.getElementById('genMoskeSelect').value;
+            if (!orgnr) {
+                alert('Vennligst velg en moské først.');
+                return;
+            }
+
+            const moskeer = hentAllePubliserteMoskeer();
+            const m = moskeer.find(item => item.orgnr === orgnr);
+            if (!m) return;
+
+            const lNavn = document.getElementById('genLederNavnInput').value.trim();
+            const lMobil = document.getElementById('genLederMobilInput').value.trim();
+            const lKode = document.getElementById('genLederKodeInput').value.trim() || lag8SifretTall();
+
+            const iNavn = document.getElementById('genImamNavnInput').value.trim();
+            const iMobil = document.getElementById('genImamMobilInput').value.trim();
+            let iKode = document.getElementById('genImamKodeInput').value.trim();
+            if ((iNavn || iMobil) && !iKode) {
+                iKode = lag8SifretTall();
+                document.getElementById('genImamKodeInput').value = iKode;
+            }
+
+            if (!m.kontakt) m.kontakt = {};
+            m.kontakt.styreleder = {
+                navn: lNavn || m.styreleder || '',
+                mobil: lMobil, // Registrert eksklusivt av administrator!
+                epost: (m.kontakt.styreleder && m.kontakt.styreleder.epost) || '',
+                kode: lKode
+            };
+            m.kontakt.pin = lKode; // Hoved-PIN
+
+            m.kontakt.imam = {
+                navn: iNavn,
+                mobil: iMobil,
+                epost: (m.kontakt.imam && m.kontakt.imam.epost) || '',
+                kode: iKode
+            };
+
+            // Oppdater også overordnet styreleder-felt
+            if (lNavn) m.styreleder = lNavn;
+
+            localStorage.setItem('moskeene_publisert_cache', JSON.stringify(moskeData));
+            renderTabell();
+            oppdaterStatistikk();
+            showToast(`✅ Opplysninger og 8-sifret kode lagret for ${m.navn}!`);
+        }
+
+        function kopierSmsForLeder() {
+            const orgnr = document.getElementById('genMoskeSelect').value;
+            if (!orgnr) {
+                alert('Velg en moské først.');
+                return;
+            }
+            const moskeer = hentAllePubliserteMoskeer();
+            const m = moskeer.find(item => item.orgnr === orgnr);
+            if (!m) return;
+
+            const lMobil = document.getElementById('genLederMobilInput').value.trim();
+            const lKode = document.getElementById('genLederKodeInput').value.trim();
+            const lNavn = document.getElementById('genLederNavnInput').value.trim() || 'Styreleder';
+
+            if (!lMobil) {
+                alert('⚠️ Husk å fylle inn styreleders mobilnummer i feltet før du sender SMS!');
+            }
+
+            const sms = `Hei ${lNavn}! Velkommen til Moskeene.no.\n\nDin moské (${m.navn}) har nå fått opprettet sin egen gratis side på: https://moskeene.no/min-moske/\n\nLogg inn med ditt mobilnummer og din personlige 8-sifrede kode:\n🔑 Kode: ${lKode}\n\nHer kan du enkelt oppdatere fredagsbønn, khutbah-tid og aktiviteter helt gratis.`;
+
+            navigator.clipboard.writeText(sms).then(() => {
+                alert(`✅ SMS-invitasjon til styreleder (${m.navn}) er kopiert!\n\nMottaker: ${lMobil || 'Mangler mobil'}\nKode: ${lKode}\n\nTekst:\n"${sms}"`);
+            }).catch(() => {
+                prompt("Kopier SMS:", sms);
+            });
+        }
+
+        function kopierSmsForImam() {
+            const orgnr = document.getElementById('genMoskeSelect').value;
+            if (!orgnr) {
+                alert('Velg en moské først.');
+                return;
+            }
+            const moskeer = hentAllePubliserteMoskeer();
+            const m = moskeer.find(item => item.orgnr === orgnr);
+            if (!m) return;
+
+            const iMobil = document.getElementById('genImamMobilInput').value.trim();
+            const iKode = document.getElementById('genImamKodeInput').value.trim();
+            const iNavn = document.getElementById('genImamNavnInput').value.trim() || 'Imam';
+
+            if (!iKode) {
+                alert('Generer en kode for imam først.');
+                return;
+            }
+
+            const sms = `Salam ${iNavn}! Velkommen til Moskeene.no.\n\nDu har fått tilgang for ${m.navn} på: https://moskeene.no/min-moske/\n\n🔑 Din personlige 8-sifrede kode: ${iKode}\n\nBruk ditt mobilnummer (${iMobil || 'ditt nummer'}) og denne koden for å logge inn.`;
+
+            navigator.clipboard.writeText(sms).then(() => {
+                alert(`✅ SMS-invitasjon til imam er kopiert!\n\nKode: ${iKode}`);
+            }).catch(() => {
+                prompt("Kopier SMS til imam:", sms);
+            });
+        }
+
+        function kopierSmsTilRolle(moskeNavn, rolleNavn, kode) {
+            const rolleTekst = rolleNavn === 'imam' ? 'imam' : 'styreleder';
+            const smsTekst = `Hei! Velkommen til Moskeene.no.\n\nDin moské (${moskeNavn}) har nå fått opprettet sin egen gratis side på: https://moskeene.no/min-moske/\n\nLogg inn med ditt mobilnummer og din personlige 8-sifrede kode:\n🔑 Kode: ${kode}\n\nHer kan du enkelt oppdatere fredagsbønn, khutbah-tid og aktiviteter helt gratis.`;
+
+            navigator.clipboard.writeText(smsTekst).then(() => {
+                alert(`✅ SMS-invitasjon for ${moskeNavn} (${rolleTekst}) er kopiert til utklippstavlen!\n\nTekst:\n"${smsTekst}"`);
+            }).catch(() => {
+                prompt("Kopier invitasjonsteksten:", smsTekst);
+            });
+        }
+
+        function renderTabell() {
+            const tbody = document.getElementById('tabellKropp');
+            const moskeer = hentAllePubliserteMoskeer();
+            const filterVal = (document.getElementById('sokeFelt').value || '').toLowerCase().trim();
+
+            const filtrerte = moskeer.filter(m => {
+                if (!filterVal) return true;
+                const navn = (m.navn || '').toLowerCase();
+                const kommune = (m.kommune || '').toLowerCase();
+                const org = (m.orgnr || '');
+                const leder = (m.kontakt?.styreleder?.navn || m.styreleder || '').toLowerCase();
+                const imam = (m.kontakt?.imam?.navn || '').toLowerCase();
+                const lKode = (m.kontakt?.styreleder?.kode || m.kontakt?.pin || '');
+                const iKode = (m.kontakt?.imam?.kode || '');
+                return navn.includes(filterVal) || kommune.includes(filterVal) || org.includes(filterVal) || leder.includes(filterVal) || imam.includes(filterVal) || lKode.includes(filterVal) || iKode.includes(filterVal);
+            });
+
+            if (filtrerte.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="4" style="text-align:center; padding:20px; color:#64748B;">Ingen moskeer matchet søket.</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = filtrerte.map(m => {
+                const k = m.kontakt || {};
+                const lNavn = (k.styreleder && k.styreleder.navn) || m.styreleder || 'Ikke oppgitt';
+                const lMobil = (k.styreleder && k.styreleder.mobil) || '';
+                const lKode = (k.styreleder && k.styreleder.kode) || k.pin || 'Mangler';
+
+                const iNavn = (k.imam && k.imam.navn) || '';
+                const iMobil = (k.imam && k.imam.mobil) || '';
+                const iKode = (k.imam && k.imam.kode) || '';
+
+                return `
+                    <tr>
+                        <td>
+                            <div style="font-weight:700; color:var(--primary); font-family:var(--font-tittel);">${m.navn}</div>
+                            <div style="font-size:11px; color:#64748B;">📍 ${m.kommune} &bull; Org.nr: <strong>${m.orgnr}</strong></div>
+                        </td>
+                        <td>
+                            <div style="font-weight:600;">${lNavn}</div>
+                            <div style="font-size:12px; margin-top:2px;">
+                                ${lMobil ? `
+                                    <span style="color:#1e293b; font-weight:600;">📱 ${lMobil}</span>
+                                    <span style="font-size:10px; background:#f1f5f9; color:#475569; padding:1px 4px; border-radius:3px; margin-left:4px; font-weight:600;" title="Låst for redigering i Min Moské">🔒 Låst for moské</span>
+                                ` : `
+                                    <span style="color:#dc2626; font-weight:700; font-size:11px;">⚠️ Mangler mobil (Registrer over)</span>
+                                `}
+                            </div>
+                            <div style="margin-top:4px;"><span class="pin-pill">${lKode}</span></div>
+                        </td>
+                        <td>
+                            ${iNavn ? `
+                                <div style="font-weight:600;">${iNavn}</div>
+                                <div style="font-size:12px; color:#475569;">${iMobil ? '📱 ' + iMobil : '<span style="color:#94a3b8;">Uten mobil</span>'}</div>
+                                <div style="margin-top:4px;"><span class="pin-pill" style="background:#dcfce7; color:#15803d; border-color:#86efac;">${iKode || 'Ingen kode'}</span></div>
+                            ` : `<span style="color:#94a3b8; font-size:12px; font-style:italic;">Kan registreres av styreleder</span>`}
+                        </td>
+                        <td style="text-align:right;">
+                            <div class="action-btns">
+                                <button type="button" class="btn-sm btn-sm-primary" onclick="settMoskeIgen('${m.orgnr}')" title="Rediger mobil og kode">
+                                    ✏️ Rediger
+                                </button>
+                                <button type="button" class="btn-sm" onclick="kopierSmsTilRolle('${m.navn.replace(/'/g, "\\'")}', 'styreleder', '${lKode}')" title="Kopier SMS">
+                                    📋 SMS
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function settMoskeIgen(orgnr) {
+            document.getElementById('genMoskeSelect').value = orgnr;
+            lastMoskeTilGenerator();
+            window.scrollTo({ top: 120, behavior: 'smooth' });
+            setTimeout(() => {
+                const mobilFelt = document.getElementById('genLederMobilInput');
+                if (mobilFelt) mobilFelt.focus();
+            }, 300);
+        }
+
+        function filtrerTabell() {
+            renderTabell();
+        }
+
+        function eksporterJsonMedKoder() {
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(moskeData, null, 2));
+            const dlAnchor = document.createElement('a');
+            dlAnchor.setAttribute("href", dataStr);
+            dlAnchor.setAttribute("download", "publisert-moskeer.json");
+            document.body.appendChild(dlAnchor);
+            dlAnchor.click();
+            dlAnchor.remove();
+            showToast("Lastet ned oppdatert publisert-moskeer.json!");
+        }
+
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

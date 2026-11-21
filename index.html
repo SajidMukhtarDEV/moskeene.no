@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="no">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skall - Moskeene</title>
+
+    <!-- Google Fonts: Inter (Lesetekst) & Playfair Display (Overskrifter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+
+    <!-- CSS-stilark -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ======================================================== -->
+    <!-- 1. HELE TOPPEN: site-header                              -->
+    <!-- ======================================================== -->
+    <header class="site-header">
+        
+        <!-- VISES PÅ SKJERMEN: top-bar (Byvelger + 5 bønnetider) -->
+        <div class="top-bar">
+            <!-- By-velger for bønnetider -->
+            <div class="city-selector-wrap">
+                <span class="location-icon">📍</span>
+                <select id="city-select" aria-label="Velg by for bønnetider">
+                    <option value="drammen" selected>Drammen</option>
+                    <option value="oslo">Oslo</option>
+                    <option value="bergen">Bergen</option>
+                    <option value="trondheim">Trondheim</option>
+                    <option value="stavanger">Stavanger</option>
+                    <option value="kristiansand">Kristiansand</option>
+                </select>
+            </div>
+
+            <!-- 5 bønnetider med navn og starttid -->
+            <div class="prayer-times">
+                <div class="prayer-item" id="prayer-fajr">
+                    <span class="prayer-name">Fajr</span>
+                    <span class="prayer-time" id="time-fajr">06:14</span>
+                </div>
+                <div class="prayer-item" id="prayer-dhuhr">
+                    <span class="prayer-name">Dhuhr</span>
+                    <span class="prayer-time" id="time-dhuhr">12:10</span>
+                </div>
+                <div class="prayer-item" id="prayer-asr">
+                    <span class="prayer-name">Asr</span>
+                    <span class="prayer-time" id="time-asr">13:48</span>
+                </div>
+                <div class="prayer-item" id="prayer-maghrib">
+                    <span class="prayer-name">Maghrib</span>
+                    <span class="prayer-time" id="time-maghrib">15:45</span>
+                </div>
+                <div class="prayer-item" id="prayer-isha">
+                    <span class="prayer-name">Isha</span>
+                    <span class="prayer-time" id="time-isha">17:47</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- VISES PÅ SKJERMEN: nav-bar (Meny & Logo) -->
+        <nav class="nav-bar">
+            <div class="logo">
+                <svg class="logo-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <!-- Minimalistisk bue / kuppel -->
+                    <path d="M12 2C8 6 4 11 4 17C4 19.5 6 21 12 21C18 21 20 19.5 20 17C20 11 16 2 12 2Z" stroke="var(--primary-hoved)" stroke-width="2" fill="var(--primary-lys-salvie)" fill-opacity="0.35"/>
+                </svg>
+                <span class="logo-text">Moskeene<span class="logo-dot">.no</span></span>
+            </div>
+            <div class="nav-links">
+                <a href="#" id="navHjem" onclick="tilbakestillHero(); return false;">Hjem</a>
+                <div class="nav-dropdown" id="moskeerDropdownWrap">
+                    <button class="nav-dropdown-btn" id="moskeerDropdownBtn" type="button" aria-expanded="false">
+                        <span>Moskeer</span>
+                        <span class="dropdown-pil">▾</span>
+                    </button>
+                    <div class="dropdown-meny-boks" id="moskeerDropdownMenu">
+                        <div class="dropdown-laster">Laster inn publiserte moskeer...</div>
+                    </div>
+                </div>
+                <a href="#fredagsbonn" id="navFredagsbonn" onclick="visFredagsbonnOversikt(true); return false;">Fredagsbønn</a>
+                <a href="#ressurser">Ressurser</a>
+                <a href="#om-oss">Om oss</a>
+                <a href="min-moske/index.html" style="background:var(--primary-hoved); color:white; padding:6px 12px; border-radius:6px; text-decoration:none; font-weight:600; font-size:13px; display:inline-flex; align-items:center; gap:4px;">
+                    <span>🔐</span> Min Moské
+                </a>
+            </div>
+        </nav>
+
+    </header>
+
+    <!-- ======================================================== -->
+    <!-- 2. HOVEDSIDEN: main-content                              -->
+    <!-- ======================================================== -->
+    <main class="main-content">
+        
+        <!-- VISES PÅ SKJERMEN: hero-section (Stort velkomstfelt eller valgt moské) -->
+        <section class="hero-section" id="heroSection">
+            <!-- 1. Standard velkomstvisning -->
+            <div id="heroDefaultView">
+                <div class="hero-content">
+                    <div class="hero-initiativ-tag">
+                        <span>🤝</span> Et samfunnsinitiativ fra <a href="https://falahforalle.no" target="_blank" rel="noopener noreferrer">falahforalle.no</a>
+                    </div>
+                    <h1>Sammen er vi sterkere</h1>
+                    <p>En felles portal for dialog, kunnskapsdeling og samarbeid mellom moskeer og trossamfunn i Norge.</p>
+                </div>
+                <div class="hero-image-box">
+                    <img src="images/hero-banner.svg" alt="Fellesskap og moskéarkitektur" class="hero-image">
+                </div>
+            </div>
+
+            <!-- 2. Dynamisk visning for valgt moské (skjult som standard) -->
+            <div id="heroMoskeView" style="display: none;"></div>
+
+            <!-- 3. Fredagsbønn (Jummah) visning (vises på fredager eller ved klikk på meny) -->
+            <div id="heroFredagsbonnView" style="display: none;"></div>
+        </section>
+
+        <!-- VISES PÅ SKJERMEN: cards-section & bildekort -->
+        <section class="cards-section">
+            <div class="card">
+                <div class="card-image-box">
+                    <img src="images/kort-best-praksis.svg" alt="Brobygging og fellesskap" class="card-image">
+                </div>
+                <h3>Brobygging & Dialog</h3>
+                <p style="font-family:var(--font-tekst); font-size:12px; color:#334155; margin-top:6px; line-height:1.4;">Styrker samarbeidet og dialogen mellom moskeer på tvers av kommuner og fylker.</p>
+            </div>
+            <div class="card">
+                <div class="card-image-box">
+                    <img src="images/kort-trosdialog.svg" alt="Veldedighet og omsorg" class="card-image">
+                </div>
+                <h3>Veldedighet & Hjelp</h3>
+                <p style="font-family:var(--font-tekst); font-size:12px; color:#334155; margin-top:6px; line-height:1.4;">Fremmer medmenneskelighet, nødhjelp og bistand til sårbare familier og trengende.</p>
+            </div>
+            <div class="card">
+                <div class="card-image-box">
+                    <img src="images/kort-kalender.svg" alt="Fredagsbønn og bønnetider" class="card-image">
+                </div>
+                <h3>Fredagsbønn & Tider</h3>
+                <p style="font-family:var(--font-tekst); font-size:12px; color:#334155; margin-top:6px; line-height:1.4;">Oppdaterte tidspunkter for khutbah, bønn og språk for tilreisende og lokale.</p>
+            </div>
+            <div class="card">
+                <div class="card-image-box">
+                    <img src="images/kort-erfaringsbank.svg" alt="Aktiviteter og lokaltilbud" class="card-image">
+                </div>
+                <h3>Faste Aktiviteter</h3>
+                <p style="font-family:var(--font-tekst); font-size:12px; color:#334155; margin-top:6px; line-height:1.4;">Oversikt over leksehjelp, koranskole og sosiale samlinger for barn og familier.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ======================================================== -->
+    <!-- 3. BUNNTEKSTEN: site-footer (Levert av Falah For Alle)   -->
+    <!-- ======================================================== -->
+    <footer class="site-footer" id="om-oss">
+        <div class="footer-falah-container">
+            <!-- Topp-merke: Drevet av Falah For Alle -->
+            <div class="falah-banner">
+                <div class="falah-badge">🤝 Et ideelt samfunnsinitiativ</div>
+                <h2 class="falah-tittel">Levert gratis av <span class="falah-highlight">Falah For Alle</span></h2>
+                <p class="falah-slogan">«Bli en del av løsningen – sammen er vi sterkere»</p>
+            </div>
+
+            <div class="falah-grid">
+                <!-- Kolonne 1: Om initiativet -->
+                <div class="falah-col">
+                    <h3 class="falah-col-tittel">Om Moskeene.no</h3>
+                    <p class="falah-tekst">
+                        Moskeene.no er bygget og driftes som en 100 % gratis og åpen fellestjeneste for moskeer, imamer og besøkende i Norge. Tjenesten gis av den frivillige veldedighetsorganisasjonen <strong>Falah For Alle</strong> for å fremme samhold, dialog og åpenhet.
+                    </p>
+                    <div class="falah-tags">
+                        <span class="falah-tag">100 % Frivillig</span>
+                        <span class="falah-tag">0 kr Gebyr</span>
+                        <span class="falah-tag">Full Transparens (Amanah)</span>
+                    </div>
+                </div>
+
+                <!-- Kolonne 2: Falah For Alle veldedighetsarbeid & Støtt oss -->
+                <div class="falah-col falah-stott-boks">
+                    <h3 class="falah-col-tittel">Støtt vårt veldedige arbeid</h3>
+                    <p class="falah-tekst">
+                        Falah For Alle arbeider med direkte og verifisert veldedighet: helsetilbud, utdanning, vinterhjelp og nødhjelp til sårbare familier. Hver krone går uavkortet til arbeidet.
+                    </p>
+                    
+                    <div class="falah-betaling-liste">
+                        <div class="betaling-element">
+                            <span class="vipps-merke">Vipps</span>
+                            <span class="betaling-verdi"><strong>#957193</strong> (Falah For Alle)</span>
+                        </div>
+                        <div class="betaling-element">
+                            <span class="bank-merke">🏦 Bankkonto</span>
+                            <span class="betaling-verdi"><strong>1520.17.56631</strong></span>
+                        </div>
+                        <div class="betaling-element">
+                            <span class="org-merke">🏢 Org.nr</span>
+                            <span class="betaling-verdi">934 869 524 (Drammen)</span>
+                        </div>
+                    </div>
+
+                    <a href="https://falahforalle.no" target="_blank" rel="noopener noreferrer" class="btn-besok-falah">
+                        Besøk FalahForAlle.no & se prosjektene våre ➜
+                    </a>
+                </div>
+
+                <!-- Kolonne 3: Hurtiglenker & Kontakt -->
+                <div class="falah-col">
+                    <h3 class="falah-col-tittel">Lenker & Kontakt</h3>
+                    <ul class="falah-lenker">
+                        <li><a href="https://falahforalle.no" target="_blank" rel="noopener noreferrer">🌐 Offisiell nettside (falahforalle.no)</a></li>
+                        <li><a href="min-moske/index.html">🔐 Min Moské Portal (for styreleder/imam)</a></li>
+                        <li><a href="moskesjekk/index.html">🔍 Moskesjekk (Brønnøysundregisteret)</a></li>
+                        <li><a href="moskesjekk/tilganger.html">🔑 Kodegenerator & Tilganger</a></li>
+                        <li><a href="mailto:kontakt@falahforalle.no">✉️ kontakt@falahforalle.no</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bunnstripe -->
+            <div class="falah-bottom-bar">
+                <p>&copy; 2026 Moskeene.no &bull; En gratis gave til fellesskapet fra <strong>Falah For Alle</strong> &bull; Ideell organisasjon org.nr: 934 869 524</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript: Data først, deretter logikken -->
+    <script src="bonnetider-data.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

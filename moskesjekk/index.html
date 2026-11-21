@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moskesjekk - Brønnøysund & Moskeoversikt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #14532D;
+            --secondary: #542314;
+            --accent: #54142D;
+            --salvie: #9DD4B3;
+            --sand: #D4AA9D;
+            --bg: #FAF8F5;
+            --font-tekst: 'Inter', system-ui, sans-serif;
+            --font-tittel: 'Playfair Display', Georgia, serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg); color: var(--primary); font-family: var(--font-tekst); line-height: 1.5; padding: 20px; }
+        .container { max-width: 1050px; margin: 0 auto; }
+
+        header { border-bottom: 2px solid var(--secondary); padding-bottom: 16px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 12px; }
+        h1 { font-family: var(--font-tittel); font-size: 28px; color: var(--primary); }
+        .sub-header { color: var(--secondary); font-size: 14px; margin-top: 4px; }
+
+        .btn-sync {
+            background-color: var(--primary);
+            color: var(--bg);
+            border: 1px solid var(--salvie);
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-family: var(--font-tekst);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-sync:hover { background-color: #0e3a1f; transform: translateY(-1px); }
+
+        .info-box { background: rgba(157, 212, 179, 0.25); border: 1px solid var(--salvie); border-radius: 8px; padding: 14px; margin-bottom: 20px; font-size: 13px; color: var(--secondary); }
+
+        .stats-bar { display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+        .stat-card { background: white; border: 1px solid var(--sand); border-radius: 8px; padding: 12px 18px; flex: 1; min-width: 180px; box-shadow: 0 2px 6px rgba(0,0,0,0.04); }
+        .stat-card .num { font-size: 22px; font-weight: 700; color: var(--accent); }
+        .stat-card .label { font-size: 12px; color: var(--secondary); text-transform: uppercase; font-weight: 600; }
+
+        .filter-bar { display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
+        .filter-bar input, .filter-bar select { padding: 10px 14px; border: 1px solid var(--secondary); border-radius: 8px; font-family: var(--font-tekst); font-size: 14px; outline: none; background: white; }
+        .filter-bar input { flex: 2; min-width: 220px; }
+        .filter-bar select { flex: 1; min-width: 180px; }
+
+        .fylke-seksjon { margin-bottom: 28px; background: white; border: 1px solid var(--sand); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+        .fylke-header { background: var(--primary); color: var(--bg); padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .fylke-header h2 { font-size: 18px; font-weight: 600; }
+        .fylke-header .badge { background: var(--salvie); color: var(--primary); padding: 2px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; }
+
+        .moske-liste { padding: 16px 20px; display: grid; grid-template-columns: 1fr; gap: 12px; }
+        @media (min-width: 768px) {
+            .moske-liste { grid-template-columns: 1fr 1fr; }
+        }
+
+        .moske-kort { border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px; background: #fafafa; display: flex; flex-direction: column; justify-content: space-between; gap: 8px; border-left: 4px solid var(--primary); }
+        .moske-navn { font-size: 15px; font-weight: 700; color: var(--primary); font-family: var(--font-tittel); }
+        .moske-detaljer { font-size: 13px; color: #475569; }
+
+        .moske-kontakt { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; padding-top: 6px; border-top: 1px dotted #e2e8f0; font-size: 12px; }
+        .kontakt-item { display: inline-flex; align-items: center; gap: 4px; color: #334155; }
+        .kontakt-item a { color: var(--accent); text-decoration: none; font-weight: 600; }
+        .kontakt-item a:hover { text-decoration: underline; }
+        .kontakt-mangler { color: #94a3b8; font-style: italic; }
+
+        .moske-meta { display: flex; justify-content: flex-end; align-items: center; margin-top: 6px; padding-top: 8px; border-top: 1px dashed #cbd5e1; font-size: 11px; }
+        .status-badge { background: #fef3c7; color: #92400e; padding: 2px 8px; border-radius: 4px; font-weight: 600; }
+
+        /* Statusvarsel ved live-søk */
+        #syncStatus { display: none; background: #dbeafe; border: 1px solid #93c5fd; color: #1e40af; padding: 12px; border-radius: 8px; margin-bottom: 20px; font-size: 13px; font-weight: 500; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Toppnavigasjon -->
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; padding:10px 16px; background:#fff; border:1px solid var(--sand); border-radius:8px;">
+            <div style="display:flex; gap:16px; align-items:center;">
+                <a href="../index.html" style="color:var(--primary); text-decoration:none; font-weight:600; font-size:13px; display:inline-flex; align-items:center; gap:6px;">
+                    <span>🏠</span> Hovedportal (Moskeene.no)
+                </a>
+                <span style="color:#cbd5e1;">|</span>
+                <span style="font-weight:700; color:var(--primary); font-size:13px;">🏛️ Brønnøysund Oversikt</span>
+                <span style="color:#cbd5e1;">|</span>
+                <a href="nettsidesjekk.html" style="color:var(--accent); text-decoration:none; font-weight:600; font-size:13px; display:inline-flex; align-items:center; gap:6px;">
+                    <span>🌐</span> Gå til Nettsidesjekk (døde lenker)
+                </a>
+                <span style="color:#cbd5e1;">|</span>
+                <a href="tilganger.html" style="color:var(--primary); text-decoration:none; font-weight:600; font-size:13px; display:inline-flex; align-items:center; gap:6px;">
+                    <span>🔑</span> Kodegenerator & Tilganger
+                </a>
+                <span style="color:#cbd5e1;">|</span>
+                <a href="../min-moske/index.html" target="_blank" style="color:var(--primary); text-decoration:none; font-weight:600; font-size:13px; display:inline-flex; align-items:center; gap:6px;">
+                    <span>🔐</span> Min Moské Portal
+                </a>
+            </div>
+            <a href="nettsidesjekk.html" style="background:var(--accent); color:white; padding:6px 12px; border-radius:6px; text-decoration:none; font-size:12px; font-weight:600;">
+                Sjekk nettsider ➜
+            </a>
+        </div>
+
+        <header>
+            <div>
+                <h1>🔍 Moskesjekk - Brønnøysundregisteret</h1>
+                <p class="sub-header">Internt kontrollpanel: 266 verifiserte trossamfunn med styreleder og hjemmeside (uten telefonnumre).</p>
+            </div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                <button class="btn-sync" style="background-color: var(--accent);" onclick="togglePinModal()">
+                    <span>🔑</span> Se PIN-koder & Invitasjoner
+                </button>
+                <button class="btn-sync" style="background-color: var(--secondary);" onclick="toggleMeldingerModal()">
+                    <span>📬</span> Innboks: Meldinger fra moskeer <span id="adminMeldingBadge" style="background:var(--salvie); color:var(--primary); font-size:11px; padding:2px 7px; border-radius:999px; font-weight:700; margin-left:4px;">1</span>
+                </button>
+                <button class="btn-sync" id="btnEnrichRoles" onclick="startBrowserEnrichment()">
+                    <span>👤</span> Hent styreledere fra Brreg nå
+                </button>
+                <button class="btn-sync" style="background-color: #334155;" onclick="downloadUpdatedJson()">
+                    <span>💾</span> Last ned oppdatert JSON
+                </button>
+            </div>
+        </header>
+
+        <div id="syncStatus"></div>
+
+        <div class="info-box">
+            <strong>🔒 Helhetlig søkestatus:</strong> Databasen dekker nå <strong>266 moskeer på tvers av 13 regioner</strong>, kryssjekket mot Statsforvalteren og Enhetsregisteret i Brønnøysund. Søket er ikke begrenset til én enkelt næringskode. Ingen enheter er publisert før du godkjenner dem.
+        </div>
+
+        <div class="stats-bar">
+            <div class="stat-card">
+                <div class="num" id="stat-total">266</div>
+                <div class="label">Innhentede moskeer</div>
+            </div>
+            <div class="stat-card">
+                <div class="num" id="stat-fylker">13</div>
+                <div class="label">Fylker og regioner</div>
+            </div>
+            <div class="stat-card">
+                <div class="num" style="color: #15803d;">100 %</div>
+                <div class="label">Hele Enhetsregisteret</div>
+            </div>
+        </div>
+
+        <!-- Filter og søk -->
+        <div class="filter-bar">
+            <input type="text" id="searchInput" placeholder="Søk i navn, styreleder, adresse eller org.nr...">
+            <select id="fylkeSelect">
+                <option value="alle">Vis alle fylker</option>
+            </select>
+            <select id="kommuneSelect">
+                <option value="alle">Vis alle kommuner</option>
+            </select>
+        </div>
+
+        <!-- Beholder for fylkene -->
+        <div id="fylkeContainer">
+            <p>Laster innhentede moskeer...</p>
+        </div>
+    </div>
+
+    <script>
+        let dataCache = null;
+
+        async function init() {
+            try {
+                const res = await fetch('upublisert-moskeer.json');
+                dataCache = await res.json();
+                
+                document.getElementById('stat-total').textContent = dataCache.totaltAntall;
+                const fylkeKeys = Object.keys(dataCache.fylker);
+                document.getElementById('stat-fylker').textContent = fylkeKeys.length;
+
+                // Fyll fylke-nedtrekk
+                const fylkeSelect = document.getElementById('fylkeSelect');
+                fylkeSelect.innerHTML = '<option value="alle">Vis alle fylker</option>';
+                fylkeKeys.sort().forEach(fylke => {
+                    const opt = document.createElement('option');
+                    opt.value = fylke;
+                    opt.textContent = `${fylke} (${dataCache.fylker[fylke].length})`;
+                    fylkeSelect.appendChild(opt);
+                });
+
+                oppdaterKommuneFilter('alle');
+                renderMoskeer();
+
+                // Lyttere for søk og filter
+                document.getElementById('searchInput').addEventListener('input', renderMoskeer);
+                document.getElementById('fylkeSelect').addEventListener('change', (e) => {
+                    oppdaterKommuneFilter(e.target.value);
+                    renderMoskeer();
+                });
+                document.getElementById('kommuneSelect').addEventListener('change', renderMoskeer);
+
+            } catch (err) {
+                document.getElementById('fylkeContainer').innerHTML = '<p style="color:red;">Kunne ikke laste datafilen. Sjekk at upublisert-moskeer.json ligger i samme mappe.</p>';
+            }
+        }
+
+        function oppdaterKommuneFilter(valgtFylke) {
+            const kommuneSelect = document.getElementById('kommuneSelect');
+            const tidlValgt = kommuneSelect.value;
+            kommuneSelect.innerHTML = '<option value="alle">Vis alle kommuner</option>';
+
+            const kommuneCounts = {};
+            for (const [fylke, moskeer] of Object.entries(dataCache.fylker)) {
+                if (valgtFylke !== 'alle' && fylke !== valgtFylke) continue;
+                for (const m of moskeer) {
+                    const k = (m.kommune || 'Uoppgitt').trim();
+                    kommuneCounts[k] = (kommuneCounts[k] || 0) + 1;
+                }
+            }
+
+            const sorterteKommuner = Object.keys(kommuneCounts).sort((a, b) => a.localeCompare(b, 'no'));
+            sorterteKommuner.forEach(k => {
+                const opt = document.createElement('option');
+                opt.value = k;
+                opt.textContent = `${k} (${kommuneCounts[k]})`;
+                kommuneSelect.appendChild(opt);
+            });
+
+            if (sorterteKommuner.includes(tidlValgt)) {
+                kommuneSelect.value = tidlValgt;
+            } else {
+                kommuneSelect.value = 'alle';
+            }
+        }
+
+        function renderMoskeer() {
+            const container = document.getElementById('fylkeContainer');
+            const searchVal = document.getElementById('searchInput').value.toLowerCase().trim();
+            const selectedFylke = document.getElementById('fylkeSelect').value;
+            const selectedKommune = document.getElementById('kommuneSelect').value;
+
+            container.innerHTML = '';
+            let synligeFylker = 0;
+
+            for (const [fylke, moskeer] of Object.entries(dataCache.fylker)) {
+                if (selectedFylke !== 'alle' && fylke !== selectedFylke) continue;
+
+                // Filtrer på søk og kommune
+                const filtrerte = moskeer.filter(m => {
+                    if (selectedKommune !== 'alle' && (m.kommune || '').toLowerCase() !== selectedKommune.toLowerCase()) {
+                        return false;
+                    }
+                    const matchNavn = (m.navn || '').toLowerCase().includes(searchVal);
+                    const matchKommune = (m.kommune || '').toLowerCase().includes(searchVal);
+                    const matchOrg = (m.orgnr || '').includes(searchVal);
+                    const matchAdresse = (m.adresse || '').toLowerCase().includes(searchVal);
+                    const matchLeder = (m.styreleder || '').toLowerCase().includes(searchVal);
+                    const matchNett = (m.nettside || '').toLowerCase().includes(searchVal);
+                    return matchNavn || matchKommune || matchOrg || matchAdresse || matchLeder || matchNett;
+                });
+
+                if (filtrerte.length === 0) continue;
+                synligeFylker++;
+
+                const fylkeBox = document.createElement('div');
+                fylkeBox.className = 'fylke-seksjon';
+
+                fylkeBox.innerHTML = `
+                    <div class="fylke-header">
+                        <h2>${fylke}</h2>
+                        <span class="badge">${filtrerte.length} moskeer</span>
+                    </div>
+                    <div class="moske-liste">
+                        ${filtrerte.map(m => {
+                            const lederHtml = m.styreleder
+                                ? `<span class="kontakt-item">👤 Styreleder: <strong>${m.styreleder}</strong></span>`
+                                : `<span class="kontakt-item kontakt-mangler">👤 Styreleder: Ikke innhentet</span>`;
+
+                            const nettHtml = m.nettside
+                                ? `<span class="kontakt-item">🌐 <a href="${m.nettside.startsWith('http') ? m.nettside : 'https://' + m.nettside}" target="_blank" rel="noopener noreferrer">${m.nettside}</a></span>`
+                                : `<span class="kontakt-item kontakt-mangler">🌐 Ikke registrert</span>`;
+
+                            return `
+                            <div class="moske-kort">
+                                <div>
+                                    <div class="moske-navn">${m.navn}</div>
+                                    <div class="moske-detaljer">📍 ${m.kommune} &bull; Org.nr: <strong>${m.orgnr}</strong></div>
+                                    <div class="moske-detaljer" style="font-size:12px; color:#64748b; margin-top:2px;">${m.adresse || 'Ingen adresse registrert'}</div>
+                                    <div class="moske-kontakt">
+                                        ${lederHtml}
+                                        ${nettHtml}
+                                    </div>
+                                </div>
+                                <div class="moske-meta">
+                                    <span class="status-badge">🟡 Ikke publisert</span>
+                                </div>
+                            </div>
+                            `;
+                        }).join('')}
+                    </div>
+                `;
+
+                container.appendChild(fylkeBox);
+            }
+
+            if (synligeFylker === 0) {
+                container.innerHTML = '<p style="padding:20px; text-align:center; color:#64748b;">Ingen moskeer matchet søket ditt.</p>';
+            }
+        }
+
+        // Kjører direkte i brukerens egen nettleser mot Brreg sitt åpne API (CORS-støttet, ingen terminal-spørsmål)
+        async function startBrowserEnrichment() {
+            const btn = document.getElementById('btnEnrichRoles');
+            const statusDiv = document.getElementById('syncStatus');
+            statusDiv.style.display = 'block';
+            statusDiv.style.background = '#dbeafe';
+            statusDiv.style.color = '#1e40af';
+            statusDiv.style.border = '1px solid #93c5fd';
+            btn.disabled = true;
+
+            const allMoskeer = [];
+            for (const moskeer of Object.values(dataCache.fylker)) {
+                allMoskeer.push(...moskeer);
+            }
+
+            let done = 0;
+            let funnetLedere = 0;
+            statusDiv.innerHTML = `⏳ Starter direkte oppslag mot Brønnøysund i nettleseren (0 av ${allMoskeer.length})...`;
+
+            // Henter i bolker på 4 om gangen
+            const batchSize = 4;
+            for (let i = 0; i < allMoskeer.length; i += batchSize) {
+                const batch = allMoskeer.slice(i, i + batchSize);
+                await Promise.all(batch.map(async (m) => {
+                    try {
+                        // 1. Hjemmeside
+                        if (!m.nettside) {
+                            const resE = await fetch(`https://data.brreg.no/enhetsregisteret/api/enheter/${m.orgnr}`);
+                            if (resE.ok) {
+                                const jsonE = await resE.json();
+                                if (jsonE.hjemmeside) m.nettside = jsonE.hjemmeside.trim();
+                            }
+                        }
+                        // 2. Styreleder
+                        if (!m.styreleder) {
+                            const resR = await fetch(`https://data.brreg.no/enhetsregisteret/api/enheter/${m.orgnr}/roller`);
+                            if (resR.ok) {
+                                const jsonR = await resR.json();
+                                if (jsonR.rollegrupper) {
+                                    for (const rg of jsonR.rollegrupper) {
+                                        if (rg.type && rg.type.kode === 'STYR' && rg.roller) {
+                                            for (const r of rg.roller) {
+                                                if (r.type && r.type.kode === 'LEDE' && r.person && r.person.navn) {
+                                                    const p = r.person.navn;
+                                                    const deler = [p.fornavn, p.mellomnavn, p.etternavn].filter(Boolean);
+                                                    m.styreleder = deler.join(' ');
+                                                    funnetLedere++;
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    } catch (e) {
+                        // Ignorer enkelte nettfeil
+                    }
+                    done++;
+                }));
+
+                statusDiv.innerHTML = `⏳ Henter styreledere fra Brønnøysund... ${done} av ${allMoskeer.length} fullført (${funnetLedere} styreledere funnet)`;
+                renderMoskeer();
+            }
+
+            btn.disabled = false;
+            statusDiv.style.background = '#dcfce7';
+            statusDiv.style.color = '#15803d';
+            statusDiv.style.border = '1px solid #86efac';
+            statusDiv.innerHTML = `✅ <strong>Ferdig!</strong> Oppslag mot Brønnøysundregistrene er fullført i nettleseren. Klikk «Last ned oppdatert JSON» hvis du vil lagre den.`;
+        }
+
+        function downloadUpdatedJson() {
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(dataCache, null, 2));
+            const dlAnchor = document.createElement('a');
+            dlAnchor.setAttribute("href", dataStr);
+            dlAnchor.setAttribute("download", "upublisert-moskeer.json");
+            document.body.appendChild(dlAnchor);
+            dlAnchor.click();
+            dlAnchor.remove();
+        }
+
+        // ======================================================================
+        // PIN-KODER OG INVITASJONER FOR MOSKEENE
+        // ======================================================================
+        let pubDataForPin = null;
+
+        async function togglePinModal() {
+            const modal = document.getElementById('pinModalOverlay');
+            if (modal.style.display === 'block') {
+                modal.style.display = 'none';
+                return;
+            }
+
+            modal.style.display = 'block';
+            const innhold = document.getElementById('pinModalInnhold');
+            innhold.innerHTML = '<p style="padding:20px; text-align:center;">Laster inn moskeenes PIN-koder og kontaktregister...</p>';
+
+            try {
+                if (!pubDataForPin) {
+                    const res = await fetch('publisert-moskeer.json');
+                    pubDataForPin = await res.json();
+                }
+
+                const moskeer = [];
+                for (const liste of Object.values(pubDataForPin.fylker || {})) {
+                    moskeer.push(...liste);
+                }
+
+                innhold.innerHTML = `
+                    <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:8px; padding:12px 16px; margin-bottom:16px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+                        <div style="font-size:13px; color:#166534;">
+                            <strong>👑 Egen kodegenerator & mobil-administrasjon:</strong> For å registrere/endre styrelederens mobilnummer eller generere nye tilfeldige 8-sifrede koder:
+                        </div>
+                        <a href="tilganger.html" style="background:var(--primary); color:white; padding:8px 14px; border-radius:6px; text-decoration:none; font-size:12px; font-weight:700;">
+                            Åpne Kodegenerator & Tilganger ➜
+                        </a>
+                    </div>
+                    <div style="overflow-x:auto;">
+                        <table style="width:100%; border-collapse:collapse; font-size:13px; text-align:left;">
+                            <thead>
+                                <tr style="background:#f1f5f9; border-bottom:2px solid #cbd5e1; color:#334155;">
+                                    <th style="padding:10px 12px;">Moské</th>
+                                    <th style="padding:10px 12px;">Kommune</th>
+                                    <th style="padding:10px 12px;">Styreleder</th>
+                                    <th style="padding:10px 12px;">Imam</th>
+                                    <th style="padding:10px 12px; text-align:center;">PIN-kode</th>
+                                    <th style="padding:10px 12px; text-align:right;">Invitasjon</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${moskeer.map(m => {
+                                    const k = m.kontakt || {};
+                                    const lederNavn = (k.styreleder && k.styreleder.navn) || m.styreleder || 'Ikke oppgitt';
+                                    const lederMobil = (k.styreleder && k.styreleder.mobil) || '';
+                                    const imamNavn = (k.imam && k.imam.navn) || '-';
+                                    const imamMobil = (k.imam && k.imam.mobil) || '';
+                                    const pin = k.pin || 'Mangler';
+
+                                    return `
+                                    <tr style="border-bottom:1px solid #e2e8f0;">
+                                        <td style="padding:10px 12px; font-weight:700; color:var(--primary);">${m.navn}</td>
+                                        <td style="padding:10px 12px; color:#64748b;">${m.kommune}</td>
+                                        <td style="padding:10px 12px;">
+                                            <div>${lederNavn}</div>
+                                            <div style="font-size:11px; color:#64748b;">${lederMobil ? '📱 ' + lederMobil : '<span style="color:#f59e0b;">Mangler mobil</span>'}</div>
+                                        </td>
+                                        <td style="padding:10px 12px;">
+                                            <div>${imamNavn}</div>
+                                            <div style="font-size:11px; color:#64748b;">${imamMobil ? '📱 ' + imamMobil : ''}</div>
+                                        </td>
+                                        <td style="padding:10px 12px; text-align:center;">
+                                            <span style="display:inline-block; background:#fef3c7; color:#92400e; font-family:monospace; font-size:14px; font-weight:700; padding:3px 8px; border-radius:4px; border:1px solid #fde68a;">
+                                                ${pin}
+                                            </span>
+                                        </td>
+                                        <td style="padding:10px 12px; text-align:right;">
+                                            <button type="button" onclick="kopierInvitasjon('${m.navn.replace(/'/g, "\\'")}', '${pin}')" style="background:var(--primary); color:white; border:none; padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; cursor:pointer;">
+                                                📋 Kopier SMS
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    `;
+                                }).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                `;
+            } catch (e) {
+                innhold.innerHTML = '<p style="color:red; padding:20px;">Kunne ikke laste PIN-koder fra publisert-moskeer.json.</p>';
+            }
+        }
+
+        function kopierInvitasjon(moskeNavn, pin) {
+            const smsTekst = `Hei! Velkommen til Moskeene.no. Din moské (${moskeNavn}) kan nå oppdatere fredagsbønn og khutbah-tider helt gratis på: https://moskeene.no/min-moske/\n\nBruk din personlige PIN-kode: ${pin} og ditt mobilnummer for å logge inn.`;
+            navigator.clipboard.writeText(smsTekst).then(() => {
+                alert(`✅ SMS-invitasjon for ${moskeNavn} er kopiert til utklippstavlen!\n\nTekst:\n"${smsTekst}"`);
+            }).catch(() => {
+                prompt("Kopier invitasjonsteksten:", smsTekst);
+            });
+        }
+
+        // ======================================================================
+        // ADMIN INNBOKS FOR MELDINGER FRA MOSKEENE
+        // ======================================================================
+        async function hentAdminMeldinger() {
+            let meldinger = [];
+            try {
+                if (!pubDataForPin) {
+                    const res = await fetch('publisert-moskeer.json');
+                    pubDataForPin = await res.json();
+                }
+                if (pubDataForPin && pubDataForPin.adminMeldinger) {
+                    meldinger.push(...pubDataForPin.adminMeldinger);
+                }
+            } catch(e) {}
+
+            try {
+                const lokal = localStorage.getItem('moskeene_admin_meldinger');
+                if (lokal) {
+                    const parsed = JSON.parse(lokal);
+                    parsed.forEach(p => {
+                        if (!meldinger.some(m => m.id === p.id)) {
+                            meldinger.unshift(p);
+                        }
+                    });
+                }
+            } catch(e) {}
+
+            return meldinger;
+        }
+
+        async function oppdaterMeldingBadge() {
+            const meldinger = await hentAdminMeldinger();
+            const badge = document.getElementById('adminMeldingBadge');
+            if (badge) {
+                badge.textContent = meldinger.length;
+                badge.style.display = meldinger.length > 0 ? 'inline-block' : 'none';
+            }
+        }
+
+        async function toggleMeldingerModal() {
+            const modal = document.getElementById('meldingerModalOverlay');
+            if (modal.style.display === 'block') {
+                modal.style.display = 'none';
+                return;
+            }
+
+            modal.style.display = 'block';
+            const innhold = document.getElementById('meldingerModalInnhold');
+            innhold.innerHTML = '<p style="padding:20px; text-align:center;">Laster inn meldinger fra innboksen...</p>';
+
+            const meldinger = await hentAdminMeldinger();
+            if (meldinger.length === 0) {
+                innhold.innerHTML = '<div style="padding:40px 20px; text-align:center; color:#64748B;">📭 Innboksen er tom. Ingen meldinger fra moskeene ennå.</div>';
+                return;
+            }
+
+            innhold.innerHTML = `
+                <div style="display:flex; flex-direction:column; gap:12px;">
+                    ${meldinger.map(m => `
+                        <div style="background:#FAF8F5; border:1px solid var(--sand); border-left:4px solid var(--secondary); border-radius:8px; padding:16px;">
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px; flex-wrap:wrap; gap:8px;">
+                                <div>
+                                    <div style="font-weight:700; font-size:15px; color:var(--primary); font-family:var(--font-tittel);">${m.moskeNavn}</div>
+                                    <div style="font-size:12px; color:#64748B;">Fra: <strong>${m.avsender}</strong> ${m.mobil ? '&bull; 📱 ' + m.mobil : ''} &bull; Org.nr: ${m.orgnr}</div>
+                                </div>
+                                <span style="font-size:11px; background:#e2e8f0; color:#475569; padding:2px 8px; border-radius:4px; font-weight:600;">
+                                    🕒 ${m.tidspunkt}
+                                </span>
+                            </div>
+                            <div style="font-size:13px; color:#1e293b; background:white; padding:12px; border-radius:6px; border:1px solid #e2e8f0; line-height:1.5;">
+                                ${m.melding}
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            init();
+            oppdaterMeldingBadge();
+        });
+    </script>
+
+    <!-- Modal vindu for PIN-oversikt -->
+    <div id="pinModalOverlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:2000; padding:20px; overflow-y:auto;">
+        <div style="max-width:960px; margin:30px auto; background:white; border-radius:12px; box-shadow:0 12px 36px rgba(0,0,0,0.25); overflow:hidden; border:2px solid var(--secondary);">
+            <div style="background:var(--primary); color:white; padding:16px 24px; display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                    <h2 style="font-family:var(--font-tittel); font-size:20px; margin:0;">🔑 Moské-tilganger, PIN-koder og Invitasjoner</h2>
+                    <p style="font-size:12px; margin:2px 0 0 0; color:var(--salvie);">Bruk disse kodene når du kontakter styreledere og imamer for å gi dem gratis tilgang til Min Moské.</p>
+                </div>
+                <button type="button" onclick="togglePinModal()" style="background:transparent; border:none; color:white; font-size:24px; cursor:pointer; font-weight:700;">✕</button>
+            </div>
+            <div id="pinModalInnhold" style="padding:20px; max-height:75vh; overflow-y:auto;"></div>
+        </div>
+    </div>
+
+    <!-- Modal vindu for Admin Innboks -->
+    <div id="meldingerModalOverlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:2000; padding:20px; overflow-y:auto;">
+        <div style="max-width:850px; margin:30px auto; background:white; border-radius:12px; box-shadow:0 12px 36px rgba(0,0,0,0.25); overflow:hidden; border:2px solid var(--primary);">
+            <div style="background:var(--secondary); color:white; padding:16px 24px; display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                    <h2 style="font-family:var(--font-tittel); font-size:20px; margin:0;">📬 Innboks: Meldinger fra moskeene</h2>
+                    <p style="font-size:12px; margin:2px 0 0 0; color:var(--sand);">Direkte henvendelser, oppdateringer og spørsmål sendt inn fra styreledere og imamer.</p>
+                </div>
+                <button type="button" onclick="toggleMeldingerModal()" style="background:transparent; border:none; color:white; font-size:24px; cursor:pointer; font-weight:700;">✕</button>
+            </div>
+            <div id="meldingerModalInnhold" style="padding:20px; max-height:75vh; overflow-y:auto;"></div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0e3a1f"/>
+      <stop offset="50%" stop-color="#14532D"/>
+      <stop offset="100%" stop-color="#1f7a43"/>
+    </linearGradient>
+    <linearGradient id="goldGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FAF8F5" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#9DD4B3" stop-opacity="0.2"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Bakgrunnshimmel -->
+  <rect width="1200" height="600" fill="url(#skyGrad)"/>
+
+  <!-- Lys og glød i bakgrunnen -->
+  <circle cx="600" cy="340" r="260" fill="url(#goldGlow)"/>
+
+  <!-- Måne & stjerner -->
+  <path d="M640,140 A35,35 0 1 0 670,195 A45,45 0 1 1 640,140 Z" fill="#FAF8F5" opacity="0.9"/>
+  <circle cx="530" cy="160" r="2.5" fill="#FAF8F5" opacity="0.8"/>
+  <circle cx="700" cy="130" r="2" fill="#FAF8F5" opacity="0.7"/>
+  <circle cx="480" cy="190" r="3" fill="#FAF8F5" opacity="0.9"/>
+  <circle cx="740" cy="180" r="2.5" fill="#FAF8F5" opacity="0.85"/>
+
+  <!-- Moské Silhuett - Bakre lag (Salviegrønn / Sand) -->
+  <g opacity="0.4" fill="#9DD4B3">
+    <!-- Venstre minaret bak -->
+    <rect x="260" y="240" width="22" height="360" rx="3"/>
+    <path d="M255,240 L271,180 L287,240 Z"/>
+    
+    <!-- Høyre minaret bak -->
+    <rect x="918" y="240" width="22" height="360" rx="3"/>
+    <path d="M913,240 L929,180 L945,240 Z"/>
+
+    <!-- Bakre kupler -->
+    <path d="M420,380 C420,290 480,260 500,240 C520,260 580,290 580,380 Z"/>
+    <path d="M620,380 C620,290 680,260 700,240 C720,260 780,290 780,380 Z"/>
+  </g>
+
+  <!-- Hovedsilhuett - Fremre lag (Dyp skogsgrønn & Sanddetaljer) -->
+  <g fill="#0b2c18">
+    <!-- Venstre tårn/minaret -->
+    <rect x="330" y="190" width="30" height="410" rx="4"/>
+    <path d="M325,190 L345,110 L365,190 Z"/>
+    <rect x="320" y="270" width="50" height="8" rx="2" fill="#D4AA9D"/>
+
+    <!-- Høyre tårn/minaret -->
+    <rect x="840" y="190" width="30" height="410" rx="4"/>
+    <path d="M835,190 L855,110 L875,190 Z"/>
+    <rect x="830" y="270" width="50" height="8" rx="2" fill="#D4AA9D"/>
+
+    <!-- Hovedkuppel i midten -->
+    <path d="M460,450 C460,310 550,260 600,210 C650,260 740,310 740,450 Z"/>
+    <!-- Kuppelspir -->
+    <line x1="600" y1="210" x2="600" y2="160" stroke="#FAF8F5" stroke-width="4"/>
+    <circle cx="600" cy="155" r="7" fill="#FAF8F5"/>
+
+    <!-- Hovedbygning base -->
+    <rect x="300" y="420" width="600" height="180" fill="#0b2c18"/>
+  </g>
+
+  <!-- Buer med varmt lys (Inngangspartier & vinduer) -->
+  <g fill="#FAF8F5" opacity="0.95">
+    <!-- Midtbue (Hovedinngang) -->
+    <path d="M565,600 L565,490 C565,465 580,450 600,435 C620,450 635,465 635,490 L635,600 Z"/>
+    <!-- Venstre buer -->
+    <path d="M490,600 L490,520 C490,500 500,490 515,480 C530,490 540,500 540,520 L540,600 Z" opacity="0.75"/>
+    <path d="M415,600 L415,540 C415,525 425,515 435,505 C445,515 455,525 455,540 L455,600 Z" opacity="0.5"/>
+    <!-- Høyre buer -->
+    <path d="M660,600 L660,520 C660,500 670,490 685,480 C700,490 710,500 710,520 L710,600 Z" opacity="0.75"/>
+    <path d="M745,600 L745,540 C745,525 755,515 765,505 C775,515 785,525 785,540 L785,600 Z" opacity="0.5"/>
+  </g>
+
+  <!-- Tekstplakett i bunnen -->
+  <text x="600" y="580" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-size="20" fill="#FAF8F5" opacity="0.9" letter-spacing="4">SAMMEN FOR FELLESSKAP OG KUNNSKAP</text>
+</svg>

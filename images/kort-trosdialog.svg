@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
+  <!-- Bakgrunn i varm sandfarge -->
+  <rect width="600" height="400" fill="#D4AA9D" rx="12"/>
+
+  <!-- Lys sirkel i midten -->
+  <circle cx="300" cy="200" r="140" fill="#FAF8F5" opacity="0.4"/>
+
+  <!-- Bue-ramme -->
+  <path d="M220,290 L220,170 C220,130 250,90 300,70 C350,90 380,130 380,170 L380,290 Z" 
+        fill="none" stroke="#542314" stroke-width="4"/>
+
+  <!-- Dialogboble 1 (Skogsgrønn) -->
+  <path d="M220,150 C220,125 245,110 275,110 C305,110 330,125 330,150 C330,165 320,180 305,185 L300,205 L285,190 C245,190 220,175 220,150 Z" 
+        fill="#14532D" opacity="0.95"/>
+
+  <!-- Dialogboble 2 (Burgunder aksent) -->
+  <path d="M280,210 C280,185 305,170 335,170 C365,170 390,185 390,210 C390,235 365,250 335,250 L315,250 L295,265 L300,245 C285,238 280,225 280,210 Z" 
+        fill="#54142D" opacity="0.95"/>
+
+  <!-- Hjerte / brobyggings-ikon i midten -->
+  <circle cx="275" cy="150" r="4" fill="#9DD4B3"/>
+  <circle cx="335" cy="210" r="4" fill="#FAF8F5"/>
+</svg>
