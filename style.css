@@ -583,7 +583,8 @@ a {
     height: auto;
     display: block;
     aspect-ratio: 2 / 1;
-    object-fit: contain;
+    object-fit: cover;
+    object-position: center;
 }
 
 /* BRANSJENAVN: cards-section (Kompakt 2x2 på mobil, 4 kolonner på PC) */
@@ -1436,7 +1437,8 @@ a {
         width: 100%;
         height: auto;
         aspect-ratio: 2 / 1;
-        object-fit: contain;
+        object-fit: cover;
+        object-position: center;
         display: block;
     }
 }
