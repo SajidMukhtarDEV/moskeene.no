@@ -49,3 +49,23 @@ Dette dokumentet definerer rammeverket, arbeidsmetoden, formålet og designretni
 4. **Felles kalender / Aktiviteter:** Kommende arrangementer, fagdager og seminarer.
 5. **Moské-oversikt / Bli med:** Enkelt skjema/kontaktpunkt for å melde inn en moské eller bidra med erfaringer.
 
+---
+
+## 6. Modulær arkitektur & Dataflyt (Single Source of Truth)
+Portalen er organisert i en ren, modularisert struktur for maksimal ytelse og transparens:
+
+* `data/`: Sentralt datalager (JSON og faste data).
+  * `publisert-moskeer.json`: Godkjente moskeer med fredagsbønn og tilgangskoder.
+  * `upublisert-moskeer.json`: Rådata over alle 266 enheter fra Brønnøysundregistrene.
+  * `bonnetider-drammen.js`: Faste bønnetider for året.
+* `js/`: Gjenbrukbar forretningslogikk og verktøy.
+  * `utils.js`: XSS-sikring (`escapeHtml`), formatere URLer/telefon og toast-varsler.
+  * `store.js`: `MoskeStore` som styrer all lesing, skriving, caching og kryss-fane synkronisering.
+  * `bonnetider.js`: `BonnetiderApp` for bønnetidsberegning, klokke og sanntids aktiv bønn.
+* `css/`: Modulære stilark.
+  * `base.css`: Fargepalett, nullstilling, typografi og safe-area-håndtering for mobil.
+  * `portal.css`: Felles komponenter for kontrollpaneler og portaler (skjemaer, knapper, tabeller, modaler).
+* `min-moske/`: Selvbetjeningsportal for styreledere og imamer.
+* `moskesjekk/`: Administrative verktøy for verifisering, lenkekontroll og tilgangsstyring.
+
+

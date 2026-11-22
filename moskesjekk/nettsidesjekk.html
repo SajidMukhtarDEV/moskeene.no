@@ -2,11 +2,13 @@
 <html lang="no">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Moskesjekk - Nettsidekontroll & Lenkevalidator</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/portal.css">
     <style>
         :root {
             --primary: #14532D;
@@ -391,6 +393,8 @@
 
     <div class="toast" id="toast"></div>
 
+    <script src="../js/utils.js"></script>
+    <script src="../js/store.js"></script>
     <script>
         // Hovedtilstand
         let siteItems = [];
@@ -399,33 +403,13 @@
         let pubDataCache = null;
         let upubDataCache = null;
 
-        function showToast(msg) {
-            const toast = document.getElementById('toast');
-            toast.textContent = msg;
-            toast.style.display = 'block';
-            setTimeout(() => { toast.style.display = 'none'; }, 3000);
-        }
-
-        // Normaliserer nettadresse til gyldig HTTPS/HTTP-URL
-        function formatUrl(url) {
-            if (!url) return '';
-            let u = url.trim();
-            if (!/^https?:\/\//i.test(u)) {
-                u = 'https://' + u;
-            }
-            return u;
-        }
-
-        // Last data fra JSON-filer
+        // Last data fra MoskeStore (sentralt datalager)
         async function loadData() {
             try {
-                const [resPub, resUpub] = await Promise.all([
-                    fetch('publisert-moskeer.json'),
-                    fetch('upublisert-moskeer.json')
+                [pubDataCache, upubDataCache] = await Promise.all([
+                    MoskeStore.loadPubliserte(),
+                    MoskeStore.loadUpubliserte()
                 ]);
-
-                pubDataCache = await resPub.json();
-                upubDataCache = await resUpub.json();
 
                 siteItems = [];
                 const orgnrSeen = new Set();

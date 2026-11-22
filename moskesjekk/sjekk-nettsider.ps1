@@ -1,4 +1,4 @@
-# ==============================================================================
+﻿# ==============================================================================
 # Moskesjekk - Automatisk Verifisering av Moske-nettsider (PowerShell)
 # ==============================================================================
 param(
@@ -7,7 +7,13 @@ param(
 
 $PSScriptRootCurrent = Split-Path -Parent $MyInvocation.MyCommand.Definition
 $pubFile = Join-Path $PSScriptRootCurrent "publisert-moskeer.json"
+if (-not (Test-Path $pubFile)) {
+    $pubFile = Join-Path $PSScriptRootCurrent "..\data\publisert-moskeer.json"
+}
 $upubFile = Join-Path $PSScriptRootCurrent "upublisert-moskeer.json"
+if (-not (Test-Path $upubFile)) {
+    $upubFile = Join-Path $PSScriptRootCurrent "..\data\upublisert-moskeer.json"
+}
 
 Write-Host "`n🔍 MOSKESJEKK - NETTSIDEKONTROLL" -ForegroundColor Cyan
 Write-Host "=========================================" -ForegroundColor DarkGray

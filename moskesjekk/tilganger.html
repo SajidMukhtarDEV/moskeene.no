@@ -2,11 +2,13 @@
 <html lang="no">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Moskesjekk - Kodegenerator & Tilgangsstyring</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/portal.css">
     <style>
         :root {
             --primary: #14532D;
@@ -381,42 +383,14 @@
 
     <div class="toast" id="toast"></div>
 
+    <script src="../js/utils.js"></script>
+    <script src="../js/store.js"></script>
     <script>
-        // Hjelpefunksjon for å unngå XSS / skriptinjeksjon ved HTML-innsetting
-        function escapeHtml(str) {
-            if (str === null || str === undefined) return '';
-            return String(str)
-                .replace(/&/g, '&amp;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;')
-                .replace(/"/g, '&quot;')
-                .replace(/'/g, '&#39;');
-        }
-
         let moskeData = null;
-
-        function showToast(msg) {
-            const toast = document.getElementById('toast');
-            toast.textContent = msg;
-            toast.style.display = 'block';
-            setTimeout(() => { toast.style.display = 'none'; }, 3500);
-        }
-
-        // Genererer et tilfeldig 8-sifret tall som streng
-        function lag8SifretTall() {
-            return Math.floor(10000000 + Math.random() * 90000000).toString();
-        }
 
         async function init() {
             try {
-                // Prøv localStorage først
-                const lokalCache = localStorage.getItem('moskeene_publisert_cache');
-                if (lokalCache && !lokalCache.includes('Ã')) {
-                    moskeData = JSON.parse(lokalCache);
-                } else {
-                    const res = await fetch('publisert-moskeer.json');
-                    moskeData = await res.json();
-                }
+                moskeData = await MoskeStore.loadPubliserte();
 
                 populerMoskeVelger();
                 renderTabell();
@@ -561,7 +535,7 @@
             // Oppdater også overordnet styreleder-felt
             if (lNavn) m.styreleder = lNavn;
 
-            localStorage.setItem('moskeene_publisert_cache', JSON.stringify(moskeData));
+            MoskeStore.savePubliserte(moskeData);
             renderTabell();
             oppdaterStatistikk();
             showToast(`✅ Opplysninger og 8-sifret kode lagret for ${m.navn}!`);

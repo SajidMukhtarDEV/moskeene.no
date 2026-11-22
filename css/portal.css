@@ -1,0 +1,299 @@
+/* ==========================================================================
+   PORTAL.CSS - Moskeene.no
+   Felles stiler for administrasjon, Min Moské og Moskesjekk-verktøyene
+   ========================================================================== */
+
+.portal-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 16px;
+}
+
+/* 1. Toppnavigasjon for interne portaler */
+.portal-top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    border: 1px solid var(--surface-sand);
+    border-radius: 10px;
+    padding: 10px 18px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.portal-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    font-size: 13px;
+}
+
+.portal-nav-links a {
+    color: var(--primary-hoved);
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.portal-nav-links a:hover {
+    color: var(--accent-burgunder);
+}
+
+.portal-nav-links .sep {
+    color: #cbd5e1;
+}
+
+.portal-nav-links .active {
+    color: var(--accent-burgunder);
+    font-weight: 700;
+}
+
+/* 2. Header */
+.portal-header {
+    border-bottom: 2px solid var(--secondary-brun);
+    padding-bottom: 16px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.portal-title {
+    font-family: var(--font-tittel);
+    font-size: 26px;
+    color: var(--primary-hoved);
+}
+
+.portal-subtitle {
+    color: var(--secondary-brun);
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+/* 3. Statistikk-bokser */
+.portal-stats-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.portal-stat-card {
+    background: white;
+    border: 1px solid var(--surface-sand);
+    border-radius: var(--radius-btn-knapp);
+    padding: 12px 18px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+    text-align: center;
+}
+
+.portal-stat-card .num {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--accent-burgunder);
+}
+
+.portal-stat-card .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #64748B;
+    margin-top: 2px;
+}
+
+/* 4. Skjemaelementer (Form Controls) */
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--primary-hoved);
+    margin-bottom: 5px;
+}
+
+.form-control, .form-input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #CBD5E1;
+    border-radius: 6px;
+    font-family: var(--font-tekst);
+    font-size: 13px;
+    background: #FAF8F5;
+    outline: none;
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.form-control:focus, .form-input:focus {
+    border-color: var(--primary-hoved);
+    background: #FFFFFF;
+}
+
+.pin-display {
+    font-family: monospace;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--accent-burgunder);
+    letter-spacing: 2px;
+    text-align: center;
+    background: #FEF3C7;
+    border: 1px solid #FDE68A;
+}
+
+/* 5. Knapper (Buttons) */
+.btn {
+    background-color: var(--primary-hoved);
+    color: white;
+    border: 1px solid var(--primary-lys-salvie);
+    padding: 10px 16px;
+    border-radius: var(--radius-btn-knapp);
+    font-family: var(--font-tekst);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-brun);
+    border-color: #783522;
+}
+
+.btn-secondary:hover {
+    background-color: #38160C;
+}
+
+.btn-accent {
+    background-color: var(--accent-burgunder);
+    border-color: #7A1D42;
+}
+
+.btn-accent:hover {
+    background-color: #3B0E1F;
+}
+
+.btn-outline {
+    background: white;
+    color: var(--primary-hoved);
+    border: 1px solid var(--primary-hoved);
+}
+
+.btn-outline:hover {
+    background: #F0FDF4;
+}
+
+.btn-sm {
+    padding: 6px 10px;
+    font-size: 11px;
+    border-radius: 4px;
+}
+
+/* 6. Tabell og lister */
+.portal-table-wrap {
+    background: white;
+    border: 1px solid var(--surface-sand);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    margin-bottom: 24px;
+}
+
+.portal-filter-row {
+    padding: 12px 16px;
+    border-bottom: 1px solid #E2E8F0;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    background: #FAF8F5;
+}
+
+.portal-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    text-align: left;
+}
+
+.portal-table th {
+    background: #F1F5F9;
+    padding: 10px 12px;
+    font-weight: 700;
+    color: #334155;
+    border-bottom: 2px solid #CBD5E1;
+}
+
+.portal-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #E2E8F0;
+    vertical-align: middle;
+}
+
+/* 7. Modal Vinduer */
+.portal-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    padding: 20px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.portal-modal-box {
+    max-width: 900px;
+    margin: 20px auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    border: 2px solid var(--secondary-brun);
+}
+
+.portal-modal-header {
+    background: var(--primary-hoved);
+    color: white;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.portal-modal-header h2 {
+    font-family: var(--font-tittel);
+    font-size: 18px;
+    margin: 0;
+}
+
+.portal-modal-close {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+    font-weight: 700;
+}

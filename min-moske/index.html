@@ -2,11 +2,13 @@
 <html lang="no">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Min Moské - Portalen for moskeer i Norge</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/portal.css">
     <style>
         :root {
             --primary: #14532D;
@@ -511,39 +513,15 @@
 
     <div class="toast" id="toast"></div>
 
+    <script src="../js/utils.js"></script>
+    <script src="../js/store.js"></script>
     <script>
-        // Hjelpefunksjon for å unngå XSS / skriptinjeksjon ved HTML-innsetting
-        function escapeHtml(str) {
-            if (str === null || str === undefined) return '';
-            return String(str)
-                .replace(/&/g, '&amp;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;')
-                .replace(/"/g, '&quot;')
-                .replace(/'/g, '&#39;');
-        }
-
         let moskeData = null;
         let aktivMoske = null;
 
-        function showToast(msg) {
-            const toast = document.getElementById('toast');
-            toast.textContent = msg;
-            toast.style.display = 'block';
-            setTimeout(() => { toast.style.display = 'none'; }, 3500);
-        }
-
         async function init() {
             try {
-                // Prøv først localStorage for eventuelle lagrede endringer
-                const lokalCache = localStorage.getItem('moskeene_publisert_cache');
-                if (lokalCache && !lokalCache.includes('Ã')) {
-                    moskeData = JSON.parse(lokalCache);
-                } else {
-                    if (lokalCache && lokalCache.includes('Ã')) localStorage.removeItem('moskeene_publisert_cache');
-                    const res = await fetch('../moskesjekk/publisert-moskeer.json');
-                    moskeData = await res.json();
-                }
+                moskeData = await MoskeStore.loadPubliserte();
 
                 // Sjekk om bruker allerede var logget inn i denne økten
                 const lagretOrgnr = sessionStorage.getItem('min_moske_orgnr');
@@ -779,15 +757,8 @@
                 lest: false
             };
 
-            // Hent eksisterende meldinger fra cache eller opprett ny liste
-            let alleMeldinger = [];
-            try {
-                const eksisterende = localStorage.getItem('moskeene_admin_meldinger');
-                if (eksisterende) alleMeldinger = JSON.parse(eksisterende);
-            } catch(e) {}
-
-            alleMeldinger.unshift(nyMelding);
-            localStorage.setItem('moskeene_admin_meldinger', JSON.stringify(alleMeldinger));
+            // Lagre meldingen via MoskeStore
+            MoskeStore.sendAdminMelding(nyMelding);
 
             // Nullstill felt og vis bekreftelse
             tekstFelt.value = '';
@@ -902,8 +873,8 @@
                 aktivMoske.aktiviteter = aktivMoske.aktiviteter.filter(a => a.tittel && a.tittel.trim());
             }
 
-            // Lagre til localStorage slik at endringen vises med en gang på nettstedet
-            localStorage.setItem('moskeene_publisert_cache', JSON.stringify(moskeData));
+            // Lagre til MoskeStore slik at endringen synkroniseres på tvers av hele portalen
+            MoskeStore.savePubliserte(moskeData);
 
             showToast("✅ Bønnetider, aktiviteter og opplysninger er lagret og oppdatert på Moskeene.no!");
         }

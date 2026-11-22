@@ -1,0 +1,2693 @@
+﻿{
+    "beskrivelse":  "Komplett register over 266 registrerte moskeer og muslimske trossamfunn i Norge med styreleder og hjemmeside direkte fra Brønnøysundregistrene (uten telefonnumre). Status: IKKE PUBLISERT - Venter på manuell gjennomgang.",
+    "sistOppdatert":  "2026-11-21",
+    "totaltAntall":  266,
+    "fylker":  {
+                   "Oslo":  [
+                                {
+                                    "orgnr":  "922253544",
+                                    "navn":  "Al Marifah",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Tvetenveien 217, 0675 Oslo",
+                                    "styreleder":  "Asghar Ali",
+                                    "nettside":  null,
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "992556803",
+                                    "navn":  "Al Momin Islamic Center",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Trygve Lies plass 1, 1051 Oslo",
+                                    "styreleder":  "Gohlam Gul Mosleh",
+                                    "nettside":  null,
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "987299266",
+                                    "navn":  "Al-Redha Islamic Center",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Gr�nland 6-8, 0188 Oslo",
+                                    "styreleder":  "Ali Jalal Umran Al-Sayad",
+                                    "nettside":  "www.redha.no",
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "975611515",
+                                    "navn":  "Albansk Islamsk Kultursenter",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Sverres gate 8, 0652 Oslo",
+                                    "styreleder":  "Fatmir Shabani",
+                                    "nettside":  "www.qiksh.no",
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "994592742",
+                                    "navn":  "Albansk trossamfunn og kultursenter i Norge",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Tvetenveien 152, 0671 Oslo",
+                                    "styreleder":  "Erduan Esati",
+                                    "nettside":  null,
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "988088943",
+                                    "navn":  "Anatolian Alevi-bektashi Trossamfunn",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Jernbaneveien 19, 0667 Oslo",
+                                    "styreleder":  "Musa Karabulut",
+                                    "nettside":  null,
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "980002837",
+                                    "navn":  "Anjuman Falah Ul Muslimeen",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Ravn�sveien 1, 1254 Oslo",
+                                    "styreleder":  "Shehzad Sarwar",
+                                    "nettside":  null,
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "871490872",
+                                    "navn":  "Anjuman-e-hussaini Norway",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Lindeberg n�ringsvei 26, 1067 Oslo",
+                                    "styreleder":  "Javaid Iqbal",
+                                    "nettside":  null,
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "975797015",
+                                    "navn":  "Anjuman-e-islahul Muslimeen Oslo",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Malm�gata 7, 0566 Oslo",
+                                    "styreleder":  "Hammad Ali Ahmad",
+                                    "nettside":  null,
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "971279621",
+                                    "navn":  "Bazim Naqushband Muslimer - Spiritual Center",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Sverdrups gate 24A, 0559 Oslo",
+                                    "styreleder":  "Abdul Munir Gondal",
+                                    "nettside":  null,
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "974444216",
+                                    "navn":  "Center Rahma",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Tvetenveien 152, 0671 Oslo",
+                                    "styreleder":  "Mohammed Jabran",
+                                    "nettside":  "www.centerrahma.com",
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "971490896",
+                                    "navn":  "Central Jam-e-Mosque World Islamic Mission, Norway",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "�kebergveien 28B, 0650 Oslo",
+                                    "styreleder":  "Ali Ashraf",
+                                    "nettside":  "www.wim.no",
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "938835969",
+                                    "navn":  "Central Jamaat-E Ahl-E Sunnat Norway",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Motzfeldts gate 10, 0187 Oslo",
+                                    "styreleder":  "Zahid Aslam",
+                                    "nettside":  "www.cjas.no",
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "988961175",
+                                    "navn":  "Darul Uloom Oslo",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Trondheimsveien 163, 0570 Oslo",
+                                    "styreleder":  "Qari Hafaz Bashir Ahmed",
+                                    "nettside":  null,
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "976388429",
+                                    "navn":  "Darusalaam Islamic Centre",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Lindeberg n�ringsvei 26, 1067 Oslo",
+                                    "styreleder":  "Mohamed Anees Rauf",
+                                    "nettside":  "www.darusalaam.no",
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "971279990",
+                                    "navn":  "Den Tyrkisk Islamske Union",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Motzfeldtsgate 6-8, 0187 Oslo",
+                                    "styreleder":  "Kemal Yarar",
+                                    "nettside":  null,
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "976182251",
+                                    "navn":  "Det Islamske Fellesskap Bosnia-Herzegovina",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Fougners vei 2A, 0571 Oslo",
+                                    "styreleder":  "Mersad Rizvanovic",
+                                    "nettside":  "www.izbih.no",
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "983228364",
+                                    "navn":  "Det Islamske Forbundet",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Calmeyers gate 8, 0183 Oslo",
+                                    "styreleder":  "Basim Ghozlan",
+                                    "nettside":  "www.rabita.no",
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "871276072",
+                                    "navn":  "Det Islamske Kultursenter i Oslo",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Pottemakerveien 4, 0954 Oslo",
+                                    "styreleder":  "Huseyin Kara",
+                                    "nettside":  null,
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "889587172",
+                                    "navn":  "Det Islamske Samarbeidssenteret I Norge",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Kolstadgata 18, 0652 Oslo",
+                                    "styreleder":  "Khader Salad Adan",
+                                    "nettside":  "www.markaska.com",
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "987558075",
+                                    "navn":  "Det Norske Imam Ali Senter",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Tvetenveien 152, 0671 Oslo",
+                                    "styreleder":  "Bijan Mohebbi",
+                                    "nettside":  "www.imamali.no",
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "989481509",
+                                    "navn":  "Etiopiske Muslimske Trossamfunn i Norge",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Trygve Lies plass 1, 1051 Oslo",
+                                    "styreleder":  "Kedar Nassir Shyto",
+                                    "nettside":  null,
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "992860022",
+                                    "navn":  "Faizane Madina Norway",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Haugerud senter 1-7, 0616 Oslo",
+                                    "styreleder":  "Mohammad Tayeb Ahmad",
+                                    "nettside":  null,
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "971279354",
+                                    "navn":  "Ghousia Muslim Society",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Sofienberggata 44, 0560 Oslo",
+                                    "styreleder":  "Chaudary Ijaz Ahmad",
+                                    "nettside":  "www.gmsn.no",
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "914419247",
+                                    "navn":  "Hikmah Norway",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Str�msveien 223, 0668 Oslo",
+                                    "styreleder":  "Mohamed Uzzal Mazumder",
+                                    "nettside":  null,
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "984196067",
+                                    "navn":  "Imam Bediuzzeman Camii",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Lakkegata 17, 0187 Oslo",
+                                    "styreleder":  "Hilmi Yesiltas",
+                                    "nettside":  null,
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "988322296",
+                                    "navn":  "Imam Mehdi Senter",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Caspar Storms vei 12, 0664 Oslo",
+                                    "styreleder":  "Haithem Latif Mahmood",
+                                    "nettside":  null,
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "971490888",
+                                    "navn":  "Islamic Centre og Aktivitetshus Stovner",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Aasta Hansteens vei 8, 0988 Oslo",
+                                    "styreleder":  "Mohammad Asjid",
+                                    "nettside":  null,
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "956708923",
+                                    "navn":  "Islamic Cultural Centre Norway",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "T�yenbekken 24, 0188 Oslo",
+                                    "styreleder":  "Rizwan Ahmed Syed",
+                                    "nettside":  "www.islamic.no",
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "982131502",
+                                    "navn":  "Islamic Solidarity Society Iss",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Casparis gate 4, 0174 Oslo",
+                                    "styreleder":  "Malang Sanyang",
+                                    "nettside":  null,
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "979655673",
+                                    "navn":  "ISMG Oslo-Mevlana Moske",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Tvetenveien 152, 0671 Oslo",
+                                    "styreleder":  "Kemal Bas",
+                                    "nettside":  null,
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "996074234",
+                                    "navn":  "Jamiah Baab Ul Ilm",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Jorines vei 27, 0980 Oslo",
+                                    "styreleder":  "Syed Farasat Ali Bukhari",
+                                    "nettside":  null,
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "931987127",
+                                    "navn":  "Kurdisk Trossamfunn Og Kultursenter",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Hauketoveien 8, 1266 Oslo",
+                                    "styreleder":  "Najman Misho Hewel Sindy",
+                                    "nettside":  null,
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "913492625",
+                                    "navn":  "Markaz-ul-Muslimeen",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Ole Brumms vei 7, 0979 Oslo",
+                                    "styreleder":  "Subhan Shinwari",
+                                    "nettside":  null,
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "988226491",
+                                    "navn":  "Marokkansk Trossamfunn",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Lakkegata 79B, 0562 Oslo",
+                                    "styreleder":  "Abdelmajid Tarsani",
+                                    "nettside":  "www.attaouba.no",
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "980059057",
+                                    "navn":  "Masjid Bilal",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Trondheimsveien 162A, 0570 Oslo",
+                                    "styreleder":  "Mohammed Miri",
+                                    "nettside":  null,
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "990780781",
+                                    "navn":  "Masjid Nuur",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "c/o Ahmed Abdi Mose, Erich Mogens�ns vei 21, 0594 Oslo",
+                                    "styreleder":  "Ahmed Abdi Mose",
+                                    "nettside":  null,
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "812086332",
+                                    "navn":  "Masjidelsalam",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Gr�nlandsleiret 37, 0190 Oslo",
+                                    "styreleder":  "Thierno-Sadou Ibrahim Barry",
+                                    "nettside":  null,
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "971280301",
+                                    "navn":  "Minhaj-ul-Quran International Norway",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Enebakkveien 36B, 0657 Oslo",
+                                    "styreleder":  "Awais Ejaz Ahmed",
+                                    "nettside":  "www.minhaj.no",
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "983644201",
+                                    "navn":  "Muhiban-E-Ahlil Bait Centre",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Gr�nlandsleiret 39, 0190 Oslo",
+                                    "styreleder":  "Mohammad Hussain",
+                                    "nettside":  null,
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "984694407",
+                                    "navn":  "Muslim Senter Furuset Oslo Norway",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Furusetveien 21, 1053 Oslo",
+                                    "styreleder":  "Abdul Majeed Raja",
+                                    "nettside":  "www.muslimsenterfuruset.no",
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "993342114",
+                                    "navn":  "Nawayi Kultur Forening",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "c/o Gholam Uzbak, Ammerudgrenda 176, 0960 Oslo",
+                                    "styreleder":  "Gholam Uzbak",
+                                    "nettside":  "www.taksf.com",
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "989844261",
+                                    "navn":  "Nor Senter",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Nedre Rommen 7, 0988 Oslo",
+                                    "styreleder":  "Aram Othman Fatah",
+                                    "nettside":  null,
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "921796862",
+                                    "navn":  "Norsk Muslimsk Forening",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Johannes Bruns gate 12B, 0452 Oslo",
+                                    "styreleder":  "Mohammad Abdul Raeouf Jabasini",
+                                    "nettside":  null,
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "987979933",
+                                    "navn":  "Oromisk Muslimsk Samfunn I Norge",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Trygve Lies plass 1, 1051 Oslo",
+                                    "styreleder":  "Abdulrahman Mama Ali",
+                                    "nettside":  null,
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "919623268",
+                                    "navn":  "Oslo Islamic Center",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "T�yengata 45B, 0578 Oslo",
+                                    "styreleder":  "Mohamed Ibrahim Isa",
+                                    "nettside":  null,
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "992526637",
+                                    "navn":  "Oslos Saied Alsjohada Hosseinie",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "St�lfj�ra 20, 0975 Oslo",
+                                    "styreleder":  "Mohammad Alizadeh",
+                                    "nettside":  "www.hosseinie.no",
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "916810911",
+                                    "navn":  "Safa Senter",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Lakkegata 17, 0187 Oslo",
+                                    "styreleder":  "Burhan Faris Qarani",
+                                    "nettside":  null,
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "983424570",
+                                    "navn":  "Salahaddin Senter",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Gr�nlandsleiret 39, 0190 Oslo",
+                                    "styreleder":  "Rzgar Kerim Reshed",
+                                    "nettside":  "www.sase.no",
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "987627824",
+                                    "navn":  "S�ndre Nordstrand Muslimske Senter",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Lofsrudveien 1, 1281 Oslo",
+                                    "styreleder":  "Mohammad Iqbal Raja",
+                                    "nettside":  "www.muslimskesenter.no",
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "974459299",
+                                    "navn":  "Tauheed Islamic Centre",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Olaves Hvervens vei 11, 1266 Oslo",
+                                    "styreleder":  "Raad Haddad",
+                                    "nettside":  "www.tauheed.no",
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "979752121",
+                                    "navn":  "Tawfiiq Islamsk Senter",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "�kebergveien 40, 0650 Oslo",
+                                    "styreleder":  "Ahmed Abdirahman Aden",
+                                    "nettside":  "tawfiiq.net",
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "921621809",
+                                    "navn":  "Tsjetsjensk Islamsk Kultursenter",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Ammerudveien 20, 0958 Oslo",
+                                    "styreleder":  "L�ma Vakhitovitsj Alijev",
+                                    "nettside":  null,
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "999219845",
+                                    "navn":  "Tsjetsjensk Islamsk Kultursenter Bart",
+                                    "kommune":  "B�rum",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "Skuiveien 40, 1339 V�yenenga",
+                                    "styreleder":  "Anzor Borchyhov",
+                                    "nettside":  null,
+                                    "status":  "ikke_publisert"
+                                },
+                                {
+                                    "orgnr":  "988035939",
+                                    "navn":  "�stensj� Kultursenter",
+                                    "kommune":  "Oslo",
+                                    "fylke":  "Oslo",
+                                    "adresse":  "c/o Rashid Ahmad, B�lerskrenten 5, 0691 Oslo",
+                                    "styreleder":  "Rashid Ahmad",
+                                    "nettside":  null,
+                                    "status":  "ikke_publisert"
+                                }
+                            ],
+                   "Akershus":  [
+                                    {
+                                        "orgnr":  "971258470",
+                                        "navn":  "Al-Noor Islamic Centre",
+                                        "kommune":  "B�rum",
+                                        "fylke":  "Akershus",
+                                        "adresse":  "Ringeriksveien 202, 1340 Skui",
+                                        "styreleder":  "Mohammad Ilyas",
+                                        "nettside":  "www.al-noor.no",
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "996373576",
+                                        "navn":  "Al-rahma Islamic Center B�rum",
+                                        "kommune":  "B�rum",
+                                        "fylke":  "Akershus",
+                                        "adresse":  "Anthon Walles vei 36, 1337 Sandvika",
+                                        "styreleder":  "Sadiq Bashir Aded",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "927505274",
+                                        "navn":  "Asker Islamic Center",
+                                        "kommune":  "Asker",
+                                        "fylke":  "Akershus",
+                                        "adresse":  "Alfheim 26, 1384 Asker",
+                                        "styreleder":  "Rukhsar Ahmed",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "975947017",
+                                        "navn":  "Asker Somaliske Muslimske Samfunn",
+                                        "kommune":  "Asker",
+                                        "fylke":  "Akershus",
+                                        "adresse":  "Gamle Borgenvei 4-6, 1383 Asker",
+                                        "styreleder":  "Abdinasir Ibrahim Ifiye",
+                                        "nettside":  "Masjidbadar.no",
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "988369810",
+                                        "navn":  "Badar Islamsk Kultursenter",
+                                        "kommune":  "�s",
+                                        "fylke":  "Akershus",
+                                        "adresse":  "Moerveien 14, 1430 �s",
+                                        "styreleder":  "Abdi-Dahir Salad Sudi",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "925977241",
+                                        "navn":  "Chechen Muslim Center",
+                                        "kommune":  "Lillestr�m",
+                                        "fylke":  "Akershus",
+                                        "adresse":  "Str�msveien 58, 2010 Str�mmen",
+                                        "styreleder":  "Ilman Kharonovich Kadylkhanov",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "931062417",
+                                        "navn":  "Dar-ol-mostafa as-sonniyah Norway",
+                                        "kommune":  "Lillestr�m",
+                                        "fylke":  "Akershus",
+                                        "adresse":  "c/o Asif Mehmud, M�lleveien 15, 2010 Str�mmen",
+                                        "styreleder":  "Asif Mehmud",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "830264922",
+                                        "navn":  "Det Islamske Trossamfunn For Dialog Og Fred",
+                                        "kommune":  "B�rum",
+                                        "fylke":  "Akershus",
+                                        "adresse":  "Ringeriksveien 241, 1340 Skui",
+                                        "styreleder":  "Betul Resber Koca",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "920174361",
+                                        "navn":  "Eidsvoll Islamske Kultursenter",
+                                        "kommune":  "Eidsvoll",
+                                        "fylke":  "Akershus",
+                                        "adresse":  "Trondheimsvegen 212, 2070 R�holt",
+                                        "styreleder":  "Siah Ud Din",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "999163416",
+                                        "navn":  "Islamic Education Center",
+                                        "kommune":  "B�rum",
+                                        "fylke":  "Akershus",
+                                        "adresse":  "Skuiveien 40, 1339 V�yenenga",
+                                        "styreleder":  "Ahmed Madar Yusuf",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "929470729",
+                                        "navn":  "Jamia Masjid Alkousar",
+                                        "kommune":  "Ullensaker",
+                                        "fylke":  "Akershus",
+                                        "adresse":  "Steinvollvegen 2, 2053 Jessheim",
+                                        "styreleder":  "Shamroze Nasir Mir",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "998937515",
+                                        "navn":  "Kavkaz Cultural Center Of Norway",
+                                        "kommune":  "Ullensaker",
+                                        "fylke":  "Akershus",
+                                        "adresse":  "Ullersmovegen 15D, 2040 Kl�fta",
+                                        "styreleder":  "Husein Musaevitsj Kartoev",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "993850381",
+                                        "navn":  "Kawther-al-nabi",
+                                        "kommune":  "Lillestr�m",
+                                        "fylke":  "Akershus",
+                                        "adresse":  "Nybakveien 71A, 2013 Skjetten",
+                                        "styreleder":  "Sayed Sami Soltani",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "993890391",
+                                        "navn":  "Kultur Og Trossamfunnet Dehlevi For Sufisme",
+                                        "kommune":  "L�renskog",
+                                        "fylke":  "Akershus",
+                                        "adresse":  "L�rdagsrudveien 24, 1472 Fjellhamar",
+                                        "styreleder":  "Mustafa Keser",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "987864516",
+                                        "navn":  "L�renskog Muslim Center",
+                                        "kommune":  "L�renskog",
+                                        "fylke":  "Akershus",
+                                        "adresse":  "Sk�rersletta 60, 1473 L�renskog",
+                                        "styreleder":  "Mohammad Afzal",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "987988827",
+                                        "navn":  "Masjid-E Quba Ahl-E Sunnat Asker",
+                                        "kommune":  "Asker",
+                                        "fylke":  "Akershus",
+                                        "adresse":  "Gamle Borgenvei 4, 1383 Asker",
+                                        "styreleder":  "Shehzad Mustafa",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "996932869",
+                                        "navn":  "Muslimsk Kultursenter Norge",
+                                        "kommune":  "Lillestr�m",
+                                        "fylke":  "Akershus",
+                                        "adresse":  "Nittedalsgata 93, 2000 Lillestr�m",
+                                        "styreleder":  "Mushtaq Ahmed",
+                                        "nettside":  "www.mksn.no",
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "983999263",
+                                        "navn":  "Muslimsk Kultursenter Ski",
+                                        "kommune":  "Nordre Follo",
+                                        "fylke":  "Akershus",
+                                        "adresse":  "Idrettsveien 9, 1400 Ski",
+                                        "styreleder":  "Saqib Riaz",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "991648372",
+                                        "navn":  "Peshawa Tro- Og Kultursenter",
+                                        "kommune":  "Akershus",
+                                        "fylke":  "Akershus",
+                                        "adresse":  "",
+                                        "styreleder":  "Faiq Barzingi",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "922985499",
+                                        "navn":  "Romerike Islamsk Kultursenter",
+                                        "kommune":  "L�renskog",
+                                        "fylke":  "Akershus",
+                                        "adresse":  "Boecks gate 1, 1473 L�renskog",
+                                        "styreleder":  "Said Abdiqadir Abdi",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "986954023",
+                                        "navn":  "Taqwa Senter",
+                                        "kommune":  "L�renskog",
+                                        "fylke":  "Akershus",
+                                        "adresse":  "Solheimveien 72, 1473 L�renskog",
+                                        "styreleder":  "Ali Mohammad Aziz",
+                                        "nettside":  "Taqwa.no",
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "992432322",
+                                        "navn":  "Uighursk islamsk kultursenter",
+                                        "kommune":  "B�rum",
+                                        "fylke":  "Akershus",
+                                        "adresse":  "Industriveien 31, 1337 Sandvika",
+                                        "styreleder":  "Husenjan Behtiyarabdukerem",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "924523956",
+                                        "navn":  "Ukhuwah Muslim Indonesia Norwegia",
+                                        "kommune":  "B�rum",
+                                        "fylke":  "Akershus",
+                                        "adresse":  "c/o Made Jaya Muliawan, Skogstuveien 16B, 1363 H�vik",
+                                        "styreleder":  "Abdillah Suyuthi",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "819645922",
+                                        "navn":  "Ullensaker Muslimske Senter",
+                                        "kommune":  "Ullensaker",
+                                        "fylke":  "Akershus",
+                                        "adresse":  "Gotaasalleen 39, 2050 Jessheim",
+                                        "styreleder":  "Awes Afgan",
+                                        "nettside":  "www.umsenter.no",
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "931540157",
+                                        "navn":  "Vestby Nord Kultursenter",
+                                        "kommune":  "Vestby",
+                                        "fylke":  "Akershus",
+                                        "adresse":  "M�lleveien 3, 1540 Vestby",
+                                        "styreleder":  "Abdelaziz Aitannour",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    }
+                                ],
+                   "Buskerud":  [
+                                    {
+                                        "orgnr":  "990889880",
+                                        "navn":  "Afghaneres Kulturelle Og Islamske Forening i Buskerud",
+                                        "kommune":  "Drammen",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "Laurits Gr�nlands vei 30, 3035 Drammen",
+                                        "styreleder":  "Abdul Jalal Mohammad",
+                                        "nettside":  null,
+                                        "status":  "publisert"
+                                    },
+                                    {
+                                        "orgnr":  "974256258",
+                                        "navn":  "Anjuman-E-Islahul Muslimeen of Drammen Norway",
+                                        "kommune":  "Drammen",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "Tordenskiolds gate 86, 3044 Drammen",
+                                        "styreleder":  "Atif Choudhry",
+                                        "nettside":  null,
+                                        "status":  "publisert"
+                                    },
+                                    {
+                                        "orgnr":  "992195401",
+                                        "navn":  "Asselam Center",
+                                        "kommune":  "Drammen",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "c/o Hussam Aldeen Algazban, Rundtom 2, 3055 Krokstadelva",
+                                        "styreleder":  "Hussam Aldeen Algazban",
+                                        "nettside":  null,
+                                        "status":  "publisert"
+                                    },
+                                    {
+                                        "orgnr":  "985663882",
+                                        "navn":  "Buskerud Og Vestfold Muslimske Trossamfunn",
+                                        "kommune":  "Drammen",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "Smithestr�msveien 5, 3045 Drammen",
+                                        "styreleder":  "Ismail Yusuf Mohamed-Adur",
+                                        "nettside":  null,
+                                        "status":  "publisert"
+                                    },
+                                    {
+                                        "orgnr":  "885307612",
+                                        "navn":  "Den Alevitiske kultur senter i Norge",
+                                        "kommune":  "Drammen",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "Konnerudgata 31, 3045 Drammen",
+                                        "styreleder":  "Ali Kilinc",
+                                        "nettside":  null,
+                                        "status":  "publisert"
+                                    },
+                                    {
+                                        "orgnr":  "987436441",
+                                        "navn":  "Det Albanske kultur og trossamfunn i Norge",
+                                        "kommune":  "Drammen",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "Engene 70, 3015 Drammen",
+                                        "styreleder":  "Ilir Beqiri",
+                                        "nettside":  "www.bkfsh.no",
+                                        "status":  "publisert"
+                                    },
+                                    {
+                                        "orgnr":  "994989197",
+                                        "navn":  "Det Islamske forbundet i Drammen",
+                                        "kommune":  "Drammen",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "Nordahl Bruns gate 1, 3018 Drammen",
+                                        "styreleder":  "Nasseraldeen Eide",
+                                        "nettside":  null,
+                                        "status":  "publisert"
+                                    },
+                                    {
+                                        "orgnr":  "980764249",
+                                        "navn":  "Det Islamske Kultur Senter i Nedre Eiker",
+                                        "kommune":  "Drammen",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "Strandveien 20A, 3050 Mj�ndalen",
+                                        "styreleder":  "Faruk Kemal Tanatar",
+                                        "nettside":  null,
+                                        "status":  "publisert"
+                                    },
+                                    {
+                                        "orgnr":  "971307323",
+                                        "navn":  "Det Islamske Kultursenter i Drammen",
+                                        "kommune":  "Drammen",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "Christian Bloms gate 10, 3041 Drammen",
+                                        "styreleder":  "Ali Ekiz",
+                                        "nettside":  null,
+                                        "status":  "publisert"
+                                    },
+                                    {
+                                        "orgnr":  "987751142",
+                                        "navn":  "Det Tyrkiske Trossamfunnet I Drammen Og Omegn",
+                                        "kommune":  "Drammen",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "R�mers vei 4, 3016 Drammen",
+                                        "styreleder":  "Orhan Al",
+                                        "nettside":  "www.diyanetdrammen.no",
+                                        "status":  "publisert"
+                                    },
+                                    {
+                                        "orgnr":  "971307315",
+                                        "navn":  "Drammen Mosk�",
+                                        "kommune":  "Drammen",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "Solsvingen 116, 3034 Drammen",
+                                        "styreleder":  "Nauman Sarwar",
+                                        "nettside":  "www.drammenmoske.no",
+                                        "status":  "publisert"
+                                    },
+                                    {
+                                        "orgnr":  "993813303",
+                                        "navn":  "Drammen Tyrkiske Islamske menighet",
+                                        "kommune":  "Drammen",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "Laurits Gr�nlands vei 30, 3035 Drammen",
+                                        "styreleder":  "Fikan Cevik",
+                                        "nettside":  null,
+                                        "status":  "publisert"
+                                    },
+                                    {
+                                        "orgnr":  "998659485",
+                                        "navn":  "Hallingdal Islamsk Senter",
+                                        "kommune":  "Gol",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "Furuvegen 5, 3550 Gol",
+                                        "styreleder":  "Awad Shekh Abdukhadir Mahamed",
+                                        "nettside":  null,
+                                        "status":  "publisert"
+                                    },
+                                    {
+                                        "orgnr":  "998870593",
+                                        "navn":  "Hamwatan Islamsk og kulturell forening",
+                                        "kommune":  "Drammen",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "Steinbergveien 2, 3053 Steinberg",
+                                        "styreleder":  "Jar Mohamad Shahab",
+                                        "nettside":  null,
+                                        "status":  "publisert"
+                                    },
+                                    {
+                                        "orgnr":  "991883908",
+                                        "navn":  "H�nefoss Islamsk Senter",
+                                        "kommune":  "Ringerike",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "Hammerbrogate 9A, 3513 H�nefoss",
+                                        "styreleder":  "Ali Muhammadsani Ezhigarah",
+                                        "nettside":  null,
+                                        "status":  "publisert"
+                                    },
+                                    {
+                                        "orgnr":  "984573413",
+                                        "navn":  "Islamsk Anatolia Bektashi Trossamfunn",
+                                        "kommune":  "Drammen",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "Gamle Kongevei 14, 3040 Drammen",
+                                        "styreleder":  "Mesut Cenar",
+                                        "nettside":  null,
+                                        "status":  "publisert"
+                                    },
+                                    {
+                                        "orgnr":  "989631896",
+                                        "navn":  "Islamske Kurdiske Forening I Drammen",
+                                        "kommune":  "Lier",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "Gilhusveien 4, 3426 Gullaug",
+                                        "styreleder":  "Yusef Hassan Hussein",
+                                        "nettside":  null,
+                                        "status":  "publisert"
+                                    },
+                                    {
+                                        "orgnr":  "889941332",
+                                        "navn":  "Kongsberg Islamsk Kultursenter",
+                                        "kommune":  "Kongsberg",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "Kirkegata 11A, 3616 Kongsberg",
+                                        "styreleder":  "Amidou Metoumgbie",
+                                        "nettside":  null,
+                                        "status":  "publisert"
+                                    },
+                                    {
+                                        "orgnr":  "889585692",
+                                        "navn":  "Lier Moske",
+                                        "kommune":  "Lier",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "Brastadveien 56, 3425 Reistad",
+                                        "styreleder":  "Muhammad Asim",
+                                        "nettside":  null,
+                                        "status":  "publisert"
+                                    },
+                                    {
+                                        "orgnr":  "921419899",
+                                        "navn":  "Maulana Kulturell Og Islamsk Forening",
+                                        "kommune":  "Drammen",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "�vre �rengate 11, 3023 Drammen",
+                                        "styreleder":  "Olog Big",
+                                        "nettside":  null,
+                                        "status":  "publisert"
+                                    },
+                                    {
+                                        "orgnr":  "917343977",
+                                        "navn":  "Minhaj Kultursenter Drammen",
+                                        "kommune":  "Drammen",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "c/o Taher Karim, Fjellheimgata 6, 3011 Drammen",
+                                        "styreleder":  "Shafique Siddique",
+                                        "nettside":  null,
+                                        "status":  "publisert"
+                                    },
+                                    {
+                                        "orgnr":  "987967668",
+                                        "navn":  "P� rett vei",
+                                        "kommune":  "Drammen",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "c/o Mazhar Iqbal, Fossilveien 52, 3034 Drammen",
+                                        "styreleder":  "Chaudhry Mazhar Iqbal",
+                                        "nettside":  null,
+                                        "status":  "publisert"
+                                    },
+                                    {
+                                        "orgnr":  "997689151",
+                                        "navn":  "Resalat Islamsk Og Kulturelt Senter",
+                                        "kommune":  "Drammen",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "�vre Torggate 12, 3017 Drammen",
+                                        "styreleder":  "M�isam Alamy",
+                                        "nettside":  null,
+                                        "status":  "publisert"
+                                    },
+                                    {
+                                        "orgnr":  "979341598",
+                                        "navn":  "The Islamic Culture Society Buskerud Og Vestfold",
+                                        "kommune":  "Drammen",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "Laurits Gr�nlands vei 30, 3035 Drammen",
+                                        "styreleder":  "Nabeel Ellahi",
+                                        "nettside":  null,
+                                        "status":  "publisert"
+                                    }
+                                ],
+                   "�stfold":  [
+                                   {
+                                       "orgnr":  "915387063",
+                                       "navn":  "Al- Amir Senter",
+                                       "kommune":  "Sarpsborg",
+                                       "fylke":  "�stfold",
+                                       "adresse":  "Tunebakken 17, 1725 Sarpsborg",
+                                       "styreleder":  "Safaa Jassim Salim Al Sarraji",
+                                       "nettside":  null,
+                                       "status":  "ikke_publisert"
+                                   },
+                                   {
+                                       "orgnr":  "888792732",
+                                       "navn":  "Al-Ghadir Islamsk Senter i �stfold",
+                                       "kommune":  "Sarpsborg",
+                                       "fylke":  "�stfold",
+                                       "adresse":  "Oldtidsveien 605, 1747 Skjeberg",
+                                       "styreleder":  "Sadiq Baker Alezairjawi",
+                                       "nettside":  "algadir.net",
+                                       "status":  "ikke_publisert"
+                                   },
+                                   {
+                                       "orgnr":  "992063068",
+                                       "navn":  "Al-huda Islamisk Senter",
+                                       "kommune":  "Fredrikstad",
+                                       "fylke":  "�stfold",
+                                       "adresse":  "Ole Hansens vei 9, 1619 Fredrikstad",
+                                       "styreleder":  "Mohamed Ilmi Sibriye",
+                                       "nettside":  null,
+                                       "status":  "ikke_publisert"
+                                   },
+                                   {
+                                       "orgnr":  "993249025",
+                                       "navn":  "Al-rawdah Kultur Senter",
+                                       "kommune":  "Sarpsborg",
+                                       "fylke":  "�stfold",
+                                       "adresse":  "Glengsgata 21, 1706 Sarpsborg",
+                                       "styreleder":  "Ahmed Hussein Hassan",
+                                       "nettside":  null,
+                                       "status":  "ikke_publisert"
+                                   },
+                                   {
+                                       "orgnr":  "971249544",
+                                       "navn":  "Anjman Flah Ul-Muslemin",
+                                       "kommune":  "Moss",
+                                       "fylke":  "�stfold",
+                                       "adresse":  "Vogts gate 7, 1532 Moss",
+                                       "styreleder":  "Mohammad Asif Iqbal",
+                                       "nettside":  null,
+                                       "status":  "ikke_publisert"
+                                   },
+                                   {
+                                       "orgnr":  "988012203",
+                                       "navn":  "Det Albanske Kultur- og Trossamfunn I �stfold",
+                                       "kommune":  "Sarpsborg",
+                                       "fylke":  "�stfold",
+                                       "adresse":  "Fl�terveien 7, 1712 Gr�lum",
+                                       "styreleder":  "Kadri Mushica",
+                                       "nettside":  null,
+                                       "status":  "ikke_publisert"
+                                   },
+                                   {
+                                       "orgnr":  "921846266",
+                                       "navn":  "Det Islamske Kultursenter I Moss",
+                                       "kommune":  "Moss",
+                                       "fylke":  "�stfold",
+                                       "adresse":  "Rambergveien 24, 1513 Moss",
+                                       "styreleder":  "Mehmet Karais",
+                                       "nettside":  null,
+                                       "status":  "ikke_publisert"
+                                   },
+                                   {
+                                       "orgnr":  "925865990",
+                                       "navn":  "Det Uigurske Samfunn",
+                                       "kommune":  "Moss",
+                                       "fylke":  "�stfold",
+                                       "adresse":  "V�rftsgata 10, 1511 Moss",
+                                       "styreleder":  "Adam Dahl",
+                                       "nettside":  null,
+                                       "status":  "ikke_publisert"
+                                   },
+                                   {
+                                       "orgnr":  "987946148",
+                                       "navn":  "Halden Islamsk Forening",
+                                       "kommune":  "Halden",
+                                       "fylke":  "�stfold",
+                                       "adresse":  "Sykehusgata 6, 1767 Halden",
+                                       "styreleder":  "Usman Ibrahim Butt",
+                                       "nettside":  null,
+                                       "status":  "ikke_publisert"
+                                   },
+                                   {
+                                       "orgnr":  "996515664",
+                                       "navn":  "Ihyaussunna Center",
+                                       "kommune":  "Sarpsborg",
+                                       "fylke":  "�stfold",
+                                       "adresse":  "Ihyaussunna Center, Pellygata 61, 1706 Sarpsborg",
+                                       "styreleder":  "Murshid Mashuq Al Khaznawi",
+                                       "nettside":  null,
+                                       "status":  "ikke_publisert"
+                                   },
+                                   {
+                                       "orgnr":  "911872382",
+                                       "navn":  "Islams Kurdiske Tro Senter",
+                                       "kommune":  "Sarpsborg",
+                                       "fylke":  "�stfold",
+                                       "adresse":  "c/o Hiwa Ahmadi, Ingeni�r Qvillers vei 6, 1718 Gre�ker",
+                                       "styreleder":  "Hiwa Ahmadi",
+                                       "nettside":  null,
+                                       "status":  "ikke_publisert"
+                                   },
+                                   {
+                                       "orgnr":  "916667469",
+                                       "navn":  "Islamsk Senter - Islaman Kherch",
+                                       "kommune":  "Enebakk",
+                                       "fylke":  "�stfold",
+                                       "adresse":  "V�gliveien 6B, 1914 Ytre Enebakk",
+                                       "styreleder":  "Muslim Agajev",
+                                       "nettside":  null,
+                                       "status":  "ikke_publisert"
+                                   },
+                                   {
+                                       "orgnr":  "932584522",
+                                       "navn":  "Islamsk Tsjetsjensk Senter Iman",
+                                       "kommune":  "Sarpsborg",
+                                       "fylke":  "�stfold",
+                                       "adresse":  "Sindings vei 5B, 1710 Sarpsborg",
+                                       "styreleder":  "Ruslan Anzorovitsj Avturkhanov",
+                                       "nettside":  null,
+                                       "status":  "ikke_publisert"
+                                   },
+                                   {
+                                       "orgnr":  "920406777",
+                                       "navn":  "Jodi kurdisk trossamfunn og kulturforening",
+                                       "kommune":  "Indre �stfold",
+                                       "fylke":  "�stfold",
+                                       "adresse":  "R�dhusgata 21, 1830 Askim",
+                                       "styreleder":  "Ibrahim Abdullah",
+                                       "nettside":  null,
+                                       "status":  "ikke_publisert"
+                                   },
+                                   {
+                                       "orgnr":  "989507206",
+                                       "navn":  "Kultur og Trosamfunn Menhec",
+                                       "kommune":  "Fredrikstad",
+                                       "fylke":  "�stfold",
+                                       "adresse":  "Dammyr 20, 1605 Fredrikstad",
+                                       "styreleder":  "Aytac Islekcerci",
+                                       "nettside":  null,
+                                       "status":  "ikke_publisert"
+                                   },
+                                   {
+                                       "orgnr":  "982754690",
+                                       "navn":  "Masjid Darussalam Norge",
+                                       "kommune":  "Fredrikstad",
+                                       "fylke":  "�stfold",
+                                       "adresse":  "Holmegata 21, 1610 Fredrikstad",
+                                       "styreleder":  "Syed Tariq Bin Ali Alsagoff",
+                                       "nettside":  null,
+                                       "status":  "ikke_publisert"
+                                   },
+                                   {
+                                       "orgnr":  "991846530",
+                                       "navn":  "Moss Islamik Senter",
+                                       "kommune":  "Moss",
+                                       "fylke":  "�stfold",
+                                       "adresse":  "V�rftsgata 10, 1511 Moss",
+                                       "styreleder":  "Liban Abdi Obsiye",
+                                       "nettside":  null,
+                                       "status":  "ikke_publisert"
+                                   },
+                                   {
+                                       "orgnr":  "980325652",
+                                       "navn":  "Muslim Culture Center",
+                                       "kommune":  "Sarpsborg",
+                                       "fylke":  "�stfold",
+                                       "adresse":  "H�kons gate 2, 1721 Sarpsborg",
+                                       "styreleder":  "Muhammad Rafique",
+                                       "nettside":  null,
+                                       "status":  "ikke_publisert"
+                                   },
+                                   {
+                                       "orgnr":  "987979313",
+                                       "navn":  "Muslimsk Kultursenter Askim",
+                                       "kommune":  "Indre �stfold",
+                                       "fylke":  "�stfold",
+                                       "adresse":  "Christian �degaards gate 6, 1830 Askim",
+                                       "styreleder":  "Abdul Rehman Ashraf",
+                                       "nettside":  null,
+                                       "status":  "ikke_publisert"
+                                   },
+                                   {
+                                       "orgnr":  "915718221",
+                                       "navn":  "Muslimsk Samfunn Mysen",
+                                       "kommune":  "Indre �stfold",
+                                       "fylke":  "�stfold",
+                                       "adresse":  "Jernbanegata 7D, 1850 Mysen",
+                                       "styreleder":  "Shafiq Ur-Rehman",
+                                       "nettside":  null,
+                                       "status":  "ikke_publisert"
+                                   },
+                                   {
+                                       "orgnr":  "991934561",
+                                       "navn":  "Qubehan Kultur Senter",
+                                       "kommune":  "Sarpsborg",
+                                       "fylke":  "�stfold",
+                                       "adresse":  "Opsundveien 15, 1726 Sarpsborg",
+                                       "styreleder":  "Alan Hammer",
+                                       "nettside":  "mosque.no",
+                                       "status":  "ikke_publisert"
+                                   },
+                                   {
+                                       "orgnr":  "994551299",
+                                       "navn":  "Rakkestad Muslim Kultur Forening",
+                                       "kommune":  "Rakkestad",
+                                       "fylke":  "�stfold",
+                                       "adresse":  "c/o Idris Abdillahi Meydhane, Mj�rudgata 5, 1890 Rakkestad",
+                                       "styreleder":  "Mohammad Hanif Andar",
+                                       "nettside":  "www.rmkforening.no",
+                                       "status":  "ikke_publisert"
+                                   },
+                                   {
+                                       "orgnr":  "924270527",
+                                       "navn":  "Roj Senter",
+                                       "kommune":  "Sarpsborg",
+                                       "fylke":  "�stfold",
+                                       "adresse":  "Gre�kerveien 136, 1718 Gre�ker",
+                                       "styreleder":  "Ismail Ali Hussein",
+                                       "nettside":  null,
+                                       "status":  "ikke_publisert"
+                                   },
+                                   {
+                                       "orgnr":  "911789817",
+                                       "navn":  "Tabassum Kulturell Og Sosial Forening I �Stfold",
+                                       "kommune":  "Sarpsborg",
+                                       "fylke":  "�stfold",
+                                       "adresse":  "Gre�kerveien 136, 1718 Gre�ker",
+                                       "styreleder":  "Faisal Rezaee",
+                                       "nettside":  null,
+                                       "status":  "ikke_publisert"
+                                   },
+                                   {
+                                       "orgnr":  "923206310",
+                                       "navn":  "�rje Islamsk Kultursenter",
+                                       "kommune":  "Marker",
+                                       "fylke":  "�stfold",
+                                       "adresse":  "Storgata 42, 1870 �rje",
+                                       "styreleder":  "Abdi Risak Dahir Gutale",
+                                       "nettside":  null,
+                                       "status":  "ikke_publisert"
+                                   },
+                                   {
+                                       "orgnr":  "928107795",
+                                       "navn":  "�stfold Aktivitets- Og Kultursenter",
+                                       "kommune":  "Fredrikstad",
+                                       "fylke":  "�stfold",
+                                       "adresse":  "Godtfredsens vei 6, 1617 Fredrikstad",
+                                       "styreleder":  "Ahmed Abdulrahman Ali",
+                                       "nettside":  null,
+                                       "status":  "ikke_publisert"
+                                   },
+                                   {
+                                       "orgnr":  "989584766",
+                                       "navn":  "�stfold Tyrkiske Muslimers Trossamfunn",
+                                       "kommune":  "Moss",
+                                       "fylke":  "�stfold",
+                                       "adresse":  "Helger�dgata 2A, 1515 Moss",
+                                       "styreleder":  "Yenal Yavuz",
+                                       "nettside":  "www.mossturk.com",
+                                       "status":  "ikke_publisert"
+                                   },
+                                   {
+                                       "orgnr":  "928593169",
+                                       "navn":  "�Stfold Vali-e Asr Senter",
+                                       "kommune":  "Sarpsborg",
+                                       "fylke":  "�stfold",
+                                       "adresse":  "c/o Ali Shaikhzadeh, Knatt�sveien 40, 1712 Gr�lum",
+                                       "styreleder":  "Mohammad Yaqub Rajabzadeh",
+                                       "nettside":  null,
+                                       "status":  "ikke_publisert"
+                                   }
+                               ],
+                   "Vestfold og Telemark":  [
+                                                {
+                                                    "orgnr":  "988024201",
+                                                    "navn":  "Al Ghadir Islamske Kultur Forening",
+                                                    "kommune":  "Skien",
+                                                    "fylke":  "Vestfold og Telemark",
+                                                    "adresse":  "Siljanvegen 145, 3719 Skien",
+                                                    "styreleder":  "Abdul Rasool Khudayar Mushy Al-Salihi",
+                                                    "nettside":  null,
+                                                    "status":  "ikke_publisert"
+                                                },
+                                                {
+                                                    "orgnr":  "988597988",
+                                                    "navn":  "Al-noor Kultur Senter",
+                                                    "kommune":  "Horten",
+                                                    "fylke":  "Vestfold og Telemark",
+                                                    "adresse":  "Torggata 12, 3181 Horten",
+                                                    "styreleder":  "Hamse Dayib Osman",
+                                                    "nettside":  null,
+                                                    "status":  "ikke_publisert"
+                                                },
+                                                {
+                                                    "orgnr":  "924580410",
+                                                    "navn":  "Al-zahra Islamsk Senter",
+                                                    "kommune":  "Sandefjord",
+                                                    "fylke":  "Vestfold og Telemark",
+                                                    "adresse":  "Pindsleveien 8, 3221 Sandefjord",
+                                                    "styreleder":  null,
+                                                    "nettside":  null,
+                                                    "status":  "ikke_publisert"
+                                                },
+                                                {
+                                                    "orgnr":  "825981152",
+                                                    "navn":  "Alsiddik Senter",
+                                                    "kommune":  "Sandefjord",
+                                                    "fylke":  "Vestfold og Telemark",
+                                                    "adresse":  "Jernbanealleen 30, 3210 Sandefjord",
+                                                    "styreleder":  "Brzan Dizaei",
+                                                    "nettside":  null,
+                                                    "status":  "ikke_publisert"
+                                                },
+                                                {
+                                                    "orgnr":  "923480781",
+                                                    "navn":  "Alsrat Al-mustakim",
+                                                    "kommune":  "Sandefjord",
+                                                    "fylke":  "Vestfold og Telemark",
+                                                    "adresse":  "�ster�yveien 31, 3236 Sandefjord",
+                                                    "styreleder":  "Hassan Ahmad Naim",
+                                                    "nettside":  null,
+                                                    "status":  "ikke_publisert"
+                                                },
+                                                {
+                                                    "orgnr":  "984500068",
+                                                    "navn":  "Den Islamske Forening",
+                                                    "kommune":  "T�nsberg",
+                                                    "fylke":  "Vestfold og Telemark",
+                                                    "adresse":  "3105 T�nsberg",
+                                                    "styreleder":  "Arzin Kordu Saleh",
+                                                    "nettside":  null,
+                                                    "status":  "ikke_publisert"
+                                                },
+                                                {
+                                                    "orgnr":  "998020581",
+                                                    "navn":  "Det Afganske Trosamfunn I Vestfold",
+                                                    "kommune":  "F�rder",
+                                                    "fylke":  "Vestfold og Telemark",
+                                                    "adresse":  "Fanejunkerveien 5, 3132 Hus�ysund",
+                                                    "styreleder":  "Ahmadsharif Samim",
+                                                    "nettside":  null,
+                                                    "status":  "ikke_publisert"
+                                                },
+                                                {
+                                                    "orgnr":  "922318646",
+                                                    "navn":  "Det Islamske Fellesskap Sande",
+                                                    "kommune":  "Holmestrand",
+                                                    "fylke":  "Vestfold og Telemark",
+                                                    "adresse":  "Rev�veien 18, 3070 Sande I Vestfold",
+                                                    "styreleder":  "Abdul-Madjid Abdaly",
+                                                    "nettside":  null,
+                                                    "status":  "ikke_publisert"
+                                                },
+                                                {
+                                                    "orgnr":  "914578418",
+                                                    "navn":  "Det Islamske Kultursenter I Grenland",
+                                                    "kommune":  "Skien",
+                                                    "fylke":  "Vestfold og Telemark",
+                                                    "adresse":  "S�ndre Falkumveg 10, 3725 Skien",
+                                                    "styreleder":  "Turabi Can",
+                                                    "nettside":  null,
+                                                    "status":  "ikke_publisert"
+                                                },
+                                                {
+                                                    "orgnr":  "921742363",
+                                                    "navn":  "Elbayane sandefjord moske",
+                                                    "kommune":  "Sandefjord",
+                                                    "fylke":  "Vestfold og Telemark",
+                                                    "adresse":  "Kilgata 17, 3217 Sandefjord",
+                                                    "styreleder":  "El-Haddi Zerfaoui",
+                                                    "nettside":  null,
+                                                    "status":  "ikke_publisert"
+                                                },
+                                                {
+                                                    "orgnr":  "927621878",
+                                                    "navn":  "Fred Kultursenter",
+                                                    "kommune":  "Drangedal",
+                                                    "fylke":  "Vestfold og Telemark",
+                                                    "adresse":  "c/o Mohammad Sulaiman Sheherli, Granveien 6, 3750 Drangedal",
+                                                    "styreleder":  "Mohammmad Sulaiman Sheherli",
+                                                    "nettside":  null,
+                                                    "status":  "ikke_publisert"
+                                                },
+                                                {
+                                                    "orgnr":  "913730453",
+                                                    "navn":  "Furqan Kultur Senter",
+                                                    "kommune":  "Krager�",
+                                                    "fylke":  "Vestfold og Telemark",
+                                                    "adresse":  "N�kkeldalen 6, 3772 Krager�",
+                                                    "styreleder":  "Khavazh Akhmedovitsj Albakov",
+                                                    "nettside":  null,
+                                                    "status":  "ikke_publisert"
+                                                },
+                                                {
+                                                    "orgnr":  "996086461",
+                                                    "navn":  "Hosainie Chahardah Masom",
+                                                    "kommune":  "Skien",
+                                                    "fylke":  "Vestfold og Telemark",
+                                                    "adresse":  "Wesselvegen 18, 3740 Skien",
+                                                    "styreleder":  "Karime Mirzai",
+                                                    "nettside":  null,
+                                                    "status":  "ikke_publisert"
+                                                },
+                                                {
+                                                    "orgnr":  "922567670",
+                                                    "navn":  "Hossainia Imam Ali",
+                                                    "kommune":  "Horten",
+                                                    "fylke":  "Vestfold og Telemark",
+                                                    "adresse":  "Gr�stadbakken 10, 3185 Skoppum",
+                                                    "styreleder":  "Hussain Bakhsh Salman",
+                                                    "nettside":  null,
+                                                    "status":  "ikke_publisert"
+                                                },
+                                                {
+                                                    "orgnr":  "933453758",
+                                                    "navn":  "Irakisk Islamsk Kulturforening Norge",
+                                                    "kommune":  "Skien",
+                                                    "fylke":  "Vestfold og Telemark",
+                                                    "adresse":  "Kverndalsgata 7, 3717 Skien",
+                                                    "styreleder":  "Azad Karim",
+                                                    "nettside":  null,
+                                                    "status":  "ikke_publisert"
+                                                },
+                                                {
+                                                    "orgnr":  "983928048",
+                                                    "navn":  "Islamsk Kulturforening",
+                                                    "kommune":  "Larvik",
+                                                    "fylke":  "Vestfold og Telemark",
+                                                    "adresse":  "Reidar Teigens vei 2, 3262 Larvik",
+                                                    "styreleder":  "Elmagrbi Suleman Abdulgader",
+                                                    "nettside":  null,
+                                                    "status":  "ikke_publisert"
+                                                },
+                                                {
+                                                    "orgnr":  "884321972",
+                                                    "navn":  "Islamsk Senter Vestfold",
+                                                    "kommune":  "T�nsberg",
+                                                    "fylke":  "Vestfold og Telemark",
+                                                    "adresse":  "Stoltenbergs gate 11, 3110 T�nsberg",
+                                                    "styreleder":  "Mohammad Farid",
+                                                    "nettside":  null,
+                                                    "status":  "ikke_publisert"
+                                                },
+                                                {
+                                                    "orgnr":  "991916814",
+                                                    "navn":  "Jamaacata Ahlisuluuk Walcishqi I Norge",
+                                                    "kommune":  "Notodden",
+                                                    "fylke":  "Vestfold og Telemark",
+                                                    "adresse":  "Storgata 13, 3674 Notodden",
+                                                    "styreleder":  "Muse Haji Adan",
+                                                    "nettside":  null,
+                                                    "status":  "ikke_publisert"
+                                                },
+                                                {
+                                                    "orgnr":  "932962322",
+                                                    "navn":  "KURDISK ISLAMSKE FORENING",
+                                                    "kommune":  "Skien",
+                                                    "fylke":  "Vestfold og Telemark",
+                                                    "adresse":  "c/o Sami Mahmadany, Vestre Buktenveg 20, 3736 Skien",
+                                                    "styreleder":  "Sami Mahmadany",
+                                                    "nettside":  null,
+                                                    "status":  "ikke_publisert"
+                                                },
+                                                {
+                                                    "orgnr":  "914735440",
+                                                    "navn":  "Porsgrunn Trossamfunn Khalid Moske",
+                                                    "kommune":  "Porsgrunn",
+                                                    "fylke":  "Vestfold og Telemark",
+                                                    "adresse":  "Kirkegata 25, 3919 Porsgrunn",
+                                                    "styreleder":  "Abdul Rehman Malik",
+                                                    "nettside":  null,
+                                                    "status":  "ikke_publisert"
+                                                },
+                                                {
+                                                    "orgnr":  "989138952",
+                                                    "navn":  "Sandefjord Islamske Senter",
+                                                    "kommune":  "Sandefjord",
+                                                    "fylke":  "Vestfold og Telemark",
+                                                    "adresse":  "R�dhusgata 1, 3210 Sandefjord",
+                                                    "styreleder":  "Anass Ibrahim Nor",
+                                                    "nettside":  "sandefjordis.vercel.app",
+                                                    "status":  "ikke_publisert"
+                                                },
+                                                {
+                                                    "orgnr":  "998824494",
+                                                    "navn":  "Somali Trossamfunn I T�nsberg",
+                                                    "kommune":  "T�nsberg",
+                                                    "fylke":  "Vestfold og Telemark",
+                                                    "adresse":  "Grev Wedels gate 10, 3111 T�nsberg",
+                                                    "styreleder":  "Abdisalam Mohamed Abdi",
+                                                    "nettside":  null,
+                                                    "status":  "ikke_publisert"
+                                                },
+                                                {
+                                                    "orgnr":  "997343506",
+                                                    "navn":  "Somalisk Trossamfunnet I Notodden",
+                                                    "kommune":  "Notodden",
+                                                    "fylke":  "Vestfold og Telemark",
+                                                    "adresse":  "c/o Mohammed Hagi Osman, Storgata 47, 3674 Notodden",
+                                                    "styreleder":  "Mohammed Hagi Osman",
+                                                    "nettside":  null,
+                                                    "status":  "ikke_publisert"
+                                                },
+                                                {
+                                                    "orgnr":  "986584447",
+                                                    "navn":  "Telemark Islamsk Forening I Skien",
+                                                    "kommune":  "Skien",
+                                                    "fylke":  "Vestfold og Telemark",
+                                                    "adresse":  "Duestien 1, 3717 Skien",
+                                                    "styreleder":  "Rachid Rochdi",
+                                                    "nettside":  null,
+                                                    "status":  "ikke_publisert"
+                                                },
+                                                {
+                                                    "orgnr":  "987407174",
+                                                    "navn":  "Telemark Islamsk Trossamfunn",
+                                                    "kommune":  "Skien",
+                                                    "fylke":  "Vestfold og Telemark",
+                                                    "adresse":  "Presteg�rdsgata 6, 3724 Skien",
+                                                    "styreleder":  "Aweys Abukar Mahamed",
+                                                    "nettside":  null,
+                                                    "status":  "ikke_publisert"
+                                                },
+                                                {
+                                                    "orgnr":  "997460545",
+                                                    "navn":  "Tinn Muslimskeforening",
+                                                    "kommune":  "Tinn",
+                                                    "fylke":  "Vestfold og Telemark",
+                                                    "adresse":  "c/o Odd Fellowhuset, Tinngata 20, 3660 Rjukan",
+                                                    "styreleder":  "Abrahim Sesay",
+                                                    "nettside":  null,
+                                                    "status":  "ikke_publisert"
+                                                },
+                                                {
+                                                    "orgnr":  "931533576",
+                                                    "navn":  "Usbekisk Islamsk Senter I Norge",
+                                                    "kommune":  "Sandefjord",
+                                                    "fylke":  "Vestfold og Telemark",
+                                                    "adresse":  "c/o Temur Valiev, Buveien 3, 3214 Sandefjord",
+                                                    "styreleder":  "Danier Valiev",
+                                                    "nettside":  "www.uzislam.no",
+                                                    "status":  "ikke_publisert"
+                                                },
+                                                {
+                                                    "orgnr":  "888563482",
+                                                    "navn":  "Vest-telemark Muslimske Trudomssamfunn",
+                                                    "kommune":  "Vinje",
+                                                    "fylke":  "Vestfold og Telemark",
+                                                    "adresse":  "Raulandsvegen 4, 3890 Vinje",
+                                                    "styreleder":  "Raslan Abdulkarim Khalifa",
+                                                    "nettside":  null,
+                                                    "status":  "ikke_publisert"
+                                                }
+                                            ],
+                   "Agder":  [
+                                 {
+                                     "orgnr":  "924740175",
+                                     "navn":  "Afaq Islamsk Kultursenteret I Grimstad",
+                                     "kommune":  "Grimstad",
+                                     "fylke":  "Agder",
+                                     "adresse":  "Storgaten 2E, 4876 Grimstad",
+                                     "styreleder":  "Qosay Ahmad Hassan Abusharkh",
+                                     "nettside":  null,
+                                     "status":  "ikke_publisert"
+                                 },
+                                 {
+                                     "orgnr":  "995108143",
+                                     "navn":  "Afghansk Sosial-kulturelle Senter I Agder",
+                                     "kommune":  "Kristiansand",
+                                     "fylke":  "Agder",
+                                     "adresse":  "Slettheiveien 56, 4626 Kristiansand S",
+                                     "styreleder":  "Shams Hussaini",
+                                     "nettside":  "www.facebook.com/groups/afghanksforeningiagder/",
+                                     "status":  "ikke_publisert"
+                                 },
+                                 {
+                                     "orgnr":  "880172042",
+                                     "navn":  "Al-rahma Islamic Senter",
+                                     "kommune":  "Kristiansand",
+                                     "fylke":  "Agder",
+                                     "adresse":  "Henrik Wergelands gate 79, 4614 Kristiansand S",
+                                     "styreleder":  "Mohamed Ahmed Hashi",
+                                     "nettside":  null,
+                                     "status":  "ikke_publisert"
+                                 },
+                                 {
+                                     "orgnr":  "922285772",
+                                     "navn":  "Albansk Kultur Og Trossamfunn I Agder",
+                                     "kommune":  "Arendal",
+                                     "fylke":  "Agder",
+                                     "adresse":  "c/o Besnik Ramadani, Jo�sveien 41, 4846 Arendal",
+                                     "styreleder":  "Besnik Ramadani",
+                                     "nettside":  null,
+                                     "status":  "ikke_publisert"
+                                 },
+                                 {
+                                     "orgnr":  "996332683",
+                                     "navn":  "Albansk Kultur Og Trossamfunn Kristiansand",
+                                     "kommune":  "Kristiansand",
+                                     "fylke":  "Agder",
+                                     "adresse":  "Rigetj�nnveien 3, 4626 Kristiansand S",
+                                     "styreleder":  "Shkelzen Morina",
+                                     "nettside":  null,
+                                     "status":  "ikke_publisert"
+                                 },
+                                 {
+                                     "orgnr":  "999300405",
+                                     "navn":  "Almuntadar Sjiamuslimske Senter",
+                                     "kommune":  "Kristiansand",
+                                     "fylke":  "Agder",
+                                     "adresse":  "Setesdalsveien 43, 4616 Kristiansand S",
+                                     "styreleder":  "Riyadh Duabul Saud Al Nayef",
+                                     "nettside":  null,
+                                     "status":  "ikke_publisert"
+                                 },
+                                 {
+                                     "orgnr":  "919094079",
+                                     "navn":  "Almustafa Kultursenter",
+                                     "kommune":  "Kristiansand",
+                                     "fylke":  "Agder",
+                                     "adresse":  "Kartheia 5, 4626 Kristiansand S",
+                                     "styreleder":  "Youssef Moussa Farhat",
+                                     "nettside":  null,
+                                     "status":  "ikke_publisert"
+                                 },
+                                 {
+                                     "orgnr":  "988217670",
+                                     "navn":  "Bilal Moske Islamsk Kulturforening",
+                                     "kommune":  "Lillesand",
+                                     "fylke":  "Agder",
+                                     "adresse":  "Vard�sen Industriomr�de, 4790 Lillesand",
+                                     "styreleder":  "Bilal Yousofzai",
+                                     "nettside":  null,
+                                     "status":  "ikke_publisert"
+                                 },
+                                 {
+                                     "orgnr":  "819943532",
+                                     "navn":  "Den Islamske Forening I Lillesand",
+                                     "kommune":  "Lillesand",
+                                     "fylke":  "Agder",
+                                     "adresse":  "Storgata 18A, 4790 Lillesand",
+                                     "styreleder":  "Jihad Adeeb Alyosef",
+                                     "nettside":  null,
+                                     "status":  "ikke_publisert"
+                                 },
+                                 {
+                                     "orgnr":  "930871680",
+                                     "navn":  "Den Islamske Forening P� Birkeland",
+                                     "kommune":  "Birkenes",
+                                     "fylke":  "Agder",
+                                     "adresse":  "c/o Kamal Alhussein, Nord�sen terrasse 40, 4760 Birkeland",
+                                     "styreleder":  "Kamal Alhussein",
+                                     "nettside":  null,
+                                     "status":  "ikke_publisert"
+                                 },
+                                 {
+                                     "orgnr":  "926294490",
+                                     "navn":  "Det Islamske Fellesskapet I Lindesnes",
+                                     "kommune":  "Lindesnes",
+                                     "fylke":  "Agder",
+                                     "adresse":  "Amaldus Nielsens gate 1, 4514 Mandal",
+                                     "styreleder":  "Thanaa Almasri",
+                                     "nettside":  null,
+                                     "status":  "ikke_publisert"
+                                 },
+                                 {
+                                     "orgnr":  "985977852",
+                                     "navn":  "Det Muslimske Kultursenteret I Aust -Agder",
+                                     "kommune":  "Arendal",
+                                     "fylke":  "Agder",
+                                     "adresse":  "Bl�dekj�r 18, 4838 Arendal",
+                                     "styreleder":  "Bile Kahie Yusuf",
+                                     "nettside":  null,
+                                     "status":  "ikke_publisert"
+                                 },
+                                 {
+                                     "orgnr":  "926652443",
+                                     "navn":  "Det Muslimske Kultursenteret I Ris�r",
+                                     "kommune":  "Arendal",
+                                     "fylke":  "Agder",
+                                     "adresse":  "Vestre gate 21B, 4838 Arendal",
+                                     "styreleder":  "Imad Eddin Chehadeh",
+                                     "nettside":  null,
+                                     "status":  "ikke_publisert"
+                                 },
+                                 {
+                                     "orgnr":  "880876392",
+                                     "navn":  "Det Muslimske Trossamfunnet I Agder Fylkene",
+                                     "kommune":  "Kristiansand",
+                                     "fylke":  "Agder",
+                                     "adresse":  "Henrik Wergelands gate 53, 4612 Kristiansand S",
+                                     "styreleder":  "Mohammad Arshad Dar",
+                                     "nettside":  null,
+                                     "status":  "ikke_publisert"
+                                 },
+                                 {
+                                     "orgnr":  "888181482",
+                                     "navn":  "Det Muslimske Trossamfunnet i Lindesnes",
+                                     "kommune":  "Lindesnes",
+                                     "fylke":  "Agder",
+                                     "adresse":  "Gustav Vigelands vei 28, 4514 Mandal",
+                                     "styreleder":  "Tarek Taha",
+                                     "nettside":  null,
+                                     "status":  "ikke_publisert"
+                                 },
+                                 {
+                                     "orgnr":  "919844620",
+                                     "navn":  "Farsund Islamsk Kultursenter",
+                                     "kommune":  "Farsund",
+                                     "fylke":  "Agder",
+                                     "adresse":  "Listerveien 3, 4550 Farsund",
+                                     "styreleder":  "Mohamad Abd Alghafour Almarei",
+                                     "nettside":  null,
+                                     "status":  "ikke_publisert"
+                                 },
+                                 {
+                                     "orgnr":  "998630088",
+                                     "navn":  "Islamsk Kultursenter Grimstad",
+                                     "kommune":  "Grimstad",
+                                     "fylke":  "Agder",
+                                     "adresse":  "1.etg, Storgaten 35, 4876 Grimstad",
+                                     "styreleder":  "Ibrahem Mohamed Ali Redwan",
+                                     "nettside":  null,
+                                     "status":  "ikke_publisert"
+                                 },
+                                 {
+                                     "orgnr":  "917213577",
+                                     "navn":  "Islamsk Kultursenter Vennesla",
+                                     "kommune":  "Vennesla",
+                                     "fylke":  "Agder",
+                                     "adresse":  "Torsbyvegen 14, 4700 Vennesla",
+                                     "styreleder":  "Hassan Abdi Mohamed",
+                                     "nettside":  null,
+                                     "status":  "ikke_publisert"
+                                 },
+                                 {
+                                     "orgnr":  "923169865",
+                                     "navn":  "Islamsk Mojammaa",
+                                     "kommune":  "Kristiansand",
+                                     "fylke":  "Agder",
+                                     "adresse":  "c/o Bashar Basrawi Alahmed, Bolignummer H0106, Marviksveien 98, 4632 Kristiansand S",
+                                     "styreleder":  "Bashar Basrawi Alahmed",
+                                     "nettside":  null,
+                                     "status":  "ikke_publisert"
+                                 },
+                                 {
+                                     "orgnr":  "919029897",
+                                     "navn":  "Kvinesdal Islamske Kulturforening",
+                                     "kommune":  "Kvinesdal",
+                                     "fylke":  "Agder",
+                                     "adresse":  "Sandbrodet 2, 4480 Kvinesdal",
+                                     "styreleder":  "Urwa Tareq Sayel Hasan",
+                                     "nettside":  null,
+                                     "status":  "ikke_publisert"
+                                 },
+                                 {
+                                     "orgnr":  "917280134",
+                                     "navn":  "Lister Muslimsk Senter",
+                                     "kommune":  "Lyngdal",
+                                     "fylke":  "Agder",
+                                     "adresse":  "Bj�rkeveien 10, 4580 Lyngdal",
+                                     "styreleder":  "Mohammed Ahmed Dufish",
+                                     "nettside":  null,
+                                     "status":  "ikke_publisert"
+                                 },
+                                 {
+                                     "orgnr":  "934199553",
+                                     "navn":  "Lyngdal Islamisk Senter",
+                                     "kommune":  "Lyngdal",
+                                     "fylke":  "Agder",
+                                     "adresse":  "Bj�rkeveien 10, 4580 Lyngdal",
+                                     "styreleder":  "Abdalfatah Abdalaziz Alesa Alamrat",
+                                     "nettside":  null,
+                                     "status":  "ikke_publisert"
+                                 },
+                                 {
+                                     "orgnr":  "926791702",
+                                     "navn":  "Muslimsk Fellesskap Kristiansand",
+                                     "kommune":  "Kristiansand",
+                                     "fylke":  "Agder",
+                                     "adresse":  "Rigetj�nnveien 12, 4626 Kristiansand S",
+                                     "styreleder":  "Irfan Ullah Khan",
+                                     "nettside":  null,
+                                     "status":  "ikke_publisert"
+                                 },
+                                 {
+                                     "orgnr":  "974900505",
+                                     "navn":  "Muslimsk Union I Agder",
+                                     "kommune":  "Kristiansand",
+                                     "fylke":  "Agder",
+                                     "adresse":  "Kronprinsens gate 47, 4614 Kristiansand S",
+                                     "styreleder":  "Fawzi Abdurahman Kaied",
+                                     "nettside":  null,
+                                     "status":  "ikke_publisert"
+                                 },
+                                 {
+                                     "orgnr":  "932813815",
+                                     "navn":  "Vatanforening I Agder",
+                                     "kommune":  "Arendal",
+                                     "fylke":  "Agder",
+                                     "adresse":  "Kloppenebakken 10A, 4847 Arendal",
+                                     "styreleder":  "Muhammad Nazeer Dareez",
+                                     "nettside":  null,
+                                     "status":  "ikke_publisert"
+                                 }
+                             ],
+                   "Rogaland":  [
+                                    {
+                                        "orgnr":  "997002601",
+                                        "navn":  "Aceh Islamisk Oppl�ringssenter",
+                                        "kommune":  "Stavanger",
+                                        "fylke":  "Rogaland",
+                                        "adresse":  "Sverdrups gate 23, 4007 Stavanger",
+                                        "styreleder":  "Daniel Teuku",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "929851021",
+                                        "navn":  "Afghansk Ahl Al-Bayt Kultursenter",
+                                        "kommune":  "Sandnes",
+                                        "fylke":  "Rogaland",
+                                        "adresse":  "Jakob Askelands vei 3, 4314 Sandnes",
+                                        "styreleder":  "Sayed Sadiq Wahidi",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "971339101",
+                                        "navn":  "Anjuman Islahul Muslemeen Of Rogaland",
+                                        "kommune":  "Stavanger",
+                                        "fylke":  "Rogaland",
+                                        "adresse":  "Erichstrups gate 10, 4012 Stavanger",
+                                        "styreleder":  "Ahsan Javaid Butt",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "921988893",
+                                        "navn":  "Danai Trossamfunn Og Kultursenter I Rogaland",
+                                        "kommune":  "Klepp",
+                                        "fylke":  "Rogaland",
+                                        "adresse":  "c/o Josef Nabavi, Kornvegen 109, 4350 Kleppe",
+                                        "styreleder":  "Josef Nabavi",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "979485891",
+                                        "navn":  "Det Islamske Kultur Senter i Stavanger",
+                                        "kommune":  "Stavanger",
+                                        "fylke":  "Rogaland",
+                                        "adresse":  "Bergelandsgata 24, 4012 Stavanger",
+                                        "styreleder":  "Veysel Kalayci",
+                                        "nettside":  "www.diksis.no",
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "922250820",
+                                        "navn":  "Forum Nizam",
+                                        "kommune":  "Sandnes",
+                                        "fylke":  "Rogaland",
+                                        "adresse":  "Gamleveien 87, 4315 Sandnes",
+                                        "styreleder":  "Murad Saydalievich Makaev",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "928893987",
+                                        "navn":  "Haidria Rogaland",
+                                        "kommune":  "Klepp",
+                                        "fylke":  "Rogaland",
+                                        "adresse":  "c/o Hamad Raza, Trygve Bores veg 20B, 4351 Kleppe",
+                                        "styreleder":  "Jawad Raza",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "929690354",
+                                        "navn":  "Iman Islamsk Kultursenter Rogaland",
+                                        "kommune":  "Sandnes",
+                                        "fylke":  "Rogaland",
+                                        "adresse":  "Gjesdalveien 6A, 4306 Sandnes",
+                                        "styreleder":  "Nazir Said Safi",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "988150711",
+                                        "navn":  "Irakisk trossamfunn",
+                                        "kommune":  "Sandnes",
+                                        "fylke":  "Rogaland",
+                                        "adresse":  "Industrigata 1, 4307 Sandnes",
+                                        "styreleder":  "Abdu Rahim Ayiz Farhoud Al-Hasnawi",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "983652506",
+                                        "navn":  "Islamske Oppl�ringssenter",
+                                        "kommune":  "Stavanger",
+                                        "fylke":  "Rogaland",
+                                        "adresse":  "Bergsagelveien 9, 4016 Stavanger",
+                                        "styreleder":  "Abokor Omar Elmi",
+                                        "nettside":  "iosenter.no",
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "997406419",
+                                        "navn":  "Masjid Al-Huda",
+                                        "kommune":  "Klepp",
+                                        "fylke":  "Rogaland",
+                                        "adresse":  "J�rvegen 549, 4350 Kleppe",
+                                        "styreleder":  "Ahmed Mohammed Adan",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "986685944",
+                                        "navn":  "Masjid Elssalam i Nord Rogaland",
+                                        "kommune":  "Haugesund",
+                                        "fylke":  "Rogaland",
+                                        "adresse":  "S�rhauggata 193, 5525 Haugesund",
+                                        "styreleder":  "Ya\u0027arub Akram Ali",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "916232209",
+                                        "navn":  "Masjid Towba",
+                                        "kommune":  "Stavanger",
+                                        "fylke":  "Rogaland",
+                                        "adresse":  "Harald H�rfagres gate 4, 4014 Stavanger",
+                                        "styreleder":  "Salad Dhunkal Isman",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "985695318",
+                                        "navn":  "Muslim Forum Sandnes",
+                                        "kommune":  "Sandnes",
+                                        "fylke":  "Rogaland",
+                                        "adresse":  "Storgata 61, 4307 Sandnes",
+                                        "styreleder":  "Muhammad Younas Chaudry",
+                                        "nettside":  "www.mfsandnes.no",
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "984175841",
+                                        "navn":  "Rogaland Islamske Fellesforening",
+                                        "kommune":  "Stavanger",
+                                        "fylke":  "Rogaland",
+                                        "adresse":  "Hillev�gsveien 23B, 4016 Stavanger",
+                                        "styreleder":  "Fuat Ercin",
+                                        "nettside":  "www.eyupsultan.no",
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "971490942",
+                                        "navn":  "Rogaland Muslim Forening",
+                                        "kommune":  "Stavanger",
+                                        "fylke":  "Rogaland",
+                                        "adresse":  "Verksgata 41, 4013 Stavanger",
+                                        "styreleder":  "Efendi Cetintas",
+                                        "nettside":  "www.mevlanastavanger.no/",
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "876763362",
+                                        "navn":  "Rogaland Muslim Society",
+                                        "kommune":  "Stavanger",
+                                        "fylke":  "Rogaland",
+                                        "adresse":  "Store Skippergate 4, 4013 Stavanger",
+                                        "styreleder":  "Amer Iqbal",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    }
+                                ],
+                   "Vestland":  [
+                                    {
+                                        "orgnr":  "987978473",
+                                        "navn":  "Abu Al-fadel Islamisk Kultursenter",
+                                        "kommune":  "Bergen",
+                                        "fylke":  "Vestland",
+                                        "adresse":  "Nyg�rdsgaten 29, 5015 Bergen",
+                                        "styreleder":  "Nazar Mohammed Ali Mohsen",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "929711823",
+                                        "navn":  "Afghansk-trossamfunn Vestlandet",
+                                        "kommune":  "Bergen",
+                                        "fylke":  "Vestland",
+                                        "adresse":  "Dammaberget 3, 5179 Godvik",
+                                        "styreleder":  "Assadullah Mohammadi",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "925539619",
+                                        "navn":  "Al-Noor Islamsk Kultursenter i Sogn",
+                                        "kommune":  "Sogndal",
+                                        "fylke":  "Vestland",
+                                        "adresse":  "Fossetunet 1A, 6856 Sogndal",
+                                        "styreleder":  "Hiba Ali Almobarak",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "971573910",
+                                        "navn":  "Bergen Moske",
+                                        "kommune":  "Bergen",
+                                        "fylke":  "Vestland",
+                                        "adresse":  "Jekteviksbakken 27, 5006 Bergen",
+                                        "styreleder":  "Tun Aung Kyaw",
+                                        "nettside":  "bergenmoske.no",
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "991807888",
+                                        "navn":  "Bergen Muslimske Forening",
+                                        "kommune":  "Bergen",
+                                        "fylke":  "Vestland",
+                                        "adresse":  "Nesttunvegen 35, 5232 Paradis",
+                                        "styreleder":  "Adem G�ven",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "988138258",
+                                        "navn":  "Det Islamske Samband I Bergen",
+                                        "kommune":  "Bergen",
+                                        "fylke":  "Vestland",
+                                        "adresse":  "Erleveien 18, 5096 Bergen",
+                                        "styreleder":  "Ahmed Muneer",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "920442013",
+                                        "navn":  "Eid Islamske Kultur Senter",
+                                        "kommune":  "Stad",
+                                        "fylke":  "Vestland",
+                                        "adresse":  "c/o Mohamed Abdi Sheikh, Skulevegen 30, 6770 Nordfjordeid",
+                                        "styreleder":  "Mohamed Abdi Sheikh",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "991634967",
+                                        "navn":  "Flor� Islamisk Kultursenter",
+                                        "kommune":  "Kinn",
+                                        "fylke":  "Vestland",
+                                        "adresse":  "Kinnvegen 8, 6906 Flor�",
+                                        "styreleder":  "Omar Abdullahi Mohammed",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "988247812",
+                                        "navn":  "F�rde Islamske Senter",
+                                        "kommune":  "Sunnfjord",
+                                        "fylke":  "Vestland",
+                                        "adresse":  "Hafstadvegen 46, 6800 F�rde",
+                                        "styreleder":  "Abdulkadir Ahmed Nur",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "917512116",
+                                        "navn":  "Salam Islamsk Senter",
+                                        "kommune":  "Bergen",
+                                        "fylke":  "Vestland",
+                                        "adresse":  "Fabrikkgaten 12, 5059 Bergen",
+                                        "styreleder":  "Ali Osman",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "990734968",
+                                        "navn":  "Stord Islamisk Kultursenter",
+                                        "kommune":  "Stord",
+                                        "fylke":  "Vestland",
+                                        "adresse":  "Nattrutekaien 6, 5411 Stord",
+                                        "styreleder":  "Ramzi Nabel Helail",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "921153945",
+                                        "navn":  "Uyghurske Kulturforening",
+                                        "kommune":  "Bergen",
+                                        "fylke":  "Vestland",
+                                        "adresse":  "Johan Berentsens vei 41, 5160 Laksev�g",
+                                        "styreleder":  "Ahmed Sidik",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "926043447",
+                                        "navn":  "Vestland Senter",
+                                        "kommune":  "Bergen",
+                                        "fylke":  "Vestland",
+                                        "adresse":  "c/o Khalil Kader Shewan, Adolph Bergs vei 41J, 5089 Bergen",
+                                        "styreleder":  "Khalil Kader Shewan",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "913408780",
+                                        "navn":  "Voss Islamske Kultursenter",
+                                        "kommune":  "Voss",
+                                        "fylke":  "Vestland",
+                                        "adresse":  "H�ydalane 4, 5705 Voss",
+                                        "styreleder":  "Abdi Dhaqane Hussein",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    }
+                                ],
+                   "M�re og Romsdal":  [
+                                           {
+                                               "orgnr":  "923219420",
+                                               "navn":  "Hareidlandet Islamsk Senter",
+                                               "kommune":  "Hareid",
+                                               "fylke":  "M�re og Romsdal",
+                                               "adresse":  "c/o Mazen Ali Alhussain, Strandgata 194, 6060 Hareid",
+                                               "styreleder":  "Mazen Ali Alhussain",
+                                               "nettside":  null,
+                                               "status":  "ikke_publisert"
+                                           },
+                                           {
+                                               "orgnr":  "998943728",
+                                               "navn":  "Romsdal Islamske Kultursenter",
+                                               "kommune":  "Molde",
+                                               "fylke":  "M�re og Romsdal",
+                                               "adresse":  "Storgata 29, 6413 Molde",
+                                               "styreleder":  "Bashiir Tahliil Muhammad",
+                                               "nettside":  null,
+                                               "status":  "ikke_publisert"
+                                           },
+                                           {
+                                               "orgnr":  "895385212",
+                                               "navn":  "Sunndal Muslimisk Trossamfunn",
+                                               "kommune":  "Sunndal",
+                                               "fylke":  "M�re og Romsdal",
+                                               "adresse":  "Hovsvegen 2, 6600 Sunndals�ra",
+                                               "styreleder":  "Abdusemi Enver Erdem",
+                                               "nettside":  null,
+                                               "status":  "ikke_publisert"
+                                           },
+                                           {
+                                               "orgnr":  "917623961",
+                                               "navn":  "Volda- �rsta Islamsk Senter",
+                                               "kommune":  "�rsta",
+                                               "fylke":  "M�re og Romsdal",
+                                               "adresse":  "Heggjadalen 2A, 6153 �rsta",
+                                               "styreleder":  "Zahir Khan",
+                                               "nettside":  null,
+                                               "status":  "ikke_publisert"
+                                           },
+                                           {
+                                               "orgnr":  "988272396",
+                                               "navn":  "Waqf Nordm�re",
+                                               "kommune":  "Kristiansund",
+                                               "fylke":  "M�re og Romsdal",
+                                               "adresse":  "Gomagata 15, 6512 Kristiansund N",
+                                               "styreleder":  "Zakaria Ali",
+                                               "nettside":  null,
+                                               "status":  "ikke_publisert"
+                                           },
+                                           {
+                                               "orgnr":  "985255482",
+                                               "navn":  "�lesund Jamii Islamsk Senter",
+                                               "kommune":  "�lesund",
+                                               "fylke":  "M�re og Romsdal",
+                                               "adresse":  "Latinskolegata 1, 6004 �lesund",
+                                               "styreleder":  "Sagvan Fathi Abdal",
+                                               "nettside":  null,
+                                               "status":  "ikke_publisert"
+                                           }
+                                       ],
+                   "Tr�ndelag":  [
+                                     {
+                                         "orgnr":  "999608175",
+                                         "navn":  "Afghansk forente samfunnet I Trondheim",
+                                         "kommune":  "Trondheim",
+                                         "fylke":  "Tr�ndelag",
+                                         "adresse":  "Ringv�lvegen 14, 7080 Heimdal",
+                                         "styreleder":  "Amin Said",
+                                         "nettside":  "www.afsit.no",
+                                         "status":  "ikke_publisert"
+                                     },
+                                     {
+                                         "orgnr":  "988221996",
+                                         "navn":  "Ahlebait Senter I Trondheim",
+                                         "kommune":  "Trondheim",
+                                         "fylke":  "Tr�ndelag",
+                                         "adresse":  "Kolstadflata 41A, 7098 Saupstad",
+                                         "styreleder":  "Tahir Mosa Khudor Al-Hussiny",
+                                         "nettside":  null,
+                                         "status":  "ikke_publisert"
+                                     },
+                                     {
+                                         "orgnr":  "995721228",
+                                         "navn":  "Dar El Eman Islamic Center",
+                                         "kommune":  "Trondheim",
+                                         "fylke":  "Tr�ndelag",
+                                         "adresse":  "Olav Tryggvasons gate 48, 7011 Trondheim",
+                                         "styreleder":  "Nasir Adan Jama",
+                                         "nettside":  null,
+                                         "status":  "ikke_publisert"
+                                     },
+                                     {
+                                         "orgnr":  "995465280",
+                                         "navn":  "Darfurian Forening I Norge",
+                                         "kommune":  "Trondheim",
+                                         "fylke":  "Tr�ndelag",
+                                         "adresse":  "c/o Noureldin Daoud Abdallah, Haldens gate 3, 7014 Trondheim",
+                                         "styreleder":  "Entisar Zakareia Ramadan",
+                                         "nettside":  null,
+                                         "status":  "ikke_publisert"
+                                     },
+                                     {
+                                         "orgnr":  "915275117",
+                                         "navn":  "Den Islamske Moskeen I Namsos",
+                                         "kommune":  "Namsos",
+                                         "fylke":  "Tr�ndelag",
+                                         "adresse":  "Verftsgata 30, 7800 Namsos",
+                                         "styreleder":  "Umar Juma Jadid",
+                                         "nettside":  null,
+                                         "status":  "ikke_publisert"
+                                     },
+                                     {
+                                         "orgnr":  "971376678",
+                                         "navn":  "Det Muslimske samfunnet I Trondheim",
+                                         "kommune":  "Trondheim",
+                                         "fylke":  "Tr�ndelag",
+                                         "adresse":  "Kj�pmannsgate 53-55, 7011 Trondheim",
+                                         "styreleder":  "Umer Farooq",
+                                         "nettside":  "www.msit.no",
+                                         "status":  "ikke_publisert"
+                                     },
+                                     {
+                                         "orgnr":  "916166141",
+                                         "navn":  "Elsalam Forening I Inder�y",
+                                         "kommune":  "Inder�y",
+                                         "fylke":  "Tr�ndelag",
+                                         "adresse":  "Bl�veisvegen 12, 7670 Inder�y",
+                                         "styreleder":  "Mohamad Yahya Abdallah",
+                                         "nettside":  null,
+                                         "status":  "ikke_publisert"
+                                     },
+                                     {
+                                         "orgnr":  "915987729",
+                                         "navn":  "Grong Islamiske Trossamfunn Og Kultursenter",
+                                         "kommune":  "Grong",
+                                         "fylke":  "Tr�ndelag",
+                                         "adresse":  "Granvegen 12, 7870 Grong",
+                                         "styreleder":  "Farah Abdi Salad",
+                                         "nettside":  null,
+                                         "status":  "ikke_publisert"
+                                     },
+                                     {
+                                         "orgnr":  "995318083",
+                                         "navn":  "Hope Kultursenter",
+                                         "kommune":  "Trondheim",
+                                         "fylke":  "Tr�ndelag",
+                                         "adresse":  "c/o Mohammad Ali Rahimi, Saupstadringen 35C, 7078 Saupstad",
+                                         "styreleder":  "Sakineh Mardani",
+                                         "nettside":  null,
+                                         "status":  "ikke_publisert"
+                                     },
+                                     {
+                                         "orgnr":  "919996331",
+                                         "navn":  "Innherred Islam Senter",
+                                         "kommune":  "Levanger",
+                                         "fylke":  "Tr�ndelag",
+                                         "adresse":  "Kirkegata 20, 7600 Levanger",
+                                         "styreleder":  "Mohamed Said Mahmud Norai",
+                                         "nettside":  null,
+                                         "status":  "ikke_publisert"
+                                     },
+                                     {
+                                         "orgnr":  "926311646",
+                                         "navn":  "Islamsk Kultursenter i Melhus",
+                                         "kommune":  "Melhus",
+                                         "fylke":  "Tr�ndelag",
+                                         "adresse":  "Pottenvegen 1, 7224 Melhus",
+                                         "styreleder":  "Mohamad Ahmad Helo Ajjouri",
+                                         "nettside":  null,
+                                         "status":  "ikke_publisert"
+                                     },
+                                     {
+                                         "orgnr":  "934561899",
+                                         "navn":  "Kurdisk Trossamunn I Trondheim",
+                                         "kommune":  "Trondheim",
+                                         "fylke":  "Tr�ndelag",
+                                         "adresse":  "c/o Mohamad Obaid Mohamad, Movollen 26, 7091 Tiller",
+                                         "styreleder":  "Mohamad Obaid Mohamad",
+                                         "nettside":  null,
+                                         "status":  "ikke_publisert"
+                                     },
+                                     {
+                                         "orgnr":  "818583222",
+                                         "navn":  "Muslimsk Samfunn Hitra-fr�ya",
+                                         "kommune":  "Hitra",
+                                         "fylke":  "Tr�ndelag",
+                                         "adresse":  "Hitterveien 220, 7240 Hitra",
+                                         "styreleder":  "Abdullah Muhammed Bilal",
+                                         "nettside":  null,
+                                         "status":  "ikke_publisert"
+                                     },
+                                     {
+                                         "orgnr":  "985715327",
+                                         "navn":  "Stj�rdal Islamske Kultursenter",
+                                         "kommune":  "Stj�rdal",
+                                         "fylke":  "Tr�ndelag",
+                                         "adresse":  "Innherredsvegen 57A, 7503 Stj�rdal",
+                                         "styreleder":  "Yasin Ibrahim Ali",
+                                         "nettside":  null,
+                                         "status":  "ikke_publisert"
+                                     },
+                                     {
+                                         "orgnr":  "885286372",
+                                         "navn":  "Trondheim Mevlana Kultur Forening",
+                                         "kommune":  "Trondheim",
+                                         "fylke":  "Tr�ndelag",
+                                         "adresse":  "Nordre Husebytun 13, 7097 Saupstad",
+                                         "styreleder":  "Bilal Kara",
+                                         "nettside":  null,
+                                         "status":  "ikke_publisert"
+                                     }
+                                 ],
+                   "Innlandet":  [
+                                     {
+                                         "orgnr":  "916132875",
+                                         "navn":  "Al-ihsan Islamiske Kultursenter, Lillehammer",
+                                         "kommune":  "Lillehammer",
+                                         "fylke":  "Innlandet",
+                                         "adresse":  "Storgata 89, 2615 Lillehammer",
+                                         "styreleder":  "Abdulkadir Abdullahi Shiekhabdi",
+                                         "nettside":  null,
+                                         "status":  "ikke_publisert"
+                                     },
+                                     {
+                                         "orgnr":  "933873196",
+                                         "navn":  "Al-iman Kultursenter",
+                                         "kommune":  "Gj�vik",
+                                         "fylke":  "Innlandet",
+                                         "adresse":  "Storgata 20, 2815 Gj�vik",
+                                         "styreleder":  "Ahmed Mohammed Mohammed Al-Saman",
+                                         "nettside":  null,
+                                         "status":  "ikke_publisert"
+                                     },
+                                     {
+                                         "orgnr":  "928165175",
+                                         "navn":  "AL-TAWHID Islamic Cultural center",
+                                         "kommune":  "Kongsvinger",
+                                         "fylke":  "Innlandet",
+                                         "adresse":  "c/o Wael Abdalrahim, Ole R. Gjems veg 23, 2212 Kongsvinger",
+                                         "styreleder":  "Wael Abdalrahim",
+                                         "nettside":  null,
+                                         "status":  "ikke_publisert"
+                                     },
+                                     {
+                                         "orgnr":  "923834966",
+                                         "navn":  "Alzahra Senter",
+                                         "kommune":  "Lillehammer",
+                                         "fylke":  "Innlandet",
+                                         "adresse":  "Moavegen 42A, 2619 Lillehammer",
+                                         "styreleder":  "Mohammed Ali Rezai",
+                                         "nettside":  null,
+                                         "status":  "ikke_publisert"
+                                     },
+                                     {
+                                         "orgnr":  "819871272",
+                                         "navn":  "Det Islamske Forbundet I Kongsvinger",
+                                         "kommune":  "Kongsvinger",
+                                         "fylke":  "Innlandet",
+                                         "adresse":  "c/o Digital Verden, Glommengata 45, 2211 Kongsvinger",
+                                         "styreleder":  "Muhammad Nasser Alnaimi",
+                                         "nettside":  null,
+                                         "status":  "ikke_publisert"
+                                     },
+                                     {
+                                         "orgnr":  "988497150",
+                                         "navn":  "Det Islamske Senter",
+                                         "kommune":  "Gj�vik",
+                                         "fylke":  "Innlandet",
+                                         "adresse":  "L�kken vei 1-3, 2827 Hunndalen",
+                                         "styreleder":  "Ali Veda Hassan Al-Saegh",
+                                         "nettside":  null,
+                                         "status":  "ikke_publisert"
+                                     },
+                                     {
+                                         "orgnr":  "988189707",
+                                         "navn":  "Elverum Islamic Center",
+                                         "kommune":  "Elverum",
+                                         "fylke":  "Innlandet",
+                                         "adresse":  "Kirkevegen 58, 2413 Elverum",
+                                         "styreleder":  "Dek Abdi Dofil",
+                                         "nettside":  null,
+                                         "status":  "ikke_publisert"
+                                     },
+                                     {
+                                         "orgnr":  "913155505",
+                                         "navn":  "Fjellregion Islamsk Kultur Senter",
+                                         "kommune":  "Tynset",
+                                         "fylke":  "Innlandet",
+                                         "adresse":  "c/o VSO Eiendom AS, Tomtegata 5, 2500 Tynset",
+                                         "styreleder":  "Ibrahima Sesay",
+                                         "nettside":  null,
+                                         "status":  "ikke_publisert"
+                                     },
+                                     {
+                                         "orgnr":  "821187982",
+                                         "navn":  "Gl�mdal Islamic Culture Center",
+                                         "kommune":  "Kongsvinger",
+                                         "fylke":  "Innlandet",
+                                         "adresse":  "G�gata 15, 2211 Kongsvinger",
+                                         "styreleder":  "Ahmad Khalid",
+                                         "nettside":  null,
+                                         "status":  "ikke_publisert"
+                                     },
+                                     {
+                                         "orgnr":  "913326628",
+                                         "navn":  "Hadeland Islamiske Kultursenteret",
+                                         "kommune":  "Gran",
+                                         "fylke":  "Innlandet",
+                                         "adresse":  "Hovsgutua 8, 2750 Gran",
+                                         "styreleder":  "Salad Khalif Alasow",
+                                         "nettside":  null,
+                                         "status":  "ikke_publisert"
+                                     },
+                                     {
+                                         "orgnr":  "888028382",
+                                         "navn":  "Hedmark Islamiske Kultur Senter",
+                                         "kommune":  "Hamar",
+                                         "fylke":  "Innlandet",
+                                         "adresse":  "Chr. Melbyes gate 10, 2321 Hamar",
+                                         "styreleder":  "Mohammed Ali Abshir",
+                                         "nettside":  null,
+                                         "status":  "ikke_publisert"
+                                     },
+                                     {
+                                         "orgnr":  "994039512",
+                                         "navn":  "Islamik Kultursenter Kongsvinger",
+                                         "kommune":  "Kongsvinger",
+                                         "fylke":  "Innlandet",
+                                         "adresse":  "Ildervegen 10, 2211 Kongsvinger",
+                                         "styreleder":  "Mahamed Hassan Abdi",
+                                         "nettside":  null,
+                                         "status":  "ikke_publisert"
+                                     },
+                                     {
+                                         "orgnr":  "988214140",
+                                         "navn":  "Islamisk Kultursenter I Gj�vik",
+                                         "kommune":  "Gj�vik",
+                                         "fylke":  "Innlandet",
+                                         "adresse":  "Bryggevegen 7, 2821 Gj�vik",
+                                         "styreleder":  "Abdillahi Jama Samatar",
+                                         "nettside":  null,
+                                         "status":  "ikke_publisert"
+                                     },
+                                     {
+                                         "orgnr":  "813918102",
+                                         "navn":  "Islamsk Kultursenter Stange",
+                                         "kommune":  "Stange",
+                                         "fylke":  "Innlandet",
+                                         "adresse":  "Jernbanegata 5, 2335 Stange",
+                                         "styreleder":  "Selahattin Uykur",
+                                         "nettside":  null,
+                                         "status":  "ikke_publisert"
+                                     },
+                                     {
+                                         "orgnr":  "914303303",
+                                         "navn":  "Nord Gudbrandal Islamske Kultursenter",
+                                         "kommune":  "Sel",
+                                         "fylke":  "Innlandet",
+                                         "adresse":  "Storgata 13, 2670 Otta",
+                                         "styreleder":  "Basel Mohammad Dakhil Almuhbane",
+                                         "nettside":  null,
+                                         "status":  "ikke_publisert"
+                                     }
+                                 ],
+                   "Nordland":  [
+                                    {
+                                        "orgnr":  "924495995",
+                                        "navn":  "Al Huda Kulturhus",
+                                        "kommune":  "Vefsn",
+                                        "fylke":  "Nordland",
+                                        "adresse":  "Fearnleys gate 27, 8657 Mosj�en",
+                                        "styreleder":  "Mohamed Abdelrahim Babiker",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "918363866",
+                                        "navn":  "AL HUDDA SORTLAND",
+                                        "kommune":  "Sortland",
+                                        "fylke":  "Nordland",
+                                        "adresse":  "Vester�lsgata 58, 8400 Sortland",
+                                        "styreleder":  "Mustaf Mohamed Hassan",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "985637865",
+                                        "navn":  "Islamsk Kultursenter Nordland",
+                                        "kommune":  "Bod�",
+                                        "fylke":  "Nordland",
+                                        "adresse":  "Dronningens gate 77, 8006 Bod�",
+                                        "styreleder":  "Muhammad Zulquarnain",
+                                        "nettside":  "www.iknordland.no",
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "913213491",
+                                        "navn":  "Lofoten Islamsk Kultursenter",
+                                        "kommune":  "Vestv�g�y",
+                                        "fylke":  "Nordland",
+                                        "adresse":  "Storgata 113, 8370 Leknes",
+                                        "styreleder":  "Ezzeddin Ishaq Abdallah Osman",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    },
+                                    {
+                                        "orgnr":  "911967871",
+                                        "navn":  "Mo I Rana Islamisk Kultursenter",
+                                        "kommune":  "Rana",
+                                        "fylke":  "Nordland",
+                                        "adresse":  "Nordahl Griegs gate 8, 8622 Mo I Rana",
+                                        "styreleder":  "Hashi Ahmed Tohow",
+                                        "nettside":  null,
+                                        "status":  "ikke_publisert"
+                                    }
+                                ],
+                   "Troms og Finnmark":  [
+                                             {
+                                                 "orgnr":  "990946957",
+                                                 "navn":  "Alhidaya Islamic Center",
+                                                 "kommune":  "Hammerfest",
+                                                 "fylke":  "Troms og Finnmark",
+                                                 "adresse":  "Storgata 27, 9600 Hammerfest",
+                                                 "styreleder":  "Mahad Abdirahmaan Harbi",
+                                                 "nettside":  "alhidaya.no",
+                                                 "status":  "ikke_publisert"
+                                             },
+                                             {
+                                                 "orgnr":  "889761032",
+                                                 "navn":  "Alnor",
+                                                 "kommune":  "Troms�",
+                                                 "fylke":  "Troms og Finnmark",
+                                                 "adresse":  "Storgata 132, 9008 Troms�",
+                                                 "styreleder":  "Mansoor Waizy",
+                                                 "nettside":  "www.alnorsenter.no",
+                                                 "status":  "ikke_publisert"
+                                             },
+                                             {
+                                                 "orgnr":  "893893202",
+                                                 "navn":  "Alta Islamisk Forening",
+                                                 "kommune":  "Alta",
+                                                 "fylke":  "Troms og Finnmark",
+                                                 "adresse":  "Altaveien 91, 9513 Alta",
+                                                 "styreleder":  "Guhdar Ajeel Mohammed",
+                                                 "nettside":  null,
+                                                 "status":  "ikke_publisert"
+                                             },
+                                             {
+                                                 "orgnr":  "918060464",
+                                                 "navn":  "Altanwir Kultur Senter",
+                                                 "kommune":  "S�r-Varanger",
+                                                 "fylke":  "Troms og Finnmark",
+                                                 "adresse":  "Wiulls gate 2, 9900 Kirkenes",
+                                                 "styreleder":  "Ayman Hamada Almassri",
+                                                 "nettside":  null,
+                                                 "status":  "ikke_publisert"
+                                             },
+                                             {
+                                                 "orgnr":  "912395707",
+                                                 "navn":  "Den Islamske Forening I Vads�",
+                                                 "kommune":  "Vads�",
+                                                 "fylke":  "Troms og Finnmark",
+                                                 "adresse":  "c/o Junus Albogachijev, Grensen 8, 9803 Vads�",
+                                                 "styreleder":  "Junus Jusupovitsj Albogachijev",
+                                                 "nettside":  null,
+                                                 "status":  "ikke_publisert"
+                                             },
+                                             {
+                                                 "orgnr":  "929042166",
+                                                 "navn":  "Den Islamske Samling I Nordreisa",
+                                                 "kommune":  "Nordreisa",
+                                                 "fylke":  "Troms og Finnmark",
+                                                 "adresse":  "c/o Ahmad Tawil, Hansabakken 31B, 9151 Storslett",
+                                                 "styreleder":  "Ahmad Tawil",
+                                                 "nettside":  null,
+                                                 "status":  "ikke_publisert"
+                                             },
+                                             {
+                                                 "orgnr":  "988035629",
+                                                 "navn":  "Finnsnes Muslim Community",
+                                                 "kommune":  "Senja",
+                                                 "fylke":  "Troms og Finnmark",
+                                                 "adresse":  "c/o Beshir Faraj Mohammed Hamed, Nyg�rdsveien 27, 9300 Finnsnes",
+                                                 "styreleder":  "Beshir Faraj Mohammed Hamed",
+                                                 "nettside":  null,
+                                                 "status":  "ikke_publisert"
+                                             },
+                                             {
+                                                 "orgnr":  "985515158",
+                                                 "navn":  "Islamsk Senter For Nord Norge",
+                                                 "kommune":  "Troms�",
+                                                 "fylke":  "Troms og Finnmark",
+                                                 "adresse":  "Fr Nansens plass 11, 9008 Troms�",
+                                                 "styreleder":  "Omar Ayoub Ali",
+                                                 "nettside":  "www.isnn.no",
+                                                 "status":  "ikke_publisert"
+                                             },
+                                             {
+                                                 "orgnr":  "995361485",
+                                                 "navn":  "Nor Kultursenter",
+                                                 "kommune":  "Harstad",
+                                                 "fylke":  "Troms og Finnmark",
+                                                 "adresse":  "c/o Ibrahim Aliyow Mohammednur, Skolegata 6B, 9404 Harstad",
+                                                 "styreleder":  "Mamdouh Allawi Alhajji",
+                                                 "nettside":  null,
+                                                 "status":  "ikke_publisert"
+                                             }
+                                         ]
+               }
+}

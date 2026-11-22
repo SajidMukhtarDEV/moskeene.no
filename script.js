@@ -1,113 +1,34 @@
 /* ==========================================================================
    SCRIPT.JS - Moskeene.no
-   Logikk for automatiske bønnetider, sanntids aktiv bønn og by-velger
-   (Dataene leses fra bonnetider-data.js)
+   Hovedlogikk for offentlig forside (sammenstiller bønnetider, Jummah og søk)
+   Bruker modulene js/utils.js, js/store.js og js/bonnetider.js
    ========================================================================== */
 
-// Hjelpefunksjon for å unngå XSS / skriptinjeksjon ved HTML-innsetting
-function escapeHtml(str) {
-    if (str === null || str === undefined) return '';
-    return String(str)
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#39;');
+// 1. Fallback for hjelpefunksjoner dersom utils.js lastes asynkront
+if (typeof escapeHtml !== 'function') {
+    window.escapeHtml = function(str) {
+        if (str === null || str === undefined) return '';
+        return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    };
+}
+if (typeof timeToMinutes !== 'function') {
+    window.timeToMinutes = function(timeStr) {
+        if (!timeStr || !timeStr.includes(':')) return 0;
+        const [hours, minutes] = timeStr.split(':').map(Number);
+        return (hours * 60) + (minutes || 0);
+    };
 }
 
-// 1. Hjelpefunksjon: Konverterer "tt:mm" til minutter fra midnatt (f.eks. "12:10" -> 730)
-function timeToMinutes(timeStr) {
-    const [hours, minutes] = timeStr.split(':').map(Number);
-    return hours * 60 + minutes;
-}
-
-// 2. Hovedfunksjon: Oppdaterer bønnetider og finner aktiv bønn
-function oppdaterBonnetider() {
-    const now = new Date();
-    const month = now.getMonth() + 1; // 1-12
-    const day = now.getDate();        // 1-31
-    const currentMinutes = now.getHours() * 60 + now.getMinutes();
-
-    // Hvilken by er valgt i menyen?
-    const citySelect = document.getElementById('city-select');
-    const valgtBy = citySelect ? citySelect.value : 'drammen';
-
-    // Inntil IRN API-et er koblet på for alle byer, henter vi fra tabellen med dobbel feiltoleranse
-    const hasData = typeof bonnetiderDrammen !== 'undefined' && bonnetiderDrammen[month] && bonnetiderDrammen[month][day];
-    const defaultData = (typeof bonnetiderDrammen !== 'undefined' && bonnetiderDrammen[11] && bonnetiderDrammen[11][21]) 
-        ? bonnetiderDrammen[11][21] 
-        : { fajr: "06:14", dhuhr: "12:10", asr: "13:48", maghrib: "15:45", isha: "17:47" };
-
-    const todayPrayers = hasData ? bonnetiderDrammen[month][day] : defaultData;
-
-    // Oppdater klokkeslettene på skjermen
-    document.getElementById('time-fajr').textContent = todayPrayers.fajr;
-    document.getElementById('time-dhuhr').textContent = todayPrayers.dhuhr;
-    document.getElementById('time-asr').textContent = todayPrayers.asr;
-    document.getElementById('time-maghrib').textContent = todayPrayers.maghrib;
-    document.getElementById('time-isha').textContent = todayPrayers.isha;
-
-    // Regn om dagens bønnetider til minutter for nøyaktig sammenligning
-    const fajrMin = timeToMinutes(todayPrayers.fajr);
-    const dhuhrMin = timeToMinutes(todayPrayers.dhuhr);
-    const asrMin = timeToMinutes(todayPrayers.asr);
-    const maghribMin = timeToMinutes(todayPrayers.maghrib);
-    const ishaMin = timeToMinutes(todayPrayers.isha);
-
-    // Finn hvilken bønn som er aktiv akkurat nå
-    let activePrayerId = 'prayer-isha';
-
-    if (currentMinutes >= ishaMin || currentMinutes < fajrMin) {
-        activePrayerId = 'prayer-isha';
-    } else if (currentMinutes >= maghribMin) {
-        activePrayerId = 'prayer-maghrib';
-    } else if (currentMinutes >= asrMin) {
-        activePrayerId = 'prayer-asr';
-    } else if (currentMinutes >= dhuhrMin) {
-        activePrayerId = 'prayer-dhuhr';
-    } else if (currentMinutes >= fajrMin) {
-        activePrayerId = 'prayer-fajr';
-    }
-
-    // Fjern 'active' fra alle brikker
-    const allPrayers = document.querySelectorAll('.prayer-item');
-    allPrayers.forEach(item => item.classList.remove('active'));
-
-    // Merk den aktive bønnen med burgunderfargen
-    const activeElement = document.getElementById(activePrayerId);
-    if (activeElement) {
-        activeElement.classList.add('active');
-    }
-}
-
-// 3. Oppstart og hendelser (Events)
+// 2. Oppstart og hendelser (Events)
 document.addEventListener('DOMContentLoaded', () => {
-    const citySelect = document.getElementById('city-select');
-
-    // Sjekk om brukeren har valgt en by tidligere i nettleserens minne (localStorage)
-    const lagretBy = localStorage.getItem('valgtBy');
-    if (lagretBy && citySelect) {
-        citySelect.value = lagretBy;
+    // Initialiser bønnetider via modulen dersom tilgjengelig, ellers kjør fallback
+    if (window.BonnetiderApp) {
+        BonnetiderApp.init();
+    } else if (typeof oppdaterBonnetider === 'function') {
+        oppdaterBonnetider();
     }
 
-    // Når brukeren velger en ny by i nedtrekksmenyen:
-    if (citySelect) {
-        citySelect.addEventListener('change', (e) => {
-            const nyBy = e.target.value;
-            // Lagre valget i nettleserens minne så det huskes til neste gang
-            localStorage.setItem('valgtBy', nyBy);
-            // Oppdater tidene
-            oppdaterBonnetider();
-        });
-    }
-
-    // Kjør bønnetidsoppdateringen med en gang
-    oppdaterBonnetider();
-
-    // Sjekk klokken hvert 30. sekund for automatisk overgang til neste bønn
-    setInterval(oppdaterBonnetider, 30000);
-
-    // Initialiser publiserte moskeer på forsiden
+    // Initialiser publiserte moskeer på forsiden via felles MoskeStore
     initPubliserteMoskeer();
 });
 
@@ -122,22 +43,16 @@ async function initPubliserteMoskeer() {
     if (!dropdownMenu || !dropdownBtn) return;
 
     try {
-        let json = null;
-        const lokalCache = localStorage.getItem('moskeene_publisert_cache');
-        if (lokalCache && !lokalCache.includes('Ã')) {
-            try { json = JSON.parse(lokalCache); } catch(e){}
-        } else if (lokalCache && lokalCache.includes('Ã')) {
-            localStorage.removeItem('moskeene_publisert_cache');
-        }
-        if (!json) {
-            const res = await fetch('moskesjekk/publisert-moskeer.json');
-            if (!res.ok) throw new Error('Kunne ikke hente publisert-moskeer.json');
-            json = await res.json();
-        }
-
-        publiserteData = [];
-        for (const [fylke, moskeer] of Object.entries(json.fylker || {})) {
-            publiserteData.push(...moskeer);
+        if (window.MoskeStore) {
+            await MoskeStore.loadPubliserte();
+            publiserteData = MoskeStore.getAlleMoskeerListe();
+        } else {
+            const res = await fetch('data/publisert-moskeer.json');
+            const json = await res.json();
+            publiserteData = [];
+            for (const moskeer of Object.values(json.fylker || {})) {
+                publiserteData.push(...moskeer);
+            }
         }
 
         // Bygg nedtrekksmeny med søkefelt og grupperte moskeer

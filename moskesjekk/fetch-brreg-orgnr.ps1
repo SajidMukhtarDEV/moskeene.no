@@ -1,4 +1,4 @@
-$csharpCode = @"
+﻿$csharpCode = @"
 using System;
 using System.Net.Http;
 using System.Collections.Concurrent;
@@ -82,6 +82,9 @@ public class FastBrregFetcher {
 Add-Type -ReferencedAssemblies "System.Net.Http" -TypeDefinition $csharpCode -Language CSharp
 
 $jsonPath = Join-Path $PSScriptRoot "upublisert-moskeer.json"
+if (-not (Test-Path $jsonPath)) {
+    $jsonPath = Join-Path $PSScriptRoot "..\data\upublisert-moskeer.json"
+}
 $data = Get-Content $jsonPath -Raw -Encoding UTF8 | ConvertFrom-Json
 
 $orgList = [System.Collections.Generic.List[string]]::new()
@@ -139,6 +142,10 @@ $data.sistOppdatert = (Get-Date -Format "yyyy-MM-dd")
 $data.beskrivelse = "Komplett register over 266 registrerte moskeer og muslimske trossamfunn i Norge med styreleder og hjemmeside direkte fra Brønnøysundregistrene (uten telefonnumre). Status: IKKE PUBLISERT - Venter på manuell gjennomgang."
 
 $data | ConvertTo-Json -Depth 10 | Set-Content $jsonPath -Encoding UTF8
+$altPath = Join-Path $PSScriptRoot "..\data\upublisert-moskeer.json"
+if (Test-Path (Split-Path $altPath -Parent)) {
+    Copy-Item $jsonPath $altPath -Force
+}
 
 Write-Host "FERDIG!"
 Write-Host "Totalt moskeer: $($data.totaltAntall)"

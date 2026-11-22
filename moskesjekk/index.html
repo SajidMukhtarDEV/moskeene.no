@@ -2,11 +2,13 @@
 <html lang="no">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Moskesjekk - Brønnøysund & Moskeoversikt</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/portal.css">
     <style>
         :root {
             --primary: #14532D;
@@ -170,24 +172,14 @@
         </div>
     </div>
 
+    <script src="../js/utils.js"></script>
+    <script src="../js/store.js"></script>
     <script>
-        // Hjelpefunksjon for å unngå XSS / skriptinjeksjon ved HTML-innsetting
-        function escapeHtml(str) {
-            if (str === null || str === undefined) return '';
-            return String(str)
-                .replace(/&/g, '&amp;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;')
-                .replace(/"/g, '&quot;')
-                .replace(/'/g, '&#39;');
-        }
-
         let dataCache = null;
 
         async function init() {
             try {
-                const res = await fetch('upublisert-moskeer.json');
-                dataCache = await res.json();
+                dataCache = await MoskeStore.loadUpubliserte();
                 
                 document.getElementById('stat-total').textContent = dataCache.totaltAntall;
                 const fylkeKeys = Object.keys(dataCache.fylker);
@@ -215,7 +207,7 @@
                 document.getElementById('kommuneSelect').addEventListener('change', renderMoskeer);
 
             } catch (err) {
-                document.getElementById('fylkeContainer').innerHTML = '<p style="color:red;">Kunne ikke laste datafilen. Sjekk at upublisert-moskeer.json ligger i samme mappe.</p>';
+                document.getElementById('fylkeContainer').innerHTML = '<p style="color:red;">Kunne ikke laste datafilen. Sjekk at upublisert-moskeer.json ligger i data-mappen.</p>';
             }
         }
 
@@ -424,8 +416,7 @@
 
             try {
                 if (!pubDataForPin) {
-                    const res = await fetch('publisert-moskeer.json');
-                    pubDataForPin = await res.json();
+                    pubDataForPin = await MoskeStore.loadPubliserte();
                 }
 
                 const moskeer = [];
@@ -521,30 +512,7 @@
         // ADMIN INNBOKS FOR MELDINGER FRA MOSKEENE
         // ======================================================================
         async function hentAdminMeldinger() {
-            let meldinger = [];
-            try {
-                if (!pubDataForPin) {
-                    const res = await fetch('publisert-moskeer.json');
-                    pubDataForPin = await res.json();
-                }
-                if (pubDataForPin && pubDataForPin.adminMeldinger) {
-                    meldinger.push(...pubDataForPin.adminMeldinger);
-                }
-            } catch(e) {}
-
-            try {
-                const lokal = localStorage.getItem('moskeene_admin_meldinger');
-                if (lokal) {
-                    const parsed = JSON.parse(lokal);
-                    parsed.forEach(p => {
-                        if (!meldinger.some(m => m.id === p.id)) {
-                            meldinger.unshift(p);
-                        }
-                    });
-                }
-            } catch(e) {}
-
-            return meldinger;
+            return await MoskeStore.getAdminMeldinger();
         }
 
         async function oppdaterMeldingBadge() {

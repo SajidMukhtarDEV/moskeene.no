@@ -1,0 +1,764 @@
+﻿{
+    "beskrivelse":  "Offisiell og godkjent liste over publiserte moskeer og trossamfunn på Moskeene.no",
+    "sistOppdatert":  "2026-11-21",
+    "totaltAntall":  24,
+    "fylker":  {
+                   "Buskerud":  [
+                                    {
+                                        "orgnr":  "990889880",
+                                        "navn":  "Afghaneres Kulturelle Og Islamske Forening i Buskerud",
+                                        "kommune":  "Drammen",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "Laurits Grønlands vei 30, 3035 Drammen",
+                                        "styreleder":  "Abdul Jalal Mohammad",
+                                        "nettside":  null,
+                                        "status":  "publisert",
+                                        "kontakt":  {
+                                                        "styreleder":  {
+                                                                           "navn":  "Abdul Jalal Mohammad",
+                                                                           "mobil":  "",
+                                                                           "epost":  "",
+                                                                           "kode":  "15626293"
+                                                                       },
+                                                        "imam":  {
+                                                                     "navn":  "",
+                                                                     "mobil":  "",
+                                                                     "epost":  "",
+                                                                     "kode":  "52221463"
+                                                                 },
+                                                        "pin":  "15626293",
+                                                        "moskeEpost":  ""
+                                                    },
+                                        "fredagsbonn":  null,
+                                        "aktiviteter":  [
+
+                                                        ]
+                                    },
+                                    {
+                                        "orgnr":  "974256258",
+                                        "navn":  "Anjuman-E-Islahul Muslimeen of Drammen Norway",
+                                        "kommune":  "Drammen",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "Tordenskiolds gate 86, 3044 Drammen",
+                                        "styreleder":  "Atif Choudhry",
+                                        "nettside":  null,
+                                        "status":  "publisert",
+                                        "kontakt":  {
+                                                        "styreleder":  {
+                                                                           "navn":  "Atif Choudhry",
+                                                                           "mobil":  "",
+                                                                           "epost":  "",
+                                                                           "kode":  "65511483"
+                                                                       },
+                                                        "imam":  {
+                                                                     "navn":  "",
+                                                                     "mobil":  "",
+                                                                     "epost":  "",
+                                                                     "kode":  "96720844"
+                                                                 },
+                                                        "pin":  "65511483",
+                                                        "moskeEpost":  ""
+                                                    },
+                                        "fredagsbonn":  null,
+                                        "aktiviteter":  [
+
+                                                        ]
+                                    },
+                                    {
+                                        "orgnr":  "992195401",
+                                        "navn":  "Asselam Center",
+                                        "kommune":  "Drammen",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "c/o Hussam Aldeen Algazban, Rundtom 2, 3055 Krokstadelva",
+                                        "styreleder":  "Hussam Aldeen Algazban",
+                                        "nettside":  null,
+                                        "status":  "publisert",
+                                        "kontakt":  {
+                                                        "styreleder":  {
+                                                                           "navn":  "Hussam Aldeen Algazban",
+                                                                           "mobil":  "",
+                                                                           "epost":  "",
+                                                                           "kode":  "84069190"
+                                                                       },
+                                                        "imam":  {
+                                                                     "navn":  "",
+                                                                     "mobil":  "",
+                                                                     "epost":  "",
+                                                                     "kode":  "89755168"
+                                                                 },
+                                                        "pin":  "84069190",
+                                                        "moskeEpost":  ""
+                                                    },
+                                        "fredagsbonn":  null,
+                                        "aktiviteter":  [
+
+                                                        ]
+                                    },
+                                    {
+                                        "orgnr":  "985663882",
+                                        "navn":  "Buskerud Og Vestfold Muslimske Trossamfunn",
+                                        "kommune":  "Drammen",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "Smithestrømsveien 5, 3045 Drammen",
+                                        "styreleder":  "Ismail Yusuf Mohamed-Adur",
+                                        "nettside":  null,
+                                        "status":  "publisert",
+                                        "kontakt":  {
+                                                        "styreleder":  {
+                                                                           "navn":  "Ismail Yusuf Mohamed-Adur",
+                                                                           "mobil":  "",
+                                                                           "epost":  "",
+                                                                           "kode":  "77713985"
+                                                                       },
+                                                        "imam":  {
+                                                                     "navn":  "",
+                                                                     "mobil":  "",
+                                                                     "epost":  "",
+                                                                     "kode":  "64326826"
+                                                                 },
+                                                        "pin":  "77713985",
+                                                        "moskeEpost":  ""
+                                                    },
+                                        "fredagsbonn":  null,
+                                        "aktiviteter":  [
+
+                                                        ]
+                                    },
+                                    {
+                                        "orgnr":  "885307612",
+                                        "navn":  "Den Alevitiske kultur senter i Norge",
+                                        "kommune":  "Drammen",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "Konnerudgata 31, 3045 Drammen",
+                                        "styreleder":  "Ali Kilinc",
+                                        "nettside":  null,
+                                        "status":  "publisert",
+                                        "kontakt":  {
+                                                        "styreleder":  {
+                                                                           "navn":  "Ali Kilinc",
+                                                                           "mobil":  "",
+                                                                           "epost":  "",
+                                                                           "kode":  "28314177"
+                                                                       },
+                                                        "imam":  {
+                                                                     "navn":  "",
+                                                                     "mobil":  "",
+                                                                     "epost":  "",
+                                                                     "kode":  "33522743"
+                                                                 },
+                                                        "pin":  "28314177",
+                                                        "moskeEpost":  ""
+                                                    },
+                                        "fredagsbonn":  null,
+                                        "aktiviteter":  [
+
+                                                        ]
+                                    },
+                                    {
+                                        "orgnr":  "987436441",
+                                        "navn":  "Det Albanske kultur og trossamfunn i Norge",
+                                        "kommune":  "Drammen",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "Engene 70, 3015 Drammen",
+                                        "styreleder":  "Ilir Beqiri",
+                                        "nettside":  "www.bkfsh.no",
+                                        "status":  "publisert",
+                                        "kontakt":  {
+                                                        "styreleder":  {
+                                                                           "navn":  "Ilir Beqiri",
+                                                                           "mobil":  "",
+                                                                           "epost":  "",
+                                                                           "kode":  "21615892"
+                                                                       },
+                                                        "imam":  {
+                                                                     "navn":  "",
+                                                                     "mobil":  "",
+                                                                     "epost":  "",
+                                                                     "kode":  "43621660"
+                                                                 },
+                                                        "pin":  "21615892",
+                                                        "moskeEpost":  ""
+                                                    },
+                                        "fredagsbonn":  null,
+                                        "aktiviteter":  [
+
+                                                        ]
+                                    },
+                                    {
+                                        "orgnr":  "994989197",
+                                        "navn":  "Det Islamske forbundet i Drammen",
+                                        "kommune":  "Drammen",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "Nordahl Bruns gate 1, 3018 Drammen",
+                                        "styreleder":  "Nasseraldeen Eide",
+                                        "nettside":  null,
+                                        "status":  "publisert",
+                                        "kontakt":  {
+                                                        "styreleder":  {
+                                                                           "navn":  "Nasseraldeen Eide",
+                                                                           "mobil":  "",
+                                                                           "epost":  "",
+                                                                           "kode":  "55703860"
+                                                                       },
+                                                        "imam":  {
+                                                                     "navn":  "",
+                                                                     "mobil":  "",
+                                                                     "epost":  "",
+                                                                     "kode":  "22735472"
+                                                                 },
+                                                        "pin":  "55703860",
+                                                        "moskeEpost":  ""
+                                                    },
+                                        "fredagsbonn":  null,
+                                        "aktiviteter":  [
+
+                                                        ]
+                                    },
+                                    {
+                                        "orgnr":  "980764249",
+                                        "navn":  "Det Islamske Kultur Senter i Nedre Eiker",
+                                        "kommune":  "Drammen",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "Strandveien 20A, 3050 Mjøndalen",
+                                        "styreleder":  "Faruk Kemal Tanatar",
+                                        "nettside":  null,
+                                        "status":  "publisert",
+                                        "kontakt":  {
+                                                        "styreleder":  {
+                                                                           "navn":  "Faruk Kemal Tanatar",
+                                                                           "mobil":  "",
+                                                                           "epost":  "",
+                                                                           "kode":  "40918417"
+                                                                       },
+                                                        "imam":  {
+                                                                     "navn":  "",
+                                                                     "mobil":  "",
+                                                                     "epost":  "",
+                                                                     "kode":  "27681472"
+                                                                 },
+                                                        "pin":  "40918417",
+                                                        "moskeEpost":  ""
+                                                    },
+                                        "fredagsbonn":  null,
+                                        "aktiviteter":  [
+
+                                                        ]
+                                    },
+                                    {
+                                        "orgnr":  "971307323",
+                                        "navn":  "Det Islamske Kultursenter i Drammen",
+                                        "kommune":  "Drammen",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "Christian Bloms gate 10, 3041 Drammen",
+                                        "styreleder":  "Ali Ekiz",
+                                        "nettside":  null,
+                                        "status":  "publisert",
+                                        "kontakt":  {
+                                                        "styreleder":  {
+                                                                           "navn":  "Ali Ekiz",
+                                                                           "mobil":  "",
+                                                                           "epost":  "",
+                                                                           "kode":  "39744518"
+                                                                       },
+                                                        "imam":  {
+                                                                     "navn":  "",
+                                                                     "mobil":  "",
+                                                                     "epost":  "",
+                                                                     "kode":  "25695875"
+                                                                 },
+                                                        "pin":  "39744518",
+                                                        "moskeEpost":  ""
+                                                    },
+                                        "fredagsbonn":  null,
+                                        "aktiviteter":  [
+
+                                                        ]
+                                    },
+                                    {
+                                        "orgnr":  "987751142",
+                                        "navn":  "Det Tyrkiske Trossamfunnet I Drammen Og Omegn",
+                                        "kommune":  "Drammen",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "Rømers vei 4, 3016 Drammen",
+                                        "styreleder":  "Orhan Al",
+                                        "nettside":  "www.diyanetdrammen.no",
+                                        "status":  "publisert",
+                                        "kontakt":  {
+                                                        "styreleder":  {
+                                                                           "navn":  "Orhan Al",
+                                                                           "mobil":  "",
+                                                                           "epost":  "",
+                                                                           "kode":  "42675132"
+                                                                       },
+                                                        "imam":  {
+                                                                     "navn":  "",
+                                                                     "mobil":  "",
+                                                                     "epost":  "",
+                                                                     "kode":  "13497733"
+                                                                 },
+                                                        "pin":  "42675132",
+                                                        "moskeEpost":  ""
+                                                    },
+                                        "fredagsbonn":  null,
+                                        "aktiviteter":  [
+
+                                                        ]
+                                    },
+                                    {
+                                        "orgnr":  "971307315",
+                                        "navn":  "Drammen Moske",
+                                        "kommune":  "Drammen",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "Solsvingen 116, 3034 Drammen",
+                                        "styreleder":  "Nauman Sarwar",
+                                        "nettside":  "www.drammenmoske.no",
+                                        "status":  "publisert",
+                                        "kontakt":  {
+                                                        "styreleder":  {
+                                                                           "navn":  "Nauman Sarwar",
+                                                                           "mobil":  "90000000",
+                                                                           "epost":  "styret@drammenmoske.no",
+                                                                           "kode":  "12345678"
+                                                                       },
+                                                        "imam":  {
+                                                                     "navn":  "Imam Noor",
+                                                                     "mobil":  "91111111",
+                                                                     "epost":  "imam@drammenmoske.no",
+                                                                     "kode":  "87654321"
+                                                                 },
+                                                        "pin":  "12345678",
+                                                        "moskeEpost":  "post@drammenmoske.no"
+                                                    },
+                                        "fredagsbonn":  {
+                                                            "aktiv":  true,
+                                                            "khutbahTid":  "12:45",
+                                                            "bonnTid":  "13:00",
+                                                            "sprak":  [
+                                                                          "Norsk",
+                                                                          "Urdu"
+                                                                      ],
+                                                            "gyldigFra":  "2026-11-01",
+                                                            "gyldigTil":  "2027-03-28",
+                                                            "merknad":  "D�rene �pner 12:15. Khutbah p� norsk og urdu. Egen inngang for kvinner.",
+                                                            "tider":  [
+                                                                          "13:00"
+                                                                      ]
+                                                        },
+                                        "aktiviteter":  [
+                                                            {
+                                                                "tittel":  "Leksehjelp for barn og unge",
+                                                                "tid":  "Lørdager kl. 14:00 - 16:00",
+                                                                "beskrivelse":  "Gratis leksehjelp i matematikk, norsk og engelsk for elever i barne- og ungdomsskole."
+                                                            },
+                                                            {
+                                                                "tittel":  "Koranskole og arabisk undervisning",
+                                                                "tid":  "Søndager kl. 11:00 - 13:30",
+                                                                "beskrivelse":  "Undervisning for barn og ungdom i alderen 6-16 år inndelt etter nivå."
+                                                            }
+                                                        ]
+                                    },
+                                    {
+                                        "orgnr":  "993813303",
+                                        "navn":  "Drammen Tyrkiske Islamske menighet",
+                                        "kommune":  "Drammen",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "Laurits Grønlands vei 30, 3035 Drammen",
+                                        "styreleder":  "Fikan Cevik",
+                                        "nettside":  null,
+                                        "status":  "publisert",
+                                        "kontakt":  {
+                                                        "styreleder":  {
+                                                                           "navn":  "Fikan Cevik",
+                                                                           "mobil":  "",
+                                                                           "epost":  "",
+                                                                           "kode":  "94393909"
+                                                                       },
+                                                        "imam":  {
+                                                                     "navn":  "",
+                                                                     "mobil":  "",
+                                                                     "epost":  "",
+                                                                     "kode":  "24286482"
+                                                                 },
+                                                        "pin":  "94393909",
+                                                        "moskeEpost":  ""
+                                                    },
+                                        "fredagsbonn":  null,
+                                        "aktiviteter":  [
+
+                                                        ]
+                                    },
+                                    {
+                                        "orgnr":  "998659485",
+                                        "navn":  "Hallingdal Islamsk Senter",
+                                        "kommune":  "Gol",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "Furuvegen 5, 3550 Gol",
+                                        "styreleder":  "Awad Shekh Abdukhadir Mahamed",
+                                        "nettside":  null,
+                                        "status":  "publisert",
+                                        "kontakt":  {
+                                                        "styreleder":  {
+                                                                           "navn":  "Awad Shekh Abdukhadir Mahamed",
+                                                                           "mobil":  "",
+                                                                           "epost":  "",
+                                                                           "kode":  "80876674"
+                                                                       },
+                                                        "imam":  {
+                                                                     "navn":  "",
+                                                                     "mobil":  "",
+                                                                     "epost":  "",
+                                                                     "kode":  "79393815"
+                                                                 },
+                                                        "pin":  "80876674",
+                                                        "moskeEpost":  ""
+                                                    },
+                                        "fredagsbonn":  null,
+                                        "aktiviteter":  [
+
+                                                        ]
+                                    },
+                                    {
+                                        "orgnr":  "998870593",
+                                        "navn":  "Hamwatan Islamsk og kulturell forening",
+                                        "kommune":  "Drammen",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "Steinbergveien 2, 3053 Steinberg",
+                                        "styreleder":  "Jar Mohamad Shahab",
+                                        "nettside":  null,
+                                        "status":  "publisert",
+                                        "kontakt":  {
+                                                        "styreleder":  {
+                                                                           "navn":  "Jar Mohamad Shahab",
+                                                                           "mobil":  "",
+                                                                           "epost":  "",
+                                                                           "kode":  "57281208"
+                                                                       },
+                                                        "imam":  {
+                                                                     "navn":  "",
+                                                                     "mobil":  "",
+                                                                     "epost":  "",
+                                                                     "kode":  "91089844"
+                                                                 },
+                                                        "pin":  "57281208",
+                                                        "moskeEpost":  ""
+                                                    },
+                                        "fredagsbonn":  null,
+                                        "aktiviteter":  [
+
+                                                        ]
+                                    },
+                                    {
+                                        "orgnr":  "991883908",
+                                        "navn":  "Hønefoss Islamsk Senter",
+                                        "kommune":  "Ringerike",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "Hammerbrogate 9A, 3513 Hønefoss",
+                                        "styreleder":  "Ali Muhammadsani Ezhigarah",
+                                        "nettside":  null,
+                                        "status":  "publisert",
+                                        "kontakt":  {
+                                                        "styreleder":  {
+                                                                           "navn":  "Ali Muhammadsani Ezhigarah",
+                                                                           "mobil":  "",
+                                                                           "epost":  "",
+                                                                           "kode":  "38164859"
+                                                                       },
+                                                        "imam":  {
+                                                                     "navn":  "",
+                                                                     "mobil":  "",
+                                                                     "epost":  "",
+                                                                     "kode":  "39995107"
+                                                                 },
+                                                        "pin":  "38164859",
+                                                        "moskeEpost":  ""
+                                                    },
+                                        "fredagsbonn":  null,
+                                        "aktiviteter":  [
+
+                                                        ]
+                                    },
+                                    {
+                                        "orgnr":  "984573413",
+                                        "navn":  "Islamsk Anatolia Bektashi Trossamfunn",
+                                        "kommune":  "Drammen",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "Gamle Kongevei 14, 3040 Drammen",
+                                        "styreleder":  "Mesut Cenar",
+                                        "nettside":  null,
+                                        "status":  "publisert",
+                                        "kontakt":  {
+                                                        "styreleder":  {
+                                                                           "navn":  "Mesut Cenar",
+                                                                           "mobil":  "",
+                                                                           "epost":  "",
+                                                                           "kode":  "24447051"
+                                                                       },
+                                                        "imam":  {
+                                                                     "navn":  "",
+                                                                     "mobil":  "",
+                                                                     "epost":  "",
+                                                                     "kode":  "20414211"
+                                                                 },
+                                                        "pin":  "24447051",
+                                                        "moskeEpost":  ""
+                                                    },
+                                        "fredagsbonn":  null,
+                                        "aktiviteter":  [
+
+                                                        ]
+                                    },
+                                    {
+                                        "orgnr":  "989631896",
+                                        "navn":  "Islamske Kurdiske Forening I Drammen",
+                                        "kommune":  "Lier",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "Gilhusveien 4, 3426 Gullaug",
+                                        "styreleder":  "Yusef Hassan Hussein",
+                                        "nettside":  null,
+                                        "status":  "publisert",
+                                        "kontakt":  {
+                                                        "styreleder":  {
+                                                                           "navn":  "Yusef Hassan Hussein",
+                                                                           "mobil":  "",
+                                                                           "epost":  "",
+                                                                           "kode":  "64665442"
+                                                                       },
+                                                        "imam":  {
+                                                                     "navn":  "",
+                                                                     "mobil":  "",
+                                                                     "epost":  "",
+                                                                     "kode":  "76094378"
+                                                                 },
+                                                        "pin":  "64665442",
+                                                        "moskeEpost":  ""
+                                                    },
+                                        "fredagsbonn":  null,
+                                        "aktiviteter":  [
+
+                                                        ]
+                                    },
+                                    {
+                                        "orgnr":  "889941332",
+                                        "navn":  "Kongsberg Islamsk Kultursenter",
+                                        "kommune":  "Kongsberg",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "Kirkegata 11A, 3616 Kongsberg",
+                                        "styreleder":  "Amidou Metoumgbie",
+                                        "nettside":  null,
+                                        "status":  "publisert",
+                                        "kontakt":  {
+                                                        "styreleder":  {
+                                                                           "navn":  "Amidou Metoumgbie",
+                                                                           "mobil":  "",
+                                                                           "epost":  "",
+                                                                           "kode":  "77821681"
+                                                                       },
+                                                        "imam":  {
+                                                                     "navn":  "",
+                                                                     "mobil":  "",
+                                                                     "epost":  "",
+                                                                     "kode":  "40785123"
+                                                                 },
+                                                        "pin":  "77821681",
+                                                        "moskeEpost":  ""
+                                                    },
+                                        "fredagsbonn":  null,
+                                        "aktiviteter":  [
+
+                                                        ]
+                                    },
+                                    {
+                                        "orgnr":  "889585692",
+                                        "navn":  "Lier Moske",
+                                        "kommune":  "Lier",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "Brastadveien 56, 3425 Reistad",
+                                        "styreleder":  "Muhammad Asim",
+                                        "nettside":  null,
+                                        "status":  "publisert",
+                                        "kontakt":  {
+                                                        "styreleder":  {
+                                                                           "navn":  "Muhammad Asim",
+                                                                           "mobil":  "",
+                                                                           "epost":  "",
+                                                                           "kode":  "83087077"
+                                                                       },
+                                                        "imam":  {
+                                                                     "navn":  "",
+                                                                     "mobil":  "",
+                                                                     "epost":  "",
+                                                                     "kode":  "98878179"
+                                                                 },
+                                                        "pin":  "83087077",
+                                                        "moskeEpost":  ""
+                                                    },
+                                        "fredagsbonn":  null,
+                                        "aktiviteter":  [
+
+                                                        ]
+                                    },
+                                    {
+                                        "orgnr":  "921419899",
+                                        "navn":  "Maulana Kulturell Og Islamsk Forening",
+                                        "kommune":  "Drammen",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "Øvre Ørengate 11, 3023 Drammen",
+                                        "styreleder":  "Olog Big",
+                                        "nettside":  null,
+                                        "status":  "publisert",
+                                        "kontakt":  {
+                                                        "styreleder":  {
+                                                                           "navn":  "Olog Big",
+                                                                           "mobil":  "",
+                                                                           "epost":  "",
+                                                                           "kode":  "58467792"
+                                                                       },
+                                                        "imam":  {
+                                                                     "navn":  "",
+                                                                     "mobil":  "",
+                                                                     "epost":  "",
+                                                                     "kode":  "27029285"
+                                                                 },
+                                                        "pin":  "58467792",
+                                                        "moskeEpost":  ""
+                                                    },
+                                        "fredagsbonn":  null,
+                                        "aktiviteter":  [
+
+                                                        ]
+                                    },
+                                    {
+                                        "orgnr":  "917343977",
+                                        "navn":  "Minhaj Kultursenter Drammen",
+                                        "kommune":  "Drammen",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "c/o Taher Karim, Fjellheimgata 6, 3011 Drammen",
+                                        "styreleder":  "Shafique Siddique",
+                                        "nettside":  null,
+                                        "status":  "publisert",
+                                        "kontakt":  {
+                                                        "styreleder":  {
+                                                                           "navn":  "Shafique Siddique",
+                                                                           "mobil":  "",
+                                                                           "epost":  "",
+                                                                           "kode":  "81873681"
+                                                                       },
+                                                        "imam":  {
+                                                                     "navn":  "",
+                                                                     "mobil":  "",
+                                                                     "epost":  "",
+                                                                     "kode":  "46060991"
+                                                                 },
+                                                        "pin":  "81873681",
+                                                        "moskeEpost":  ""
+                                                    },
+                                        "fredagsbonn":  null,
+                                        "aktiviteter":  [
+
+                                                        ]
+                                    },
+                                    {
+                                        "orgnr":  "987967668",
+                                        "navn":  "På rett vei",
+                                        "kommune":  "Drammen",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "c/o Mazhar Iqbal, Fossilveien 52, 3034 Drammen",
+                                        "styreleder":  "Chaudhry Mazhar Iqbal",
+                                        "nettside":  null,
+                                        "status":  "publisert",
+                                        "kontakt":  {
+                                                        "styreleder":  {
+                                                                           "navn":  "Chaudhry Mazhar Iqbal",
+                                                                           "mobil":  "",
+                                                                           "epost":  "",
+                                                                           "kode":  "38420868"
+                                                                       },
+                                                        "imam":  {
+                                                                     "navn":  "",
+                                                                     "mobil":  "",
+                                                                     "epost":  "",
+                                                                     "kode":  "12883864"
+                                                                 },
+                                                        "pin":  "38420868",
+                                                        "moskeEpost":  ""
+                                                    },
+                                        "fredagsbonn":  null,
+                                        "aktiviteter":  [
+
+                                                        ]
+                                    },
+                                    {
+                                        "orgnr":  "997689151",
+                                        "navn":  "Resalat Islamsk Og Kulturelt Senter",
+                                        "kommune":  "Drammen",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "Øvre Torggate 12, 3017 Drammen",
+                                        "styreleder":  "Méisam Alamy",
+                                        "nettside":  null,
+                                        "status":  "publisert",
+                                        "kontakt":  {
+                                                        "styreleder":  {
+                                                                           "navn":  "Méisam Alamy",
+                                                                           "mobil":  "",
+                                                                           "epost":  "",
+                                                                           "kode":  "48233538"
+                                                                       },
+                                                        "imam":  {
+                                                                     "navn":  "",
+                                                                     "mobil":  "",
+                                                                     "epost":  "",
+                                                                     "kode":  "78954739"
+                                                                 },
+                                                        "pin":  "48233538",
+                                                        "moskeEpost":  ""
+                                                    },
+                                        "fredagsbonn":  null,
+                                        "aktiviteter":  [
+
+                                                        ]
+                                    },
+                                    {
+                                        "orgnr":  "979341598",
+                                        "navn":  "The Islamic Culture Society Buskerud Og Vestfold",
+                                        "kommune":  "Drammen",
+                                        "fylke":  "Buskerud",
+                                        "adresse":  "Laurits Grønlands vei 30, 3035 Drammen",
+                                        "styreleder":  "Nabeel Ellahi",
+                                        "nettside":  null,
+                                        "status":  "publisert",
+                                        "kontakt":  {
+                                                        "styreleder":  {
+                                                                           "navn":  "Nabeel Ellahi",
+                                                                           "mobil":  "",
+                                                                           "epost":  "",
+                                                                           "kode":  "28037502"
+                                                                       },
+                                                        "imam":  {
+                                                                     "navn":  "",
+                                                                     "mobil":  "",
+                                                                     "epost":  "",
+                                                                     "kode":  "51377226"
+                                                                 },
+                                                        "pin":  "28037502",
+                                                        "moskeEpost":  ""
+                                                    },
+                                        "fredagsbonn":  null,
+                                        "aktiviteter":  [
+
+                                                        ]
+                                    }
+                                ]
+               },
+    "adminMeldinger":  [
+                           {
+                               "id":  "m-1",
+                               "tidspunkt":  "2026-11-21 21:30",
+                               "moskeNavn":  "Drammen Moske",
+                               "orgnr":  "971307315",
+                               "avsender":  "Nauman Sarwar (Styreleder)",
+                               "mobil":  "90000000",
+                               "melding":  "Hei Admin! Vi har lagt inn fredagsbønntider (Khutbah kl. 12:45 og bønn kl. 13:00) for vintersesongen. Tusen takk for at dere lager en felles portal for alle moskeene!",
+                               "lest":  false
+                           }
+                       ]
+}
