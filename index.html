@@ -165,35 +165,23 @@
             <div id="heroFredagsbonnView" style="display: none;"></div>
         </section>
 
-        <!-- VISES PÅ SKJERMEN: cards-section & bildekort (Kompakt 2x2 på mobil) -->
-        <section class="cards-section">
-            <div class="card">
-                <div class="card-image-box">
-                    <img src="images/kort-best-praksis.svg" alt="Brobygging og fellesskap" class="card-image">
-                </div>
-                <h3>Brobygging</h3>
-                <p>Samarbeid og dialog på tvers av kommuner.</p>
+        <!-- VISES PÅ SKJERMEN: cards-section & hurtigknapper (Kompakt 2x2 på mobil) -->
+        <section class="cards-section" aria-label="Hurtigvalg">
+            <div class="card" onclick="location.href='#om-oss'" title="Samarbeid og dialog">
+                <span class="card-icon">🤝</span>
+                <span class="card-title">Brobygging</span>
             </div>
-            <div class="card">
-                <div class="card-image-box">
-                    <img src="images/kort-trosdialog.svg" alt="Veldedighet og omsorg" class="card-image">
-                </div>
-                <h3>Veldedighet</h3>
-                <p>Omsorg og bistand til trengende familier.</p>
+            <div class="card" onclick="location.href='#om-oss'" title="Omsorg og bistand">
+                <span class="card-icon">💚</span>
+                <span class="card-title">Veldedighet</span>
             </div>
-            <div class="card" onclick="visFredagsbonnOversikt(true)" style="cursor:pointer;" title="Klikk for å se fredagsbønner">
-                <div class="card-image-box">
-                    <img src="images/kort-kalender.svg" alt="Fredagsbønn og bønnetider" class="card-image">
-                </div>
-                <h3>Fredagsbønn</h3>
-                <p>Klokkeslett for khutbah og bønn i sanntid.</p>
+            <div class="card card-action" onclick="visFredagsbonnOversikt(true)" style="cursor:pointer;" title="Klikk for å se fredagsbønner i sanntid">
+                <span class="card-icon">🕌</span>
+                <span class="card-title">Fredagsbønn</span>
             </div>
-            <div class="card">
-                <div class="card-image-box">
-                    <img src="images/kort-erfaringsbank.svg" alt="Aktiviteter og lokaltilbud" class="card-image">
-                </div>
-                <h3>Aktiviteter</h3>
-                <p>Leksehjelp, koranskole og familiesamlinger.</p>
+            <div class="card" onclick="location.href='#om-oss'" title="Lokale tilbud og samlinger">
+                <span class="card-icon">📖</span>
+                <span class="card-title">Aktiviteter</span>
             </div>
         </section>
 
