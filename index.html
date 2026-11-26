@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Skall - Moskeene</title>
+    <title>Moskeene.no</title>
 
     <!-- Google Fonts: Inter (Lesetekst) & Playfair Display (Overskrifter) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,13 +27,19 @@
             <!-- By-velger for bønnetider -->
             <div class="city-selector-wrap">
                 <span class="location-icon">📍</span>
-                <select id="city-select" aria-label="Velg by for bønnetider">
-                    <option value="drammen" selected>Drammen</option>
-                    <option value="oslo">Oslo</option>
-                    <option value="bergen">Bergen</option>
-                    <option value="trondheim">Trondheim</option>
-                    <option value="stavanger">Stavanger</option>
-                    <option value="kristiansand">Kristiansand</option>
+                <select id="city-select" aria-label="Velg kommune i Buskerud for bønnetider">
+                    <option value="Drammen" selected>Drammen</option>
+                    <option value="Lier">Lier</option>
+                    <option value="Kongsberg">Kongsberg</option>
+                    <option value="Øvre Eiker">Øvre Eiker</option>
+                    <option value="Ringerike (Hønefoss)">Hønefoss (Ringerike)</option>
+                    <option value="Modum">Modum</option>
+                    <option value="Hole">Hole</option>
+                    <option value="Gol">Gol</option>
+                    <option value="Hemsedal">Hemsedal</option>
+                    <option value="Ål">Ål</option>
+                    <option value="Hol (Geilo)">Geilo (Hol)</option>
+                    <option value="Nesbyen">Nesbyen</option>
                 </select>
             </div>
 
@@ -146,6 +152,11 @@
         <section class="hero-section" id="heroSection">
             <!-- 1. Standard velkomstvisning -->
             <div id="heroDefaultView">
+                <!-- KOMMENDE ISLAMSKE HØYTIDER (Plassert øverst for maksimal synlighet) -->
+                <div class="hero-hoytider-wrap" id="heroHoytiderWrap" aria-label="Kommende islamske høytider">
+                    <!-- Fylles automatisk fra data/islamske-hoytider.json -->
+                </div>
+
                 <div class="hero-content">
                     <h1>Sammen er vi sterkere</h1>
                     <p>En felles portal for dialog, kunnskapsdeling og samarbeid mellom moskeer og trossamfunn i Norge.</p>
@@ -270,6 +281,7 @@
     <script src="js/utils.js"></script>
     <script src="js/store.js"></script>
     <script src="js/bonnetider.js"></script>
+    <script src="js/hoytider.js"></script>
     <script src="script.js"></script>
 </body>
 

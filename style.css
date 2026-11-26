@@ -587,6 +587,122 @@ a {
     object-position: center;
 }
 
+/* ==========================================================================
+   KOMMENDE ISLAMSKE HØYTIDER (I Hero-banneret)
+   ========================================================================== */
+.hero-hoytider-wrap {
+    margin-top: 4px;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #0b2c18 0%, #14532d 100%);
+    border: 1.5px solid var(--secondary-brun);
+    border-radius: var(--radius-card-kort);
+    padding: 12px 14px;
+    box-shadow: 0 4px 16px rgba(20, 83, 45, 0.25);
+    color: #FFFFFF;
+}
+
+.hero-hoytider-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.hero-hoytider-tag {
+    font-family: var(--font-tittel);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #FDFBF7;
+}
+
+.hero-hoytider-info {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.hero-hoytider-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.hoytid-brikke {
+    background: rgba(255, 255, 255, 0.09);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.hoytid-brikke:hover {
+    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.14);
+}
+
+.hoytid-brikke-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.hoytid-ikon {
+    font-size: 16px;
+    line-height: 1;
+}
+
+.hoytid-navn {
+    font-family: var(--font-tittel);
+    font-size: 13px;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.25;
+}
+
+.hoytid-brikke-detaljer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 4px;
+    font-size: 11px;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.hoytid-dato {
+    color: #F3F4F6;
+    font-weight: 500;
+}
+
+.hoytid-nedtelling {
+    background-color: var(--secondary-brun);
+    color: #FFFFFF;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+    .hero-hoytider-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+    .hero-hoytider-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+    }
+}
+
 /* BRANSJENAVN: cards-section (Kompakt 2x2 på mobil, 4 kolonner på PC) */
 .cards-section {
     display: grid;
@@ -604,11 +720,11 @@ a {
     }
 }
 
-/* BRANSJENAVN: card (Kompakt og stilren hurtigknapp/flis) */
+/* BRANSJENAVN: card (Kompakt og stilren hurtigknapp/flis med høy kontrast) */
 .card {
-    border: 1.5px solid var(--secondary-brun);
-    background-color: var(--surface-sand);
-    color: var(--primary-hoved);
+    border: 1px solid #1E6B3B;
+    background-color: var(--primary-hoved);
+    color: #FFFFFF;
     padding: 10px 12px;
     min-height: 44px;
     border-radius: var(--radius-card-kort);
@@ -622,12 +738,13 @@ a {
     cursor: pointer;
     user-select: none;
     box-sizing: border-box;
+    box-shadow: 0 3px 10px rgba(20, 83, 45, 0.22);
 }
 
 .card:hover, .card:active {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(84, 35, 20, 0.12);
-    background-color: #FDFBF7;
+    box-shadow: 0 5px 14px rgba(20, 83, 45, 0.35);
+    background-color: #0F3D21;
 }
 
 .card .card-icon {
@@ -641,7 +758,7 @@ a {
     font-size: 13px;
     font-weight: 700;
     line-height: 1.2;
-    color: var(--primary-hoved);
+    color: #FFFFFF;
 }
 
 @media (min-width: 768px) {

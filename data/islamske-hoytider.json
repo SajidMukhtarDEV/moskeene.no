@@ -1,0 +1,254 @@
+[
+    {
+        "gregorian_date":  "2026-01-16",
+        "hijri_month_text":  "Rajab",
+        "hijri_date":  "1447-7-27",
+        "special_date_name":  "27. RAJAB – SHABE-E-MIRAJ (ISRA NATTEN)"
+    },
+    {
+        "gregorian_date":  "2026-01-20",
+        "hijri_month_text":  "Shaban",
+        "hijri_date":  "1447-8-1",
+        "special_date_name":  "01. SHA’BAN – DEN ÅTTENDE MÅNED"
+    },
+    {
+        "gregorian_date":  "2026-02-03",
+        "hijri_month_text":  "Shaban",
+        "hijri_date":  "1447-8-15",
+        "special_date_name":  "15. SHA´BAN – LAYLAT-UL-BARAT (TILGIVELSESNATTEN)"
+    },
+    {
+        "gregorian_date":  "2026-02-19",
+        "hijri_month_text":  "Ramadan",
+        "hijri_date":  "1447-9-1",
+        "special_date_name":  "01. RAMADAN – FASTEMÅNEDEN (Fastsatt etter komitébeslutning)"
+    },
+    {
+        "gregorian_date":  "2026-03-11",
+        "hijri_month_text":  "Ramadan",
+        "hijri_date":  "1447-9-21",
+        "special_date_name":  "21. RAMADAN – SISTE ASHRA (3. ASHRA)"
+    },
+    {
+        "gregorian_date":  "2026-03-17",
+        "hijri_month_text":  "Ramadan",
+        "hijri_date":  "1447-9-27",
+        "special_date_name":  "27. RAMADAN – LAYLAT-UL-QADR (SKJEBNESNATTEN - høyest sannsynlig)"
+    },
+    {
+        "gregorian_date":  "2026-03-20",
+        "hijri_month_text":  "Shawwal",
+        "hijri_date":  "1447-10-1",
+        "special_date_name":  "01. SHAWWAL – EID UL-FITR"
+    },
+    {
+        "gregorian_date":  "2026-04-18",
+        "hijri_month_text":  "Dhu al-Qadah",
+        "hijri_date":  "1447-11-1",
+        "special_date_name":  "01. DHUL QA’DA – DEN ELLEVTE MÅNED"
+    },
+    {
+        "gregorian_date":  "2026-05-18",
+        "hijri_month_text":  "Dhu al-Hijjah",
+        "hijri_date":  "1447-12-1",
+        "special_date_name":  "01. DHUL-HIJJA – DEN TOLVTE MÅNED (PILEGRIMSREISEN)"
+    },
+    {
+        "gregorian_date":  "2026-05-26",
+        "hijri_month_text":  "Dhu al-Hijjah",
+        "hijri_date":  "1447-12-9",
+        "special_date_name":  "09. DHUL-HIJJA – ARAFAH"
+    },
+    {
+        "gregorian_date":  "2026-05-27",
+        "hijri_month_text":  "Dhu al-Hijjah",
+        "hijri_date":  "1447-12-10",
+        "special_date_name":  "10. DHUL-HIJJA – EID-AL-ADHA"
+    },
+    {
+        "gregorian_date":  "2026-06-16",
+        "hijri_month_text":  "Muharram",
+        "hijri_date":  "1448-1-1",
+        "special_date_name":  "01. MUHARRAM – RAS-AS-SANAH (ISLAMSK NYTTÅR)"
+    },
+    {
+        "gregorian_date":  "2026-06-25",
+        "hijri_month_text":  "Muharram",
+        "hijri_date":  "1448-1-10",
+        "special_date_name":  "10. MUHARRAM – AASHURA"
+    },
+    {
+        "gregorian_date":  "2026-07-15",
+        "hijri_month_text":  "Safar",
+        "hijri_date":  "1448-2-1",
+        "special_date_name":  "01. SAFAR – DEN ANDRE MÅNED"
+    },
+    {
+        "gregorian_date":  "2026-08-14",
+        "hijri_month_text":  "Rabi al-awwal",
+        "hijri_date":  "1448-3-1",
+        "special_date_name":  "01. RABI AL-AWAL – DEN TREDJE MÅNED"
+    },
+    {
+        "gregorian_date":  "2026-08-25",
+        "hijri_month_text":  "Rabi al-awwal",
+        "hijri_date":  "1448-3-12",
+        "special_date_name":  "12. RABI AL-AWAL – MAWLID-AN-NABI (PROFETENS FØDSELSDAG)"
+    },
+    {
+        "gregorian_date":  "2026-09-12",
+        "hijri_month_text":  "Rabi ath-thani",
+        "hijri_date":  "1448-4-1",
+        "special_date_name":  "01. RABI AT-THANI – DEN FJERDE MÅNED"
+    },
+    {
+        "gregorian_date":  "2026-10-12",
+        "hijri_month_text":  "Jumada al-ula",
+        "hijri_date":  "1448-5-1",
+        "special_date_name":  "01. JUMADI AL-AWWAL – DEN FEMTE MÅNED"
+    },
+    {
+        "gregorian_date":  "2026-11-10",
+        "hijri_month_text":  "Jumada al-akhirah",
+        "hijri_date":  "1448-6-1",
+        "special_date_name":  "01. JUMADI AL-THANI – DEN SJETTE MÅNED"
+    },
+    {
+        "gregorian_date":  "2026-12-10",
+        "hijri_month_text":  "Rajab",
+        "hijri_date":  "1448-7-1",
+        "special_date_name":  "01. RAJAB – DEN SYVENDE MÅNED"
+    },
+    {
+        "gregorian_date":  "2027-01-05",
+        "hijri_month_text":  "Rajab",
+        "hijri_date":  "1448-7-27",
+        "special_date_name":  "27. RAJAB – SHABE-E-MIRAJ (ISRA NATTEN)"
+    },
+    {
+        "gregorian_date":  "2027-01-09",
+        "hijri_month_text":  "Shaban",
+        "hijri_date":  "1448-8-1",
+        "special_date_name":  "01. SHA’BAN – DEN ÅTTENDE MÅNED"
+    },
+    {
+        "gregorian_date":  "2027-01-23",
+        "hijri_month_text":  "Shaban",
+        "hijri_date":  "1448-8-15",
+        "special_date_name":  "15. SHA´BAN – LAYLAT-UL-BARAT (TILGIVELSESNATTEN)"
+    },
+    {
+        "gregorian_date":  "2027-02-08",
+        "hijri_month_text":  "Ramadan",
+        "hijri_date":  "1448-9-1",
+        "special_date_name":  "01. RAMADAN – FASTEMÅNEDEN"
+    },
+    {
+        "gregorian_date":  "2027-02-28",
+        "hijri_month_text":  "Ramadan",
+        "hijri_date":  "1448-9-21",
+        "special_date_name":  "21. RAMADAN – SISTE ASHRA (3. ASHRA)"
+    },
+    {
+        "gregorian_date":  "2027-03-06",
+        "hijri_month_text":  "Ramadan",
+        "hijri_date":  "1448-9-27",
+        "special_date_name":  "27. RAMADAN – LAYLAT-UL-QADR (SKJEBNESNATTEN)"
+    },
+    {
+        "gregorian_date":  "2027-03-09",
+        "hijri_month_text":  "Shawwal",
+        "hijri_date":  "1448-10-1",
+        "special_date_name":  "01. SHAWWAL – EID UL-FITR"
+    },
+    {
+        "gregorian_date":  "2027-04-08",
+        "hijri_month_text":  "Dhu al-Qadah",
+        "hijri_date":  "1448-11-1",
+        "special_date_name":  "01. DHUL QA’DA – DEN ELLEVTE MÅNED"
+    },
+    {
+        "gregorian_date":  "2027-05-07",
+        "hijri_month_text":  "Dhu al-Hijjah",
+        "hijri_date":  "1448-12-1",
+        "special_date_name":  "01. DHUL-HIJJA – DEN TOLVTE MÅNED (PILEGRIMSREISEN)"
+    },
+    {
+        "gregorian_date":  "2027-05-15",
+        "hijri_month_text":  "Dhu al-Hijjah",
+        "hijri_date":  "1448-12-9",
+        "special_date_name":  "09. DHUL-HIJJA – ARAFAH"
+    },
+    {
+        "gregorian_date":  "2027-05-16",
+        "hijri_month_text":  "Dhu al-Hijjah",
+        "hijri_date":  "1448-12-10",
+        "special_date_name":  "10. DHUL-HIJJA – EID-AL-ADHA"
+    },
+    {
+        "gregorian_date":  "2027-06-06",
+        "hijri_month_text":  "Muharram",
+        "hijri_date":  "1449-1-1",
+        "special_date_name":  "01. MUHARRAM – RAS-AS-SANAH (ISLAMSK NYTTÅR)"
+    },
+    {
+        "gregorian_date":  "2027-06-15",
+        "hijri_month_text":  "Muharram",
+        "hijri_date":  "1449-1-10",
+        "special_date_name":  "10. MUHARRAM – AASHURA"
+    },
+    {
+        "gregorian_date":  "2027-07-05",
+        "hijri_month_text":  "Safar",
+        "hijri_date":  "1449-2-1",
+        "special_date_name":  "01. SAFAR – DEN ANDRE MÅNED"
+    },
+    {
+        "gregorian_date":  "2027-08-03",
+        "hijri_month_text":  "Rabi al-awwal",
+        "hijri_date":  "1449-3-1",
+        "special_date_name":  "01. RABI AL-AWAL – DEN TREDJE MÅNED"
+    },
+    {
+        "gregorian_date":  "2027-08-14",
+        "hijri_month_text":  "Rabi al-awwal",
+        "hijri_date":  "1449-3-12",
+        "special_date_name":  "12. RABI AL-AWAL – MAWLID-AN-NABI (PROFETENS FØDSELSDAG)"
+    },
+    {
+        "gregorian_date":  "2027-09-02",
+        "hijri_month_text":  "Rabi ath-thani",
+        "hijri_date":  "1449-4-1",
+        "special_date_name":  "01. RABI AT-THANI – DEN FJERDE MÅNED"
+    },
+    {
+        "gregorian_date":  "2027-10-01",
+        "hijri_month_text":  "Jumada al-ula",
+        "hijri_date":  "1449-5-1",
+        "special_date_name":  "01. JUMADI AL-AWWAL – DEN FEMTE MÅNED"
+    },
+    {
+        "gregorian_date":  "2027-10-30",
+        "hijri_month_text":  "Jumada al-akhirah",
+        "hijri_date":  "1449-6-1",
+        "special_date_name":  "01. JUMADI AL-THANI – DEN SJETTE MÅNED"
+    },
+    {
+        "gregorian_date":  "2027-11-29",
+        "hijri_month_text":  "Rajab",
+        "hijri_date":  "1449-7-1",
+        "special_date_name":  "01. RAJAB – DEN SYVENDE MÅNED"
+    },
+    {
+        "gregorian_date":  "2027-12-25",
+        "hijri_month_text":  "Rajab",
+        "hijri_date":  "1449-7-27",
+        "special_date_name":  "27. RAJAB – SHABE-E-MIRAJ (ISRA NATTEN)"
+    },
+    {
+        "gregorian_date":  "2027-12-29",
+        "hijri_month_text":  "Shaban",
+        "hijri_date":  "1449-8-1",
+        "special_date_name":  "01. SHA’BAN – DEN ÅTTENDE MÅNED"
+    }
+]

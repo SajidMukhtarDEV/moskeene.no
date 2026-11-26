@@ -1,33 +1,75 @@
 /**
  * BONNETIDER.JS - Moskeene.no
- * Logikk for bønnetidsberegning, by-velger og sanntids aktiv bønn
+ * Logikk for bønnetidsberegning, kommune-velger for Buskerud og sanntids aktiv bønn
+ * Koblet mot offisielle bønnetider fra Islamsk Råd Norge (api.bonnetid.no)
  */
 
 const BonnetiderApp = {
     timerId: null,
+    buskerudData: null,
 
-    // Henter dagens tider for valgt dato og by
-    getDagensTider(month, day) {
-        const hasData = typeof bonnetiderDrammen !== 'undefined' && bonnetiderDrammen[month] && bonnetiderDrammen[month][day];
-        const defaultData = (typeof bonnetiderDrammen !== 'undefined' && bonnetiderDrammen[11] && bonnetiderDrammen[11][21]) 
-            ? bonnetiderDrammen[11][21] 
-            : { fajr: "06:14", dhuhr: "12:10", asr: "13:48", maghrib: "15:45", isha: "17:47" };
-        return hasData ? bonnetiderDrammen[month][day] : defaultData;
+    // Laster inn bønnetidsdata for Buskerud asynkront
+    async loadData() {
+        try {
+            const resp = await fetch('data/bonnetider-buskerud.json');
+            if (resp.ok) {
+                this.buskerudData = await resp.json();
+                this.oppdater();
+            }
+        } catch (err) {
+            console.warn('Bruker lokal fallback for bønnetider:', err);
+        }
+    },
+
+    // Henter dagens tider for valgt dato og kommune
+    getDagensTider(now) {
+        const y = now.getFullYear();
+        const m = String(now.getMonth() + 1).padStart(2, '0');
+        const d = String(now.getDate()).padStart(2, '0');
+        const datoKey = `${y}-${m}-${d}`;
+
+        const citySelect = document.getElementById('city-select');
+        const valgtKommune = (citySelect && citySelect.value) ? citySelect.value : (localStorage.getItem('valgtBy') || 'Drammen');
+
+        // 1. Sjekk om vi har data for kommunen fra Buskerud JSON
+        if (this.buskerudData && this.buskerudData.kommuner && this.buskerudData.kommuner[valgtKommune]) {
+            const tider = this.buskerudData.kommuner[valgtKommune].tider;
+            if (tider && tider[datoKey]) {
+                const dag = tider[datoKey];
+                return {
+                    fajr: dag.fajr,
+                    dhuhr: dag.duhr,
+                    asr: dag.asr,
+                    maghrib: dag.maghrib,
+                    isha: dag.isha,
+                    shuruq: dag.shuruq,
+                    hijri: dag.hijri
+                };
+            }
+        }
+
+        // 2. Fallback til lokal Drammen-fil
+        const monthNum = now.getMonth() + 1;
+        const dayNum = now.getDate();
+        const hasData = typeof bonnetiderDrammen !== 'undefined' && bonnetiderDrammen[monthNum] && bonnetiderDrammen[monthNum][dayNum];
+        const defaultData = (typeof bonnetiderDrammen !== 'undefined' && bonnetiderDrammen[11] && bonnetiderDrammen[11][26]) 
+            ? bonnetiderDrammen[11][26] 
+            : { fajr: "06:22", dhuhr: "12:11", asr: "13:40", maghrib: "15:36", isha: "17:41" };
+
+        return hasData ? bonnetiderDrammen[monthNum][dayNum] : defaultData;
     },
 
     // Oppdaterer visningen på skjermen og finner aktiv bønn
     oppdater() {
         const now = new Date();
-        const month = now.getMonth() + 1; // 1-12
-        const day = now.getDate();        // 1-31
         const currentMinutes = now.getHours() * 60 + now.getMinutes();
 
-        const todayPrayers = this.getDagensTider(month, day);
+        const todayPrayers = this.getDagensTider(now);
 
-        // Oppdater klokkeslettene på skjermen dersom elementene finnes
+        // Oppdater klokkeslettene på skjermen
         const settTid = (id, tid) => {
             const el = document.getElementById(id);
-            if (el) el.textContent = tid;
+            if (el && tid) el.textContent = tid;
         };
         settTid('time-fajr', todayPrayers.fajr);
         settTid('time-dhuhr', todayPrayers.dhuhr);
@@ -66,12 +108,12 @@ const BonnetiderApp = {
         }
     },
 
-    // Initialiserer by-velger og setter opp periodisk oppdatering
+    // Initialiserer kommune-velger og setter opp periodisk oppdatering
     init() {
         const citySelect = document.getElementById('city-select');
-        const lagretBy = localStorage.getItem('valgtBy');
-        if (lagretBy && citySelect) {
-            citySelect.value = lagretBy;
+        const lagretKommune = localStorage.getItem('valgtBy');
+        if (lagretKommune && citySelect) {
+            citySelect.value = lagretKommune;
         }
 
         if (citySelect) {
@@ -81,9 +123,11 @@ const BonnetiderApp = {
             });
         }
 
+        // Start umiddelbar visning og last inn Buskerud-data
         this.oppdater();
+        this.loadData();
 
-        // Sjekk klokken hvert 30. sekund
+        // Sjekk klokken hvert 30. sekund for å holde aktiv bønn oppdatert
         if (this.timerId) clearInterval(this.timerId);
         this.timerId = setInterval(() => this.oppdater(), 30000);
     }

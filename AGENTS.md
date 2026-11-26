@@ -68,4 +68,11 @@ Portalen er organisert i en ren, modularisert struktur for maksimal ytelse og tr
 * `min-moske/`: Selvbetjeningsportal for styreledere og imamer.
 * `moskesjekk/`: Administrative verktøy for verifisering, lenkekontroll og tilgangsstyring.
 
+---
+
+## 7. Obligatorisk UTF-8 og API-databehandling
+- **Ren UTF-8 på tvers av prosjektet:** Alle datafiler (`data/*.json`), JavaScript-filer og skript skal lagres i ren UTF-8 uten BOM.
+- **PowerShell & API-innhenting:** Når skript kaller eksterne API-er (som `api.bonnetid.no`), skal responsen alltid leses med `[System.Text.Encoding]::UTF8` for å garantere at norske tegn (`æ`, `ø`, `å`) og merkedag-tekster bevares uten feil.
+- **Høytider og bønnetider:** Høytider i `data/islamske-hoytider.json` og bønnetider i `data/bonnetider-buskerud.json` skal alltid verifiseres mot norsk datoformat (`nb-NO`).
+
 
