@@ -39,17 +39,14 @@ const HoytiderApp = {
         return clean.charAt(0).toUpperCase() + clean.slice(1).toLowerCase();
     },
 
-    // Formaterer dato på norsk (f.eks. "Tirsdag 5. jan 2027")
+    // Formaterer dato kort på norsk (f.eks. "10. des")
     formaterNorskDato(isoDato) {
         try {
             const parts = isoDato.split('-');
             const d = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
-            const ukedag = d.toLocaleDateString('nb-NO', { weekday: 'short' });
-            const ukedagStor = ukedag.charAt(0).toUpperCase() + ukedag.slice(1);
             const dag = d.getDate();
-            const mnd = d.toLocaleDateString('nb-NO', { month: 'short' });
-            const aar = d.getFullYear();
-            return `${ukedagStor} ${dag}. ${mnd} ${aar}`;
+            const mnd = d.toLocaleDateString('nb-NO', { month: 'short' }).replace('.', '');
+            return `${dag}. ${mnd}`;
         } catch {
             return isoDato;
         }
@@ -66,9 +63,9 @@ const HoytiderApp = {
         const diffMs = target - today;
         const diffDager = Math.round(diffMs / (1000 * 60 * 60 * 24));
 
-        if (diffDager === 0) return "I dag! 🎉";
-        if (diffDager === 1) return "I morgen!";
-        if (diffDager > 1) return `Om ${diffDager} dager`;
+        if (diffDager === 0) return "I dag!";
+        if (diffDager === 1) return "I morgen";
+        if (diffDager > 1) return `${diffDager} dager`;
         return "";
     },
 
@@ -91,7 +88,7 @@ const HoytiderApp = {
         return kommende.slice(0, 2);
     },
 
-    // Viser høytidene i DOM-en
+    // Viser høytidene i DOM-en (Superkompakt mini-stripe)
     render(nesteTo) {
         const wrap = document.getElementById('heroHoytiderWrap');
         if (!wrap) return;
@@ -105,28 +102,22 @@ const HoytiderApp = {
             const navn = this.formaterNavn(h.special_date_name);
             const datoStr = this.formaterNorskDato(h.gregorian_date);
             const teller = this.dagerIgjen(h.gregorian_date);
-            const hijriStr = h.hijri_date ? ` (${h.hijri_date})` : '';
             const ikon = idx === 0 ? '🕌' : '🌙';
 
             return `
-                <div class="hoytid-brikke">
-                    <div class="hoytid-brikke-header">
-                        <span class="hoytid-ikon">${ikon}</span>
-                        <span class="hoytid-navn">${escapeHtml(navn)}</span>
+                <div class="hoytid-mini-brikke">
+                    <div class="hoytid-mini-left">
+                        <span class="hoytid-mini-ikon">${ikon}</span>
+                        <span class="hoytid-mini-navn">${escapeHtml(navn)}</span>
+                        <span class="hoytid-mini-prikk">•</span>
+                        <span class="hoytid-mini-dato">${escapeHtml(datoStr)}</span>
                     </div>
-                    <div class="hoytid-brikke-detaljer">
-                        <span class="hoytid-dato">📅 ${escapeHtml(datoStr)}</span>
-                        <span class="hoytid-nedtelling">⏳ ${escapeHtml(teller)}</span>
-                    </div>
+                    <span class="hoytid-mini-teller">⏳ ${escapeHtml(teller)}</span>
                 </div>
             `;
         }).join('');
 
         wrap.innerHTML = `
-            <div class="hero-hoytider-header">
-                <span class="hero-hoytider-tag">🌙 Offisiell islamsk kalender</span>
-                <span class="hero-hoytider-info">Kommende religiøse høytider</span>
-            </div>
             <div class="hero-hoytider-grid">
                 ${kortHtml}
             </div>

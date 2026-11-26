@@ -557,15 +557,15 @@ a {
 
 .hero-section h1 {
     font-family: var(--font-tittel);
-    font-size: 36px;
+    font-size: 24px;
     color: var(--primary-hoved);
-    margin-bottom: 10px;
+    margin: 4px 0 6px 0;
 }
 
 .hero-section p {
     color: var(--secondary-brun);
-    font-size: 18px;
-    margin-bottom: 24px;
+    font-size: 15px;
+    margin-bottom: 12px;
 }
 
 /* Topp-bilde (Panoramabilde) */
@@ -581,125 +581,117 @@ a {
 .hero-image {
     width: 100%;
     height: auto;
+    max-height: 220px;
     display: block;
-    aspect-ratio: 2 / 1;
+    aspect-ratio: 3 / 1;
     object-fit: cover;
-    object-position: center;
+    object-position: center 35%;
 }
 
 /* ==========================================================================
-   KOMMENDE ISLAMSKE HØYTIDER (I Hero-banneret)
+   KOMMENDE ISLAMSKE HØYTIDER (Superkompakt mini-stripe i Hero-banneret)
    ========================================================================== */
 .hero-hoytider-wrap {
-    margin-top: 4px;
-    margin-bottom: 20px;
-    background: linear-gradient(135deg, #0b2c18 0%, #14532d 100%);
-    border: 1.5px solid var(--secondary-brun);
-    border-radius: var(--radius-card-kort);
-    padding: 12px 14px;
-    box-shadow: 0 4px 16px rgba(20, 83, 45, 0.25);
-    color: #FFFFFF;
-}
-
-.hero-hoytider-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    padding-bottom: 6px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.hero-hoytider-tag {
-    font-family: var(--font-tittel);
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: #FDFBF7;
-}
-
-.hero-hoytider-info {
-    font-size: 11px;
-    color: rgba(255, 255, 255, 0.8);
+    margin-top: 2px;
+    margin-bottom: 8px;
+    background: transparent;
+    padding: 0;
+    border: none;
+    box-shadow: none;
 }
 
 .hero-hoytider-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    gap: 8px;
+    width: 100%;
 }
 
-.hoytid-brikke {
-    background: rgba(255, 255, 255, 0.09);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
-    padding: 10px 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    transition: transform 0.2s ease, background 0.2s ease;
-}
-
-.hoytid-brikke:hover {
-    transform: translateY(-1px);
-    background: rgba(255, 255, 255, 0.14);
-}
-
-.hoytid-brikke-header {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.hoytid-ikon {
-    font-size: 16px;
-    line-height: 1;
-}
-
-.hoytid-navn {
-    font-family: var(--font-tittel);
-    font-size: 13px;
-    font-weight: 700;
-    color: #FFFFFF;
-    line-height: 1.25;
-}
-
-.hoytid-brikke-detaljer {
+.hoytid-mini-brikke {
+    background: linear-gradient(135deg, #0b2c18 0%, #14532d 100%);
+    border: 1.5px solid var(--secondary-brun);
+    border-radius: var(--radius-card-kort);
+    padding: 6px 10px;
+    min-height: 38px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 4px;
+    gap: 6px;
+    color: #FFFFFF;
+    box-sizing: border-box;
+    box-shadow: 0 2px 8px rgba(20, 83, 45, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hoytid-mini-brikke:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(20, 83, 45, 0.3);
+}
+
+.hoytid-mini-left {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.hoytid-mini-ikon {
+    font-size: 14px;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.hoytid-mini-navn {
+    font-family: var(--font-tittel);
+    font-size: 12px;
+    font-weight: 700;
+    color: #FFFFFF;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.hoytid-mini-prikk {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 10px;
+    flex-shrink: 0;
+}
+
+.hoytid-mini-dato {
     font-size: 11px;
-    flex-wrap: wrap;
-    gap: 4px;
+    color: #E2D9C8;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
-.hoytid-dato {
-    color: #F3F4F6;
-    font-weight: 500;
-}
-
-.hoytid-nedtelling {
+.hoytid-mini-teller {
     background-color: var(--secondary-brun);
     color: #FFFFFF;
-    padding: 2px 8px;
-    border-radius: 12px;
-    font-size: 10.5px;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-size: 10px;
     font-weight: 700;
     letter-spacing: 0.2px;
     white-space: nowrap;
+    flex-shrink: 0;
 }
 
 @media (max-width: 480px) {
-    .hero-hoytider-grid {
-        grid-template-columns: 1fr;
-        gap: 8px;
+    .hoytid-mini-brikke {
+        padding: 5px 8px;
+        min-height: 34px;
+        gap: 4px;
     }
-    .hero-hoytider-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 2px;
+    .hoytid-mini-navn {
+        font-size: 11px;
+    }
+    .hoytid-mini-dato {
+        font-size: 10px;
+    }
+    .hoytid-mini-teller {
+        font-size: 9.5px;
+        padding: 1px 5px;
     }
 }
 
@@ -1517,20 +1509,15 @@ a {
         margin-bottom: 8px;
     }
     .hero-section h1 {
-        font-size: 22px;
-        margin-bottom: 4px;
-        line-height: 1.25;
+        font-size: 17px;
+        margin: 2px 0 4px 0;
+        line-height: 1.2;
     }
     .hero-section p {
-        font-size: 13px;
-        line-height: 1.35;
-        margin-bottom: 12px;
-        max-width: 320px;
-        margin-left: auto;
-        margin-right: auto;
+        display: none;
     }
     .hero-image-box {
-        border-radius: 10px;
+        border-radius: 8px;
         border: 1.5px solid var(--secondary-brun);
         box-shadow: 0 4px 16px rgba(20, 83, 45, 0.12);
         background-color: #0b2c18;
@@ -1538,9 +1525,9 @@ a {
     .hero-image {
         width: 100%;
         height: auto;
-        aspect-ratio: 2 / 1;
+        aspect-ratio: 3 / 1;
         object-fit: cover;
-        object-position: center;
+        object-position: center 35%;
         display: block;
     }
 }
